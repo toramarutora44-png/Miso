@@ -182,8 +182,9 @@
     "feature2": "お一人様でもご参加いただけます。",
     "feature3": "初心者の方にもわかりやすくご説明します。",
     "applyTitle": "お申し込み・お問い合わせ",
-    "applyNotePrefix": "お申し込み・詳細はお電話(",
-    "applyNoteSuffix": ")にてお問い合わせください。",
+    "applyNotePrefix": "お申し込みはメール(",
+    "applyNoteMid": ")にて承っております。店舗へのお電話でのお問い合わせは(",
+    "applyNoteSuffix": ")までどうぞ。",
     "ctaContact": "お問い合わせページへ",
     "latestInfoNote": "最新の開催予定・料金はお電話でご確認ください。"
   },

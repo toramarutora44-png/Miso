@@ -3,10 +3,10 @@ import type { Product } from "@/types/product";
 /**
  * 商品の仮データ。
  *
- * catchCopy・味の説明・おすすめの食べ方・甲州みそ/米みその原材料・製法・価格・
- * 熟成期間(甲州みそのみ)は公式POP(みそ工房の郷_味噌POP_A5縦_300dpi.jpg、2026-10-31確認)に
- * 準拠した確定表現(confirmed)。
- * 金山寺みその原材料はPOP記載分のみ confirmed とし、全原材料・配合は確認中。
+ * catchCopy・味の説明・おすすめの食べ方・製法・価格・熟成期間(甲州みそのみ)は
+ * 公式POP(みそ工房の郷_味噌POP_A5縦_300dpi.jpg、2026-10-31確認)に準拠した確定表現(confirmed)。
+ * 甲州みそ・米みそ・金山寺みその原材料は、実在する公式サイト(QRコード遷移先)の
+ * 一次情報で確認済みのため、いずれも confirmed。
  * 金山寺みそには甲州みそ・米みその製法記述(無添加/天然醸造/青大豆等)を流用しないこと
  * (適用根拠がないため)。
  *
@@ -15,7 +15,7 @@ import type { Product } from "@/types/product";
  * vegan / halal は安全側に倒して null(未確認)固定とし、安易に true を入れないこと。
  *
  * TODO(data-verify): 要・磯部様確認 — taste(甘み/塩味/コク/香りの数値)・allergens・
- * dietary・米みその熟成期間・麹の種類・金山寺みその全原材料配合は未確認のままです。
+ * dietary・米みその熟成期間は未確認のままです。
  */
 export const products: Product[] = [
   {
@@ -84,24 +84,28 @@ export const products: Product[] = [
       { ja: "ほうとう", en: "[EN TODO] Hoto (Yamanashi-style udon hot pot)" },
       { ja: "味噌炒め", en: "[EN TODO] Miso stir-fry" },
       { ja: "焼きおにぎり", en: "[EN TODO] Grilled rice balls" },
+      { ja: "貝の味噌汁", en: "[EN TODO] Clam miso soup" },
     ],
-    recipeIds: ["hoto", "miso-dengaku"],
+    recipeIds: [
+      "kabocha-kinoko-hoto",
+      "nasu-toriniku-shoga-miso",
+      "ninniku-miso-yaki-onigiri",
+      "asari-negi-miso-soup",
+      "tori-negi-miso-yaki",
+    ],
     images: {
       hero: {
-        src: "/images/farm/aomame-pods-fuji.jpg",
-        alt: {
-          ja: "富士山を背景にした、甲州みその原材料・青大豆の莢",
-          en: "[EN TODO] Blue soybean pods used for Koshu Miso, with Mt. Fuji in the background",
-        },
-        width: 900,
-        height: 1199,
+        src: "/images/products/koshu-miso.jpg",
+        alt: { ja: "甲州みそのパッケージ写真", en: "[EN TODO] Koshu Miso package photo" },
+        width: 760,
+        height: 760,
         isPlaceholder: false,
       },
       thumb: {
-        src: "/images/products/koshu-miso-pop.jpg",
+        src: "/images/products/koshu-miso.jpg",
         alt: { ja: "甲州みそのサムネイル", en: "[EN TODO] Koshu Miso thumbnail" },
-        width: 248,
-        height: 238,
+        width: 760,
+        height: 760,
         isPlaceholder: false,
       },
     },
@@ -119,12 +123,12 @@ export const products: Product[] = [
     body: {
       ja: [
         "クセがなく、どなたにも親しみやすいまろやかな甘みの味噌です。",
-        "米味噌は、大豆・麹・塩のみを原材料とする味噌です(麹の種類は確認中)。",
+        "米味噌は、大豆・米麹・食塩のみを原材料とする味噌です。麹は米麹のみで、合わせ味噌ではありません。",
         "天然醸造・無添加で、発酵を止めていない「生きた味噌」。加熱処理や発酵止めのアルコール添加は行わず、地釜で炊き上げた煮汁(味噌のたまり)を加えて仕込んでいます。",
       ],
       en: [
         "[EN TODO] A mellow, gently sweet miso with no strong edge, approachable for everyone.",
-        "[EN TODO] Rice Miso is made using only soybeans, koji, and salt (the exact type of koji used is still being confirmed).",
+        "[EN TODO] Rice Miso is made using only soybeans, rice koji, and salt. The koji used is rice koji only — this is not a blended (awase) miso.",
         "[EN TODO] It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (miso tamari).",
       ],
     },
@@ -144,8 +148,8 @@ export const products: Product[] = [
     ingredients: {
       value: [
         { ja: "大豆", en: "[EN TODO] Soybeans" },
-        { ja: "麹", en: "[EN TODO] Koji" },
-        { ja: "塩", en: "[EN TODO] Salt" },
+        { ja: "米麹", en: "[EN TODO] Rice koji" },
+        { ja: "食塩", en: "[EN TODO] Salt" },
       ],
       confidence: "confirmed",
     },
@@ -161,9 +165,29 @@ export const products: Product[] = [
       confidence: "confirmed",
     },
     pairings: [{ ja: "毎日の味噌汁に。", en: "[EN TODO] Great in everyday miso soup." }],
-    recipeIds: ["miso-soup", "miso-yaki-onigiri"],
+    recipeIds: [
+      "sake-kinoko-miso-butter-foil",
+      "kabocha-tamanegi-tonyu-miso-potage",
+      "tofu-wakame-tamago-miso-soup",
+      "mushi-dori-gomamiso-dare",
+      "kinoko-miso-cream-pasta",
+    ],
     images: {
       hero: {
+        src: "/images/products/rice-miso.jpg",
+        alt: { ja: "米みそのパッケージ写真", en: "[EN TODO] Rice Miso package photo" },
+        width: 760,
+        height: 760,
+        isPlaceholder: false,
+      },
+      thumb: {
+        src: "/images/products/rice-miso.jpg",
+        alt: { ja: "米みそのサムネイル", en: "[EN TODO] Rice Miso thumbnail" },
+        width: 760,
+        height: 760,
+        isPlaceholder: false,
+      },
+      craftFigure: {
         src: "/images/process/boiling-01.jpg",
         alt: {
           ja: "大釜で青大豆を煮る、味噌づくりの工程",
@@ -171,13 +195,6 @@ export const products: Product[] = [
         },
         width: 1000,
         height: 1000,
-        isPlaceholder: false,
-      },
-      thumb: {
-        src: "/images/products/rice-miso-pop.jpg",
-        alt: { ja: "米みそのサムネイル", en: "[EN TODO] Rice Miso thumbnail" },
-        width: 248,
-        height: 238,
         isPlaceholder: false,
       },
     },
@@ -189,8 +206,8 @@ export const products: Product[] = [
     order: 3,
     name: { ja: "金山寺みそ", en: "[EN TODO] Kinzanji Miso" },
     catchCopy: {
-      ja: "大豆・麦・なす入り。甘じょっぱい具だくさん。",
-      en: "[EN TODO] With soybeans, barley, and eggplant — a sweet-and-salty, ingredient-packed miso.",
+      ja: "麦麹・米麹・なす入り。甘じょっぱい具だくさん。",
+      en: "[EN TODO] With barley koji, rice koji, and eggplant — a sweet-and-salty, ingredient-packed miso.",
     },
     body: {
       ja: [
@@ -215,15 +232,18 @@ export const products: Product[] = [
       },
       confidence: "confirmed",
     },
-    // POP記載分のみ confirmed。全原材料・配合は確認中(他商品の製法記述は流用しない)。
+    // 他商品(甲州みそ・米みそ)の製法記述(無添加/天然醸造/青大豆等)は流用しない。
     ingredients: {
       value: [
+        { ja: "麦麹", en: "[EN TODO] Barley koji" },
+        { ja: "米麹", en: "[EN TODO] Rice koji" },
+        { ja: "なす", en: "[EN TODO] Eggplant" },
         { ja: "大豆", en: "[EN TODO] Soybeans" },
-        { ja: "麦", en: "[EN TODO] Barley" },
-        { ja: "なす ほか", en: "[EN TODO] Eggplant, and others" },
+        { ja: "醤油", en: "[EN TODO] Soy sauce" },
+        { ja: "砂糖", en: "[EN TODO] Sugar" },
+        { ja: "水飴", en: "[EN TODO] Starch syrup" },
       ],
       confidence: "confirmed",
-      note: "POP記載分のみ。全原材料・配合は確認中。",
     },
     allergens: { value: null, confidence: "unverified" },
     dietary: {
@@ -243,20 +263,26 @@ export const products: Product[] = [
       { ja: "きゅうりにのせて", en: "[EN TODO] On cucumber" },
       { ja: "豆腐にのせて", en: "[EN TODO] On tofu" },
     ],
-    recipeIds: ["vegetable-miso-dip"],
+    recipeIds: [
+      "oba-goma-onigiri-kinzanji",
+      "yaki-nasu-miso-cheese",
+      "avocado-hiya-yakko-kinzanji",
+      "shinjaga-misomayo-salad",
+      "mushidori-kyuri-lettuce-wrap",
+    ],
     images: {
       hero: {
-        src: "/images/products/kinzanji-miso-pop.jpg",
+        src: "/images/products/kinzanji-miso.jpg",
         alt: { ja: "金山寺みそのパッケージ写真", en: "[EN TODO] Kinzanji Miso package photo" },
-        width: 248,
-        height: 238,
+        width: 760,
+        height: 760,
         isPlaceholder: false,
       },
       thumb: {
-        src: "/images/products/kinzanji-miso-pop.jpg",
+        src: "/images/products/kinzanji-miso.jpg",
         alt: { ja: "金山寺みそのサムネイル", en: "[EN TODO] Kinzanji Miso thumbnail" },
-        width: 248,
-        height: 238,
+        width: 760,
+        height: 760,
         isPlaceholder: false,
       },
     },

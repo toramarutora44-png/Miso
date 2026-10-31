@@ -68,6 +68,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </figcaption>
             </figure>
           )}
+          {product.images.craftFigure && (
+            <figure className="mx-auto w-32 shrink-0 sm:mx-0 sm:w-40">
+              <Image
+                src={product.images.craftFigure.src}
+                alt={product.images.craftFigure.alt[locale]}
+                width={400}
+                height={400}
+                className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
+              />
+              <figcaption className="mt-2 text-center text-sm text-sumi-soft">
+                {product.images.craftFigure.alt[locale]}
+              </figcaption>
+            </figure>
+          )}
         </div>
         {/* 味の数値バー(甘み/塩味/コク/香り)は根拠のない推測値のため非表示。言葉の説明のみ表示する。 */}
         {product.tasteNotes.value && (

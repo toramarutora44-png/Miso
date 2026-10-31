@@ -3,7 +3,7 @@ import type { ImageRef } from "@/types/content";
 
 /**
  * 生産者情報。
- * 氏名・所在地・電話・定休日・想いのメッセージ(story)は磯部様より確認済み。
+ * 氏名・所在地・電話・メール・定休日・想いのメッセージ(story)は磯部様より確認済み。
  * 経歴の長さ(創業年数・代数等)は未確認かつ誇張しないため記載しない
  * (「30年以上」表記は locales/ja.json 側で値を残しつつ非表示運用、磯部様確認待ち)。
  * image は店舗外観(実写真)。人物写真は未確認のため配置しない。
@@ -14,6 +14,7 @@ export interface Producer {
   summary: LocalizedText;
   address: LocalizedText;
   phone: string;
+  email: string;
   phoneNote: LocalizedText;
   closedDays: LocalizedText;
   shipping: LocalizedText;
@@ -37,6 +38,7 @@ export const producer: Producer = {
     en: "3-1 Kawanakajima, Isawa-cho, Fuefuki-shi, Yamanashi 406-0024, Japan",
   },
   phone: "090-3147-2470",
+  email: "misokoubounosato@yahoo.co.jp",
   phoneNote: {
     ja: "店主直通の電話です。電話に出られない場合がありますので、その際は折り返しご連絡いたします。",
     en: "This number connects directly to the shop owner. If she is unable to answer, she will call you back.",

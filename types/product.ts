@@ -32,6 +32,6 @@ export interface Product {
   priceVariants: Provisional<PriceVariant[] | null>;
   pairings: LocalizedText[];
   recipeIds: string[];
-  images: { hero: ImageRef; thumb: ImageRef };
+  images: { hero: ImageRef; thumb: ImageRef; craftFigure?: ImageRef };
   purchase: { ecUrl: string | null; isPlaceholderUrl: boolean };
 }

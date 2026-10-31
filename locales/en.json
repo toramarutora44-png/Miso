@@ -182,8 +182,9 @@
     "feature2": "[EN TODO] Solo participants are welcome.",
     "feature3": "[EN TODO] Clear, friendly guidance for first-time participants.",
     "applyTitle": "[EN TODO] Booking & Inquiries",
-    "applyNotePrefix": "[EN TODO] For booking and details, please call us at ",
-    "applyNoteSuffix": ".",
+    "applyNotePrefix": "[EN TODO] Bookings are accepted by email at ",
+    "applyNoteMid": "[EN TODO] . For phone inquiries to the shop, please call ",
+    "applyNoteSuffix": "[EN TODO] .",
     "ctaContact": "[EN TODO] Go to the Contact page",
     "latestInfoNote": "[EN TODO] Please call us for the latest schedule and pricing."
   },

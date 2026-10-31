@@ -58,6 +58,8 @@ export default function ExperiencePage({ params }: PageProps) {
         <h2 className="text-[20px] text-akamiso">{d.applyTitle}</h2>
         <p className="mt-2 text-sm text-akamiso">
           {d.applyNotePrefix}
+          {producer.email}
+          {d.applyNoteMid}
           {producer.phone}
           {d.applyNoteSuffix}
         </p>
