@@ -26,7 +26,7 @@ export function Header({ locale, dict }: HeaderProps) {
         >
           <Image
             src="/images/brand/logo.avif"
-            alt="味噌工房の郷"
+            alt="みそ工房の郷"
             width={648}
             height={648}
             className="h-10 w-10 object-contain"

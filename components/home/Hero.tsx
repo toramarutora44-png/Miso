@@ -11,11 +11,8 @@ interface HeroProps {
 
 /**
  * ヒーロー。
- * 上部: pop-rice-bowl-badges.jpg をそのまま(未加工)大きく表示する。
- *       この画像自体がロゴ・見出し・認証バッジ・QR込みの完成されたPOPクリエイティブ。
- *       実ピクセルサイズ(1024x1536, 縦横比1.5)をそのままコンテナの縦横比として使い、
- *       vh固定高さ+object-coverによるクロップ(実機でのQR・下部帯の見切れ)を避ける。
- * 下部: 生成りの帯に、見出し・サブコピー・認証バッジ・CTAを実HTMLとして再掲する
+ * 上部: 富士山麓の青大豆を仕込む実写真(process/aomame-soaking.jpg)を大きく表示する。
+ * 下部: 生成りの帯に、見出し・サブコピー・認証バッジ・CTAを実HTMLとして表示する
  *       (画像の焼き込みに依存しない、アクセシブルな実要素)。
  */
 export function Hero({ locale, dict }: HeroProps) {
@@ -25,10 +22,10 @@ export function Hero({ locale, dict }: HeroProps) {
     <div>
       <div className="mx-auto w-full sm:max-w-md">
         <Image
-          src="/images/brand/pop/pop-rice-bowl-badges.jpg"
+          src="/images/process/aomame-soaking.jpg"
           alt={h.imageAlt}
-          width={1024}
-          height={1536}
+          width={900}
+          height={1125}
           priority
           sizes="(min-width: 640px) 448px, 100vw"
           className="h-auto w-full"
@@ -37,12 +34,12 @@ export function Hero({ locale, dict }: HeroProps) {
 
       <div className="bg-kinari px-4 py-12 text-center sm:px-6 sm:py-16">
         <div className="mx-auto max-w-2xl">
-          <h1 className="font-brush text-[40px] leading-tight text-sumi sm:text-[48px]">
+          <h1 className="font-heading text-[32px] leading-tight text-sumi sm:text-[40px]">
             {h.headline}
           </h1>
           <svg
             viewBox="0 0 200 24"
-            className="mx-auto mt-2 h-5 w-40 text-akamiso"
+            className="mx-auto mt-2 h-5 w-40 text-fukamidori"
             aria-hidden="true"
           >
             <path

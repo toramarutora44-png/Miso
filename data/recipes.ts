@@ -1,11 +1,19 @@
 import type { Recipe } from "@/types/recipe";
 
 /**
- * レシピの仮データ。
+ * レシピ(アレンジ提案)の仮データ。
+ *
+ * 公式POPに「レシピは未試作のアレンジ提案です。」との注記があり、本サイトでも
+ * 「当店が試作・監修したものではなく、味噌の使い方のご提案です。」と明記する
+ * (各レシピ詳細ページ冒頭に固定表示。locales/ja.json の recipe.disclaimer)。
+ * POPは「特徴とレシピ15品」と記載しているが、架空のレシピで件数を埋めることはせず、
+ * 確認済み範囲(本ファイルの件数)のみを公開する。件数自体もサイト上に表記しない。
  *
  * TODO(data-verify): 要・磯部様確認 — 本ファイルのレシピ(材料・手順・所要時間等)は
- * 一般的な調理知識から作成した仮の内容であり、みそ工房の郷が推奨・監修したものではありません。
+ * 一般的な調理知識から作成した仮の内容であり、みそ工房の郷が試作・監修したものではありません。
  * 全レシピ confidence: "provisional" とし、断定表示はしないこと。
+ * image: 出所不明(AI生成疑い)の料理写真は使用しないため、確認済みの実写真が揃うまで
+ * 全レシピで image を省略する(カードは味噌色の無地タイル+料理名で統一表示)。
  */
 export const recipes: Recipe[] = [
   {
@@ -33,13 +41,6 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "味噌は風味が飛びやすいため、沸騰直前に溶き入れると香りが残りやすいとされています(詳細は確認中)。",
       en: "[EN TODO] Miso's aroma can fade easily, so dissolving it just before boiling is said to help preserve its fragrance (details pending confirmation).",
-    },
-    image: {
-      src: "/images/brand/cropped/dish-miso-soup.jpg",
-      alt: { ja: "味噌汁のイメージ画像", en: "[EN TODO] Miso soup image" },
-      width: 420,
-      height: 320,
-      isPlaceholder: false,
     },
     confidence: "provisional",
   },
@@ -72,13 +73,6 @@ export const recipes: Recipe[] = [
       ja: "生麺を直接煮込むことでとろみが出るのが特徴とされています(詳細は確認中)。",
       en: "[EN TODO] Simmering the raw noodles directly is said to produce the dish's characteristic thickness (details pending confirmation).",
     },
-    image: {
-      src: "/images/brand/cropped/hoto-photo.jpg",
-      alt: { ja: "ほうとうのイメージ画像", en: "[EN TODO] Hoto image" },
-      width: 276,
-      height: 104,
-      isPlaceholder: false,
-    },
     confidence: "provisional",
   },
   {
@@ -106,13 +100,6 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "味噌だれは焦げやすいため、弱火〜中火で焼くとよいとされています(詳細は確認中)。",
       en: "[EN TODO] The miso glaze can burn easily, so grilling over low-to-medium heat is recommended (details pending confirmation).",
-    },
-    image: {
-      src: "/images/brand/cropped/dish-onigiri.jpg",
-      alt: { ja: "味噌焼きおにぎりのイメージ画像", en: "[EN TODO] Grilled miso rice ball image" },
-      width: 440,
-      height: 320,
-      isPlaceholder: false,
     },
     confidence: "provisional",
   },
@@ -143,13 +130,6 @@ export const recipes: Recipe[] = [
       ja: "田楽味噌は冷めると固くなるため、温かいうちに塗るとよいとされています(詳細は確認中)。",
       en: "[EN TODO] The dengaku glaze firms up as it cools, so applying it while warm is recommended (details pending confirmation).",
     },
-    image: {
-      src: "/images/brand/cropped/miso-dengaku-photo.jpg",
-      alt: { ja: "味噌田楽のイメージ画像", en: "[EN TODO] Miso dengaku image" },
-      width: 204,
-      height: 86,
-      isPlaceholder: false,
-    },
     confidence: "provisional",
   },
   {
@@ -176,13 +156,6 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "金山寺味噌はそのまま食べられる味噌のため、調味はシンプルでよいとされています(詳細は確認中)。",
       en: "[EN TODO] Since kinzanji miso can be eaten as-is, keeping the seasoning simple is said to work well (details pending confirmation).",
-    },
-    image: {
-      src: "/images/placeholder/recipes/vegetable-miso-dip.svg",
-      alt: { ja: "野菜の味噌ディップのイメージ画像", en: "[EN TODO] Vegetable miso dip image" },
-      width: 800,
-      height: 600,
-      isPlaceholder: true,
     },
     confidence: "provisional",
   },
@@ -213,13 +186,6 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "動物性食材を使わない精進料理の考え方を参考にした、簡易的な構成です(出典は仮のため確認中)。",
       en: "[EN TODO] This simplified composition is inspired by shojin cuisine's avoidance of animal-derived ingredients (source is provisional and pending confirmation).",
-    },
-    image: {
-      src: "/images/placeholder/recipes/shojin-fermented-lunch.svg",
-      alt: { ja: "精進料理風の発酵ランチのイメージ画像", en: "[EN TODO] Shojin-style fermented lunch image" },
-      width: 800,
-      height: 600,
-      isPlaceholder: true,
     },
     confidence: "provisional",
   },

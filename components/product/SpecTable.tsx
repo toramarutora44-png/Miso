@@ -31,6 +31,8 @@ export function SpecTable({ product, locale, dict }: SpecTableProps) {
       display: product.ingredients.value.map((t) => t[locale]).join(" / "),
     });
   }
+  // 原材料が POP 記載分のみ(全配合は確認中)の商品のみ、注記を併記する。
+  const showIngredientsNote = Boolean(product.ingredients.note);
 
   if (product.allergens.value !== null) {
     rows.push({
@@ -92,6 +94,9 @@ export function SpecTable({ product, locale, dict }: SpecTableProps) {
           ))}
         </tbody>
       </table>
+      {showIngredientsNote && (
+        <p className="mt-2 text-sm text-sumi-soft">{d.ingredientsNote}</p>
+      )}
     </div>
   );
 }

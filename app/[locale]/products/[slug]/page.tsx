@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { ProductHero } from "@/components/product/ProductHero";
-import { TasteBar } from "@/components/product/TasteBar";
 import { SpecTable } from "@/components/product/SpecTable";
+import { CertBadges } from "@/components/brand/CertBadges";
 import { RecipeCarousel } from "@/components/recipe/RecipeCarousel";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
@@ -16,9 +16,6 @@ import {
 } from "@/lib/repositories/productRepository";
 import { getRecipesForProduct } from "@/lib/repositories/recipeRepository";
 import type { Locale } from "@/types/i18n";
-import type { TasteAxis } from "@/types/product";
-
-const tasteAxisOrder: TasteAxis[] = ["sweetness", "saltiness", "richness", "aroma"];
 
 export function generateStaticParams() {
   const slugs = getAllProductSlugs();
@@ -60,10 +57,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
           {product.id === "koshu-miso" && (
             <figure className="mx-auto w-32 shrink-0 sm:mx-0 sm:w-40">
               <Image
-                src="/images/brand/cropped/koshu-aomame.jpg"
+                src="/images/farm/aomame-bowl.jpg"
                 alt={dict.product.aomameCaption}
-                width={185}
-                height={140}
+                width={400}
+                height={400}
                 className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
               />
               <figcaption className="mt-2 text-center text-sm text-sumi-soft">
@@ -72,29 +69,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </figure>
           )}
         </div>
-      </Section>
-
-      <Section tone="kinari">
-        <div className="mb-4 flex items-center gap-2">
-          <h2 className="text-[28px]">{dict.product.tasteTitle}</h2>
-        </div>
-        <div className="flex flex-col gap-3">
-          {tasteAxisOrder.map((axis) => (
-            <TasteBar
-              key={axis}
-              label={dict.taste[axis]}
-              value={product.taste.value[axis]}
-            />
-          ))}
-        </div>
+        {/* 味の数値バー(甘み/塩味/コク/香り)は根拠のない推測値のため非表示。言葉の説明のみ表示する。 */}
         {product.tasteNotes.value && (
           <p className="mt-4 text-base text-sumi-soft">
             {product.tasteNotes.value[locale]}
           </p>
         )}
+        <CertBadges locale={locale} productId={product.id} className="mt-6" />
       </Section>
 
-      <Section tone="kinari-deep">
+      <Section tone="kinari">
         <h2 className="text-[28px]">{dict.product.specTitle}</h2>
         <div className="mt-4">
           <SpecTable product={product} locale={locale} dict={dict} />
@@ -105,7 +89,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </p>
       </Section>
 
-      <Section tone="kinari">
+      <Section tone="kinari-deep">
         <h2 className="text-[28px]">{dict.product.pairingsTitle}</h2>
         <ul className="mt-4 flex flex-col gap-2">
           {product.pairings.map((pairing, i) => (
@@ -116,7 +100,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </ul>
       </Section>
 
-      <Section tone="kinari-deep">
+      <Section tone="kinari">
         <div className="flex flex-col gap-4 sm:flex-row">
           <Card className="flex-1">
             <h3 className="text-[22px]">{dict.product.recipeLinkTitle}</h3>

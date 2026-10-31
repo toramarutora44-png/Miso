@@ -70,7 +70,27 @@
     "videoTitle": "The Miso-Making Process (video)",
     "experienceBadge": "[EN TODO] 30+ years of miso-making",
     "bridgeLine": "[EN TODO] And still, 30 years on.",
-    "signaturePrefix": "[EN TODO] Miso Kobo no Sato "
+    "signaturePrefix": "[EN TODO] Miso Kobo no Sato, Owner ",
+    "soybeanSectionTitle": "[EN TODO] Blue Soybeans from the Foot of Mt. Fuji",
+    "soybeanBody1": "[EN TODO] The soybeans are grown without pesticides, exclusively by contracted farmers in Fujiyoshida at the foot of Mt. Fuji.",
+    "soybeanBody2": "[EN TODO] Low in oil and high in natural sugars, giving the miso its pronounced sweetness.",
+    "farmerCaption": "[EN TODO] A contracted farmer (at the foot of Mt. Fuji)",
+    "craftSectionTitle": "[EN TODO] Traditional, Living Miso-Making",
+    "craftBody1": "[EN TODO] No heat treatment or alcohol is used to stop fermentation.",
+    "craftBody2": "[EN TODO] A traditional method using the simmered liquid from the earthen kettle (jigama) in the brewing.",
+    "craftBody3": "[EN TODO] Aged for about one year. A 'living miso' whose fermentation is never halted.",
+    "shopSectionTitle": "[EN TODO] Shop Information",
+    "addressLabel": "[EN TODO] Address",
+    "phoneLabel": "[EN TODO] Phone",
+    "shippingLabel": "[EN TODO] Shipping",
+    "aomamePodsAlt": "[EN TODO] Blue soybean pods with Mt. Fuji in the background",
+    "aomameBowlAlt": "[EN TODO] Dried blue soybeans",
+    "soakingAlt": "[EN TODO] Blue soybeans soaking in water",
+    "boilingAlt": "[EN TODO] Simmering blue soybeans in a large kettle",
+    "jigamaAlt": "[EN TODO] Earthen kettle (jigama) equipment",
+    "stepSoaking": "[EN TODO] 1. Soaking",
+    "stepBoiling": "[EN TODO] 2. Boiling",
+    "stepJigama": "[EN TODO] 3. Jigama"
   },
   "products": {
     "title": "[EN TODO] Products",
@@ -94,9 +114,10 @@
     "months": "[EN TODO] months",
     "grams": "g",
     "yen": "[EN TODO] JPY",
-    "recipeLinkTitle": "[EN TODO] Recipes using this miso",
+    "recipeLinkTitle": "[EN TODO] Ways to enjoy this miso",
     "producerLinkTitle": "[EN TODO] About the producer",
-    "referencePrice": "[EN TODO] Reference price"
+    "referencePrice": "[EN TODO] Reference price",
+    "ingredientsNote": "[EN TODO] Based on the POP only. Full ingredient list is still being confirmed."
   },
   "taste": {
     "sweetness": "[EN TODO] Sweetness",
@@ -110,8 +131,10 @@
     "backHome": "[EN TODO] Back to Home"
   },
   "recipe": {
-    "listTitle": "[EN TODO] Recipes",
-    "listLead": "[EN TODO] Easy-to-make recipes using Yamanashi miso.",
+    "listTitle": "[EN TODO] Ways to Enjoy This Miso",
+    "listLead": "[EN TODO] Serving suggestions, not recipes tested or endorsed by our shop.",
+    "disclaimer": "[EN TODO] Not tested or endorsed by our shop — just a serving suggestion for using this miso.",
+    "noImageAlt": "[EN TODO] Photo coming soon",
     "ingredientsTitle": "[EN TODO] Ingredients",
     "stepsTitle": "[EN TODO] Steps",
     "tipTitle": "[EN TODO] Tip",
@@ -136,9 +159,14 @@
   },
   "compare": {
     "title": "[EN TODO] Compare Our Miso",
-    "lead": "[EN TODO] Compare the taste characteristics of our three types of miso side by side.",
-    "provisionalNote": "[EN TODO] *All taste characteristics shown are provisional (under confirmation) and may differ from the actual products.",
-    "pairingsRow": "[EN TODO] Recommended pairings"
+    "lead": "[EN TODO] Compare the characteristics of our three types of miso side by side.",
+    "catchCopyRow": "[EN TODO] Tagline",
+    "koujiRow": "[EN TODO] Koji type",
+    "koujiChecking": "[EN TODO] Checking",
+    "pairingsRow": "[EN TODO] Ways to enjoy",
+    "certRow": "[EN TODO] Certification",
+    "certYes": "[EN TODO] Halal Certified / Yamanashi Prefecture Certified",
+    "certNo": "[EN TODO] Not applicable"
   },
   "experience": {
     "title": "[EN TODO] Miso-Making Experience",
@@ -156,7 +184,8 @@
     "applyTitle": "[EN TODO] Booking & Inquiries",
     "applyNotePrefix": "[EN TODO] For booking and details, please call us at ",
     "applyNoteSuffix": ".",
-    "ctaContact": "[EN TODO] Go to the Contact page"
+    "ctaContact": "[EN TODO] Go to the Contact page",
+    "latestInfoNote": "[EN TODO] Please call us for the latest schedule and pricing."
   },
   "contact": {
     "title": "[EN TODO] Contact",

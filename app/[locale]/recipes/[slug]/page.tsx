@@ -52,13 +52,26 @@ export default async function RecipeDetailPage({ params }: PageProps) {
   return (
     <>
       <Section tone="kinari">
-        <Image
-          src={recipe.image.src}
-          alt={recipe.image.alt[locale]}
-          width={recipe.image.width}
-          height={recipe.image.height}
-          className="h-56 w-full rounded-card border border-miso-light/30 object-cover sm:h-72"
-        />
+        {recipe.image ? (
+          <Image
+            src={recipe.image.src}
+            alt={recipe.image.alt[locale]}
+            width={recipe.image.width}
+            height={recipe.image.height}
+            className="h-56 w-full rounded-card border border-miso-light/30 object-cover sm:h-72"
+          />
+        ) : (
+          <div
+            role="img"
+            aria-label={d.noImageAlt}
+            className="flex h-56 w-full items-center justify-center rounded-card border border-miso-light/30 bg-miso-light/40 sm:h-72"
+          >
+            <span className="font-heading text-2xl text-koshu">{recipe.title[locale]}</span>
+          </div>
+        )}
+        <p className="mt-4 rounded-card border border-miso-light/30 bg-kinari-deep px-4 py-3 text-sm text-sumi-soft">
+          {d.disclaimer}
+        </p>
         <h1 className="mt-5 text-[32px] sm:text-[36px]">{recipe.title[locale]}</h1>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           {recipe.tags.map((tag) => (

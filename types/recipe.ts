@@ -24,6 +24,7 @@ export interface Recipe {
   ingredients: { name: LocalizedText; amount: LocalizedText }[];
   steps: { text: LocalizedText; image?: ImageRef }[];
   tip?: LocalizedText;
-  image: ImageRef;
+  /** 確認済みの実写真がない場合は省略する(カードは味噌色の無地タイル+料理名で表示)。 */
+  image?: ImageRef;
   confidence: Confidence;
 }

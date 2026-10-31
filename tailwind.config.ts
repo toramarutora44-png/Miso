@@ -22,14 +22,10 @@ const config: Config = {
         koshu: "var(--c-koshu)",
         kome: "var(--c-kome)",
         kinzanji: "var(--c-kinzanji)",
-        "cert-vegan": "var(--c-cert-vegan)",
-        "cert-muslim": "var(--c-cert-muslim)",
-        "cert-yamanashi": "var(--c-cert-yamanashi)",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
-        brush: ["var(--font-brush)", "serif"],
       },
       borderRadius: {
         DEFAULT: "4px",

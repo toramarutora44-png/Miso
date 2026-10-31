@@ -39,9 +39,9 @@
   },
   "home": {
     "hero": {
-      "imageAlt": "みそ工房の郷 ごはんがもっとおいしい。富士山麓の味噌づくり",
-      "headline": "ごはんが もっとおいしい。",
-      "subcopy": "富士山の恵みを、毎日の食卓へ。",
+      "imageAlt": "富士山麓の青大豆を仕込む、みそ工房の郷の味噌づくり",
+      "headline": "いつものごはんが、もっと楽しみになる味噌。",
+      "subcopy": "富士山麓の青大豆と、手間ひまかけた味づくり。家族に食べてもらいたい味噌を、皆さまの食卓にも。",
       "ctaProducts": "3種のみそを見る",
       "ctaProducer": "つくり手の想いを見る"
     },
@@ -70,7 +70,27 @@
     "videoTitle": "味噌づくりの様子(動画)",
     "experienceBadge": "味噌づくり30年以上",
     "bridgeLine": "それでも、30年。",
-    "signaturePrefix": "みそ工房の郷 "
+    "signaturePrefix": "みそ工房の郷 店主 ",
+    "soybeanSectionTitle": "富士山麓の青大豆",
+    "soybeanBody1": "大豆には、山梨県富士吉田市(富士山麓)の契約農家専用栽培による無農薬の青大豆を使用しています。",
+    "soybeanBody2": "油分が少なく糖度が高いため、甘みの強い味わいが特徴です。",
+    "farmerCaption": "契約農家の方(富士山麓にて)",
+    "craftSectionTitle": "昔ながらの、生きた味噌づくり",
+    "craftBody1": "加熱処理や、発酵を止めるためのアルコール添加は行いません。",
+    "craftBody2": "地釜で炊き上げた煮汁(味噌のたまり)を仕込みに使う、昔ながらの製法です。",
+    "craftBody3": "熟成期間は約1年。発酵を止めていない「生きた味噌」です。",
+    "shopSectionTitle": "店舗情報",
+    "addressLabel": "住所",
+    "phoneLabel": "電話",
+    "shippingLabel": "配送",
+    "aomamePodsAlt": "富士山を背景にした青大豆の莢",
+    "aomameBowlAlt": "乾燥させた青大豆",
+    "soakingAlt": "水に浸した青大豆",
+    "boilingAlt": "大釜で青大豆を煮る",
+    "jigamaAlt": "地釜設備",
+    "stepSoaking": "1. 浸漬",
+    "stepBoiling": "2. 煮炊き",
+    "stepJigama": "3. 地釜"
   },
   "products": {
     "title": "商品一覧",
@@ -94,9 +114,10 @@
     "months": "ヶ月",
     "grams": "g",
     "yen": "円",
-    "recipeLinkTitle": "この味噌を使ったレシピ",
+    "recipeLinkTitle": "この味噌で、こんな食べ方",
     "producerLinkTitle": "生産者について",
-    "referencePrice": "参考価格"
+    "referencePrice": "参考価格",
+    "ingredientsNote": "POP記載分のみ。全原材料・配合は確認中です。"
   },
   "taste": {
     "sweetness": "甘み",
@@ -110,8 +131,10 @@
     "backHome": "トップへ戻る"
   },
   "recipe": {
-    "listTitle": "レシピ",
-    "listLead": "山梨県の味噌を使った、家庭で作りやすいレシピをご紹介します。",
+    "listTitle": "この味噌で、こんな食べ方",
+    "listLead": "当店が試作・監修したものではなく、味噌の使い方のご提案(アレンジ提案)です。",
+    "disclaimer": "当店が試作・監修したものではなく、味噌の使い方のご提案です。",
+    "noImageAlt": "写真準備中",
     "ingredientsTitle": "材料",
     "stepsTitle": "作り方",
     "tipTitle": "ワンポイント",
@@ -136,19 +159,24 @@
   },
   "compare": {
     "title": "味噌を比べる",
-    "lead": "3種の味噌の味の特徴を並べて比較します。",
-    "provisionalNote": "商品の特徴は目安です。詳しくは店頭でご確認ください。",
-    "pairingsRow": "おすすめの食べ方"
+    "lead": "3種の味噌の特徴を並べて比較します。",
+    "catchCopyRow": "キャッチコピー",
+    "koujiRow": "麹の種類",
+    "koujiChecking": "確認中",
+    "pairingsRow": "食べ方",
+    "certRow": "認証",
+    "certYes": "ハラール認証・山梨県認証取得",
+    "certNo": "対象外"
   },
   "experience": {
     "title": "味噌作り体験",
     "lead": "味噌作り体験についてご紹介します。",
     "durationLabel": "所要時間",
-    "duration": "約2時間",
+    "duration": "目安は約2時間です",
     "venueLabel": "会場",
     "venueName": "みそ工房の郷",
     "periodLabel": "開催時期",
-    "period": "毎年1月〜4月末",
+    "period": "例年1月〜4月末に開催しています",
     "featuresTitle": "体験の特徴",
     "feature1": "店舗での教室のほか、出張教室にも対応しています。",
     "feature2": "お一人様でもご参加いただけます。",
@@ -156,7 +184,8 @@
     "applyTitle": "お申し込み・お問い合わせ",
     "applyNotePrefix": "お申し込み・詳細はお電話(",
     "applyNoteSuffix": ")にてお問い合わせください。",
-    "ctaContact": "お問い合わせページへ"
+    "ctaContact": "お問い合わせページへ",
+    "latestInfoNote": "最新の開催予定・料金はお電話でご確認ください。"
   },
   "contact": {
     "title": "お問い合わせ",

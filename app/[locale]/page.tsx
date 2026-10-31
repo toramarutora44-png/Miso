@@ -36,7 +36,7 @@ export default async function HomePage({ params }: PageProps) {
       <Hero locale={locale} dict={dict} />
 
       <Section tone="kinari" id="products" as="section">
-        <h2 className="text-center font-brush text-[28px] text-sumi sm:text-[32px]">
+        <h2 className="text-center text-[28px] text-sumi sm:text-[32px]">
           {h.productsTitle}
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -61,9 +61,7 @@ export default async function HomePage({ params }: PageProps) {
             className="h-auto w-40 shrink-0 rounded-card border border-miso-light/30 object-cover shadow-paper"
           />
           <div className="text-center sm:text-left">
-            <span className="inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-sm font-medium text-fukamidori-dark">
-              {h.producerBadge}
-            </span>
+            {/* producerBadge(味噌づくり30年以上)は磯部様確認待ちのため表示を停止中。値は locales/ja.json に保持。 */}
             <h2 className="mt-3 text-[28px]">{h.producerTitle}</h2>
             <p className="mt-3 text-lg">「{h.producerQuote}」</p>
             <LinkButton href={`/${locale}/producer`} variant="secondary" className="mt-5">

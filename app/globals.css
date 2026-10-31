@@ -4,7 +4,7 @@
 
 :root {
   /* 基調色(生成り) */
-  --c-kinari: #FBF7EF;
+  --c-kinari: #F5F0E4;
   --c-kinari-deep: #F2E9D8;
   --c-washi: #FFFDF8;
 
@@ -12,7 +12,7 @@
   --c-sumi: #1A1714;
   --c-sumi-soft: #4A443D;
 
-  /* 赤アクセント(CTA・筆の払い・角印) ― 既存 --c-akamiso の値を更新 */
+  /* 赤アクセント(電話CTA専用) ― 既存 --c-akamiso の値を更新 */
   --c-akamiso: #C8102E;
   --c-akamiso-dark: #A50D26;
 
@@ -20,8 +20,8 @@
   --c-miso: #A8803C;
   --c-miso-light: #D9C296;
 
-  /* 深緑(生産者セクション等の局所使用に格下げ。全体基調からは外す) */
-  --c-fukamidori: #2f4f3e;
+  /* 深緑(見出し罫・認証バッジ・フッタ帯・CTAの主色) */
+  --c-fukamidori: #2C4435;
   --c-fukamidori-dark: #1e3328;
 
   /* 商品識別色(新規) */
@@ -29,14 +29,8 @@
   --c-kome: #D99323;
   --c-kinzanji: #9B2C2C;
 
-  /* 認証バッジ色(新規) */
-  --c-cert-vegan: #1F7A4C;
-  --c-cert-muslim: #D81B60;
-  --c-cert-yamanashi: #D4A62A;
-
   --font-heading: var(--font-shippori-mincho);
   --font-body: var(--font-noto-sans-jp);
-  --font-brush: var(--font-yuji-syuku);
 }
 
 html {

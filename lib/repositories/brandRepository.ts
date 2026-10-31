@@ -1,5 +1,6 @@
 import { certifications } from "@/data/brand";
 import type { Certification } from "@/data/brand";
+import type { ProductId } from "@/types/product";
 
 export type { Certification };
 
@@ -9,4 +10,8 @@ export type { Certification };
  */
 export function getCertifications(): Certification[] {
   return certifications;
+}
+
+export function getCertificationsForProduct(productId: ProductId): Certification[] {
+  return certifications.filter((c) => c.appliesTo.includes(productId));
 }

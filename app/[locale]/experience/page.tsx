@@ -66,6 +66,8 @@ export default function ExperiencePage({ params }: PageProps) {
       <LinkButton href={`/${locale}/contact`} className="mt-8">
         {d.ctaContact}
       </LinkButton>
+
+      <p className="mt-6 text-sm text-sumi-soft">{d.latestInfoNote}</p>
     </Section>
   );
 }

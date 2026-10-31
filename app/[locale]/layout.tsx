@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Shippori_Mincho, Noto_Sans_JP, Yuji_Syuku } from "next/font/google";
+import { Shippori_Mincho, Noto_Sans_JP } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -19,13 +19,6 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-noto-sans-jp",
-  display: "swap",
-});
-
-const yujiSyuku = Yuji_Syuku({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-yuji-syuku",
   display: "swap",
 });
 
@@ -49,7 +42,7 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
   return (
     <html
       lang={locale}
-      className={`${shipporiMincho.variable} ${notoSansJP.variable} ${yujiSyuku.variable}`}
+      className={`${shipporiMincho.variable} ${notoSansJP.variable}`}
     >
       <body className="flex min-h-screen flex-col pb-20 antialiased">
         <Header locale={locale} dict={dict} />
