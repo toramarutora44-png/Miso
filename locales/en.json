@@ -1,0 +1,166 @@
+{
+  "site": {
+    "name": "Miso Kobo no Sato",
+    "tagline": "[EN TODO] From a bowl of miso soup, the maker's heart is felt."
+  },
+  "nav": {
+    "home": "Home",
+    "producer": "Our Story",
+    "products": "Products",
+    "recipes": "[EN TODO] Recipes",
+    "compare": "[EN TODO] Compare",
+    "experience": "[EN TODO] Experience",
+    "contact": "[EN TODO] Contact"
+  },
+  "footer": {
+    "copyright": "Miso Kobo no Sato",
+    "note": "[EN TODO] Some information on this site is still being confirmed. Please check the EC site for the latest details."
+  },
+  "common": {
+    "provisionalBadge": "[EN TODO] *Provisional data (under confirmation)",
+    "priceUnknown": "[EN TODO] Please check the EC site for pricing",
+    "checking": "[EN TODO] Checking",
+    "unknown": "[EN TODO] Unknown",
+    "yes": "[EN TODO] Yes",
+    "no": "[EN TODO] No",
+    "recipeComingSoon": "[EN TODO] Recipes coming soon",
+    "viewProducer": "[EN TODO] Meet the producer",
+    "viewProducts": "[EN TODO] View products",
+    "backToProducts": "[EN TODO] Back to products",
+    "viewCompare": "[EN TODO] View comparison",
+    "viewRecipes": "[EN TODO] View recipes",
+    "tentativeLink": "[EN TODO] (Tentative link)",
+    "ecLinkLabel": "[EN TODO] Buy on EC site",
+    "officialSiteLabel": "[EN TODO] Official site",
+    "experienceLinkLabel": "[EN TODO] About the experience",
+    "contactLinkLabel": "[EN TODO] Contact us",
+    "stickyProducts": "[EN TODO] View our 3 miso",
+    "stickyExperience": "[EN TODO] Experience info"
+  },
+  "home": {
+    "hero": {
+      "imageAlt": "[EN TODO] Miso Kobo no Sato - Rice tastes even better. Miso-making at the foot of Mt. Fuji",
+      "headline": "[EN TODO] Rice, even more delicious.",
+      "subcopy": "[EN TODO] The blessings of Mt. Fuji, for your everyday table.",
+      "ctaProducts": "[EN TODO] View our 3 miso",
+      "ctaProducer": "[EN TODO] Meet the maker"
+    },
+    "productsTitle": "[EN TODO] Three types of miso, at a glance",
+    "producerTitle": "[EN TODO] Our Story",
+    "producerQuote": "[EN TODO] Something I could feed my own family — that's where miso-making begins.",
+    "producerBadge": "[EN TODO] 30+ years of miso-making",
+    "producerCta": "[EN TODO] More about our story",
+    "recipesTitle": "[EN TODO] What will you make with this miso?",
+    "compareTitle": "[EN TODO] Compare the three flavors",
+    "recommendText": "[EN TODO] First time? We recommend our gently sweet Rice Miso.",
+    "purchaseTitle": "[EN TODO] Available right here",
+    "purchaseText": "[EN TODO] Available exclusively at local roadside stations and our shop. Can be stored at room temperature; refrigerate after opening.",
+    "priceNote": "[EN TODO] Prices shown are for reference. Please check with the shop for the latest in-store pricing.",
+    "phoneCta": "[EN TODO] Contact us by phone"
+  },
+  "producer": {
+    "title": "[EN TODO] Our Story",
+    "nameLabel": "Owner",
+    "name": "Yuko Isobe",
+    "intro": "At Miso Kobo no Sato in Fuefuki City, Yamanashi, our shop owner Yuko Isobe continues her craft of miso-making.",
+    "sectionStartTitle": "[EN TODO] How it began",
+    "sectionCraftTitle": "[EN TODO] Our approach to craftsmanship",
+    "sectionExperienceTitle": "[EN TODO] Years of experience",
+    "videoSectionTitle": "Miso-Making Process",
+    "videoTitle": "The Miso-Making Process (video)",
+    "experienceBadge": "[EN TODO] 30+ years of miso-making",
+    "bridgeLine": "[EN TODO] And still, 30 years on.",
+    "signaturePrefix": "[EN TODO] Miso Kobo no Sato "
+  },
+  "products": {
+    "title": "[EN TODO] Products",
+    "lead": "[EN TODO] Introducing three types of miso made at Miso Kobo no Sato in Yamanashi."
+  },
+  "product": {
+    "descriptionTitle": "[EN TODO] Our Commitment",
+    "aomameCaption": "[EN TODO] Rare blue soybeans",
+    "aomameBadge": "[EN TODO] Made with rare blue soybeans",
+    "tasteTitle": "[EN TODO] Taste Profile",
+    "specTitle": "[EN TODO] Product Information",
+    "pairingsTitle": "[EN TODO] Recommended Pairings",
+    "ingredients": "[EN TODO] Ingredients",
+    "allergens": "[EN TODO] Allergens",
+    "vegan": "[EN TODO] Vegan",
+    "halal": "[EN TODO] Halal",
+    "glutenFree": "[EN TODO] Gluten-Free",
+    "agingMonths": "[EN TODO] Aging Period",
+    "price": "[EN TODO] Price",
+    "shippingLabel": "[EN TODO] Shipping",
+    "months": "[EN TODO] months",
+    "grams": "g",
+    "yen": "[EN TODO] JPY",
+    "recipeLinkTitle": "[EN TODO] Recipes using this miso",
+    "producerLinkTitle": "[EN TODO] About the producer",
+    "referencePrice": "[EN TODO] Reference price"
+  },
+  "taste": {
+    "sweetness": "[EN TODO] Sweetness",
+    "saltiness": "[EN TODO] Saltiness",
+    "richness": "[EN TODO] Richness",
+    "aroma": "[EN TODO] Aroma"
+  },
+  "notFound": {
+    "title": "[EN TODO] Page Not Found",
+    "lead": "[EN TODO] The page you are looking for could not be found.",
+    "backHome": "[EN TODO] Back to Home"
+  },
+  "recipe": {
+    "listTitle": "[EN TODO] Recipes",
+    "listLead": "[EN TODO] Easy-to-make recipes using Yamanashi miso.",
+    "ingredientsTitle": "[EN TODO] Ingredients",
+    "stepsTitle": "[EN TODO] Steps",
+    "tipTitle": "[EN TODO] Tip",
+    "timeLabel": "[EN TODO] Cooking time",
+    "servingsLabel": "[EN TODO] Servings",
+    "difficultyLabel": "[EN TODO] Difficulty",
+    "minutesUnit": "[EN TODO] min",
+    "servingsUnit": "[EN TODO] servings",
+    "veganBadge": "[EN TODO] Vegan-friendly",
+    "usesProductsTitle": "[EN TODO] Miso used",
+    "recommendedTitle": "[EN TODO] You might also like",
+    "backToList": "[EN TODO] Back to recipes",
+    "tags": {
+      "soup": "[EN TODO] Soup",
+      "main": "[EN TODO] Main",
+      "side": "[EN TODO] Side",
+      "snack": "[EN TODO] Snack",
+      "local": "[EN TODO] Local dish",
+      "vegan": "[EN TODO] Vegan",
+      "shojin": "[EN TODO] Shojin cuisine"
+    }
+  },
+  "compare": {
+    "title": "[EN TODO] Compare Our Miso",
+    "lead": "[EN TODO] Compare the taste characteristics of our three types of miso side by side.",
+    "provisionalNote": "[EN TODO] *All taste characteristics shown are provisional (under confirmation) and may differ from the actual products.",
+    "pairingsRow": "[EN TODO] Recommended pairings"
+  },
+  "experience": {
+    "title": "[EN TODO] Miso-Making Experience",
+    "lead": "[EN TODO] An introduction to our miso-making workshop.",
+    "durationLabel": "[EN TODO] Duration",
+    "duration": "[EN TODO] About 2 hours",
+    "venueLabel": "[EN TODO] Venue",
+    "venueName": "Miso Kobo no Sato",
+    "periodLabel": "[EN TODO] Season",
+    "period": "[EN TODO] Held every year from January through the end of April",
+    "featuresTitle": "[EN TODO] What to expect",
+    "feature1": "[EN TODO] Available both as an in-workshop class and as an on-site class at your location.",
+    "feature2": "[EN TODO] Solo participants are welcome.",
+    "feature3": "[EN TODO] Clear, friendly guidance for first-time participants.",
+    "applyTitle": "[EN TODO] Booking & Inquiries",
+    "applyNotePrefix": "[EN TODO] For booking and details, please call us at ",
+    "applyNoteSuffix": ".",
+    "ctaContact": "[EN TODO] Go to the Contact page"
+  },
+  "contact": {
+    "title": "[EN TODO] Contact",
+    "lead": "[EN TODO] For inquiries about our products or the miso-making experience, please contact us by phone.",
+    "closedDaysLabel": "[EN TODO] Regular closed days"
+  }
+}

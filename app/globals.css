@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 基調色(生成り) */
+  --c-kinari: #FBF7EF;
+  --c-kinari-deep: #F2E9D8;
+  --c-washi: #FFFDF8;
+
+  /* 墨(本文色) */
+  --c-sumi: #1A1714;
+  --c-sumi-soft: #4A443D;
+
+  /* 赤アクセント(CTA・筆の払い・角印) ― 既存 --c-akamiso の値を更新 */
+  --c-akamiso: #C8102E;
+  --c-akamiso-dark: #A50D26;
+
+  /* 金/茶(帯・ラベル・汎用アクセント) ― 既存 --c-miso 系の値を更新 */
+  --c-miso: #A8803C;
+  --c-miso-light: #D9C296;
+
+  /* 深緑(生産者セクション等の局所使用に格下げ。全体基調からは外す) */
+  --c-fukamidori: #2f4f3e;
+  --c-fukamidori-dark: #1e3328;
+
+  /* 商品識別色(新規) */
+  --c-koshu: #6B4A2F;
+  --c-kome: #D99323;
+  --c-kinzanji: #9B2C2C;
+
+  /* 認証バッジ色(新規) */
+  --c-cert-vegan: #1F7A4C;
+  --c-cert-muslim: #D81B60;
+  --c-cert-yamanashi: #D4A62A;
+
+  --font-heading: var(--font-shippori-mincho);
+  --font-body: var(--font-noto-sans-jp);
+  --font-brush: var(--font-yuji-syuku);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--c-kinari);
+  color: var(--c-sumi);
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), serif;
+  color: var(--c-sumi);
+}
+
+a {
+  color: inherit;
+}
+
+/* タップターゲット最小サイズを確保するユーティリティ */
+.tap-target {
+  min-height: 48px;
+  min-width: 48px;
+}

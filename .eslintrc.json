@@ -1,0 +1,22 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx,js,jsx}"],
+      "excludedFiles": ["lib/repositories/**/*"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@/data/*", "@/data", "*/data/*", "./data/*", "../data/*"],
+                "message": "data/ への直接importは禁止です。lib/repositories/ 経由でアクセスしてください。"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "site": {
+    "name": "みそ工房の郷",
+    "tagline": "一杯の味噌汁から、生産者の想いが伝わる。"
+  },
+  "nav": {
+    "home": "トップ",
+    "producer": "生産者の想い",
+    "products": "商品一覧",
+    "recipes": "レシピ",
+    "compare": "味噌を比べる",
+    "experience": "体験",
+    "contact": "お問い合わせ"
+  },
+  "footer": {
+    "copyright": "みそ工房の郷",
+    "note": "本サイトの情報は一部確認中です。最新情報はECサイト等でご確認ください。"
+  },
+  "common": {
+    "provisionalBadge": "※仮データ(確認中)",
+    "priceUnknown": "価格はECサイトをご確認ください",
+    "checking": "確認中",
+    "unknown": "不明",
+    "yes": "あり",
+    "no": "なし",
+    "recipeComingSoon": "レシピは準備中です",
+    "viewProducer": "生産者の想いを見る",
+    "viewProducts": "商品一覧を見る",
+    "backToProducts": "商品一覧へ戻る",
+    "viewCompare": "比較を見る",
+    "viewRecipes": "レシピを見る",
+    "tentativeLink": "(仮リンク)",
+    "ecLinkLabel": "ECサイトで購入",
+    "officialSiteLabel": "公式サイト",
+    "experienceLinkLabel": "体験について見る",
+    "contactLinkLabel": "お問い合わせ",
+    "stickyProducts": "3種のみそを見る",
+    "stickyExperience": "体験情報"
+  },
+  "home": {
+    "hero": {
+      "imageAlt": "みそ工房の郷 ごはんがもっとおいしい。富士山麓の味噌づくり",
+      "headline": "ごはんが もっとおいしい。",
+      "subcopy": "富士山の恵みを、毎日の食卓へ。",
+      "ctaProducts": "3種のみそを見る",
+      "ctaProducer": "つくり手の想いを見る"
+    },
+    "productsTitle": "3種のみそ、ひと目でわかる",
+    "producerTitle": "作り手の想い",
+    "producerQuote": "家族に食べさせたい。その想いが、味噌づくりの原点です。",
+    "producerBadge": "味噌づくり30年以上",
+    "producerCta": "生産者の想いをもっと見る",
+    "recipesTitle": "この味噌で、何を作る?",
+    "compareTitle": "3種の味わいを比べる",
+    "recommendText": "はじめての方には、やさしい甘みの米みそがおすすめです。",
+    "purchaseTitle": "この場で買える安心",
+    "purchaseText": "道の駅・店頭限定でお買い求めいただけます。常温保存可能ですが、開封後は冷蔵保存をおすすめします。",
+    "priceNote": "価格は参考価格です。最新の店頭価格は店舗にてご確認ください。",
+    "phoneCta": "お電話でのお問い合わせ"
+  },
+  "producer": {
+    "title": "生産者の想い",
+    "nameLabel": "店主",
+    "name": "磯部 裕子",
+    "intro": "山梨県笛吹市の「みそ工房の郷」で、店主の磯部裕子が味噌づくりを続けています。",
+    "sectionStartTitle": "味噌づくりを始めたきっかけ",
+    "sectionCraftTitle": "製法へのこだわり",
+    "sectionExperienceTitle": "歩んできた歳月",
+    "videoSectionTitle": "味噌づくりの様子",
+    "videoTitle": "味噌づくりの様子(動画)",
+    "experienceBadge": "味噌づくり30年以上",
+    "bridgeLine": "それでも、30年。",
+    "signaturePrefix": "みそ工房の郷 "
+  },
+  "products": {
+    "title": "商品一覧",
+    "lead": "山梨県の「みそ工房の郷」でつくる、3種の味噌をご紹介します。"
+  },
+  "product": {
+    "descriptionTitle": "こだわり",
+    "aomameCaption": "希少な青大豆",
+    "aomameBadge": "希少な青大豆使用",
+    "tasteTitle": "味の特徴",
+    "specTitle": "商品情報",
+    "pairingsTitle": "おすすめの食べ方",
+    "ingredients": "原材料",
+    "allergens": "アレルゲン",
+    "vegan": "ヴィーガン対応",
+    "halal": "ハラール対応",
+    "glutenFree": "グルテンフリー",
+    "agingMonths": "熟成期間",
+    "price": "価格",
+    "shippingLabel": "配送方法",
+    "months": "ヶ月",
+    "grams": "g",
+    "yen": "円",
+    "recipeLinkTitle": "この味噌を使ったレシピ",
+    "producerLinkTitle": "生産者について",
+    "referencePrice": "参考価格"
+  },
+  "taste": {
+    "sweetness": "甘み",
+    "saltiness": "塩味",
+    "richness": "コク",
+    "aroma": "香り"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "lead": "お探しのページは見つかりませんでした。",
+    "backHome": "トップへ戻る"
+  },
+  "recipe": {
+    "listTitle": "レシピ",
+    "listLead": "山梨県の味噌を使った、家庭で作りやすいレシピをご紹介します。",
+    "ingredientsTitle": "材料",
+    "stepsTitle": "作り方",
+    "tipTitle": "ワンポイント",
+    "timeLabel": "調理時間",
+    "servingsLabel": "人数",
+    "difficultyLabel": "難易度",
+    "minutesUnit": "分",
+    "servingsUnit": "人分",
+    "veganBadge": "ヴィーガン対応",
+    "usesProductsTitle": "使用する味噌",
+    "recommendedTitle": "このレシピもおすすめ",
+    "backToList": "レシピ一覧へ戻る",
+    "tags": {
+      "soup": "汁物",
+      "main": "主菜",
+      "side": "副菜",
+      "snack": "軽食",
+      "local": "郷土料理",
+      "vegan": "ヴィーガン",
+      "shojin": "精進料理"
+    }
+  },
+  "compare": {
+    "title": "味噌を比べる",
+    "lead": "3種の味噌の味の特徴を並べて比較します。",
+    "provisionalNote": "商品の特徴は目安です。詳しくは店頭でご確認ください。",
+    "pairingsRow": "おすすめの食べ方"
+  },
+  "experience": {
+    "title": "味噌作り体験",
+    "lead": "味噌作り体験についてご紹介します。",
+    "durationLabel": "所要時間",
+    "duration": "約2時間",
+    "venueLabel": "会場",
+    "venueName": "みそ工房の郷",
+    "periodLabel": "開催時期",
+    "period": "毎年1月〜4月末",
+    "featuresTitle": "体験の特徴",
+    "feature1": "店舗での教室のほか、出張教室にも対応しています。",
+    "feature2": "お一人様でもご参加いただけます。",
+    "feature3": "初心者の方にもわかりやすくご説明します。",
+    "applyTitle": "お申し込み・お問い合わせ",
+    "applyNotePrefix": "お申し込み・詳細はお電話(",
+    "applyNoteSuffix": ")にてお問い合わせください。",
+    "ctaContact": "お問い合わせページへ"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "lead": "商品や体験に関するお問い合わせは、お電話にて承っております。",
+    "closedDaysLabel": "定休日"
+  }
+}

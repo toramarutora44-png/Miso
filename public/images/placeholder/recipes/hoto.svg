@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#F7F3E8"/>
+
+  <!-- steam -->
+  <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.55">
+    <path d="M350 250 C 330 220, 370 200, 350 170 C 335 150, 360 130, 350 110"/>
+    <path d="M410 250 C 430 220, 395 195, 412 165 C 425 145, 400 125, 412 105"/>
+    <path d="M470 255 C 450 225, 485 205, 468 175 C 455 155, 478 135, 468 115"/>
+  </g>
+
+  <!-- bowl -->
+  <ellipse cx="400" cy="462" rx="168" ry="28" fill="#4A3220"/>
+  <path d="M232 340 C 232 410, 258 468, 400 480 C 542 468, 568 410, 568 340 Z" fill="#6B4A2F"/>
+  <path d="M232 340 C 232 318, 300 300, 400 300 C 500 300, 568 318, 568 340 C 568 362, 500 380, 400 380 C 300 380, 232 362, 232 340 Z" fill="#8C6239"/>
+  <ellipse cx="400" cy="340" rx="148" ry="30" fill="#A66B35"/>
+
+  <!-- noodles -->
+  <g fill="#FDFBF5" stroke="#8C6239" stroke-width="3">
+    <path d="M270 338 Q 320 318, 370 338 T 470 338 T 540 334"/>
+    <path d="M280 352 Q 335 332, 390 352 T 490 350 T 530 348"/>
+    <path d="M300 326 Q 350 308, 400 326 T 500 322"/>
+  </g>
+
+  <!-- abura-age (fried tofu) -->
+  <rect x="432" y="306" width="78" height="22" rx="4" fill="#E4C98A" stroke="#C9A968" stroke-width="2" transform="rotate(-8 471 317)"/>
+
+  <!-- napa cabbage -->
+  <rect x="470" y="300" width="52" height="22" rx="5" fill="#F4F1E3" stroke="#D8CBAA" stroke-width="2"/>
+  <path d="M470 302 C 480 282, 512 282, 522 302 C 510 294, 482 294, 470 302 Z" fill="#AEBB76" stroke="#8CA050" stroke-width="2"/>
+
+  <!-- kabocha wedge -->
+  <path d="M278 320 C 284 292, 318 280, 342 296 C 352 304, 350 322, 334 330 C 312 340, 288 334, 278 320 Z" fill="#E8A33D" stroke="#C8821F" stroke-width="2"/>
+  <path d="M284 304 C 298 288, 322 286, 338 300" fill="none" stroke="#3F5B3A" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="306" cy="312" r="3" fill="#8C5A2B"/>
+  <circle cx="318" cy="318" r="3" fill="#8C5A2B"/>
+
+  <!-- carrot flower slices -->
+  <g>
+    <path d="M376 300 l6 -14 l6 14 l14 -6 l-6 14 l14 6 l-14 6 l6 14 l-14 -6 l-6 14 l-6 -14 l-14 6 l6 -14 l-14 -6 l14 -6 Z" fill="#E8752C" stroke="#C85A18" stroke-width="2"/>
+    <circle cx="382" cy="300" r="5" fill="#F2A969"/>
+  </g>
+  <g>
+    <path d="M414 314 l5 -12 l5 12 l12 -5 l-5 12 l12 5 l-12 5 l5 12 l-12 -5 l-5 12 l-5 -12 l-12 5 l5 -12 l-12 -5 l12 -5 Z" fill="#E8752C" stroke="#C85A18" stroke-width="2"/>
+    <circle cx="419" cy="314" r="4" fill="#F2A969"/>
+  </g>
+</svg>
