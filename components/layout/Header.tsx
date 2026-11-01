@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NavLink } from "./NavLink";
 import { locales } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/types/i18n";
@@ -10,39 +11,34 @@ interface HeaderProps {
   dict: Dictionary;
 }
 
+/**
+ * スティッキーヘッダー。h-14固定、半透明+blurで本文上に重なっても視認性を保つ。
+ * LocaleSwitcherはlocales.length > 1がfalseの現状、自動的に非表示になる
+ * (英語版復活時のため、コード自体は削除しない)。
+ */
 export function Header({ locale, dict }: HeaderProps) {
-  const navItems = [
-    { href: `/${locale}/products`, label: dict.nav.products },
-    { href: `/${locale}/producer`, label: dict.nav.producer },
-    { href: `/${locale}/recipes`, label: dict.nav.recipes },
-  ];
+  const nav = dict.nav;
 
   return (
-    <header className="border-b border-miso-light/30 bg-washi">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <Link
-          href={`/${locale}`}
-          className="flex items-center gap-2 font-heading text-xl font-semibold text-fukamidori-dark"
-        >
+    <header className="sticky top-0 z-50 h-14 border-b border-rule bg-washi/88 backdrop-blur-[8px]">
+      <div className="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-4 sm:px-6">
+        <Link href={`/${locale}`} className="flex items-center gap-2">
           <Image
             src="/images/brand/logo.avif"
-            alt="みそ工房の郷"
-            width={648}
-            height={648}
-            className="h-10 w-10 object-contain"
+            alt={dict.site.name}
+            width={28}
+            height={28}
+            sizes="28px"
+            className="h-7 w-7 object-contain"
           />
-          {dict.site.name}
+          <span className="font-heading text-[16.5px] tracking-[.04em] text-fukamidori-dark">
+            {dict.site.name}
+          </span>
         </Link>
-        <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="tap-target inline-flex items-center justify-center rounded px-3 text-base text-sumi hover:text-fukamidori-dark"
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav aria-label="Main navigation" className="flex items-center gap-0.5">
+          <NavLink href={`/${locale}/products`}>{nav.productsShort}</NavLink>
+          <NavLink href={`/${locale}/producer`}>{nav.producerShort}</NavLink>
+          <NavLink href={`/${locale}/recipes`}>{nav.recipesShort}</NavLink>
         </nav>
         {locales.length > 1 && <LocaleSwitcher currentLocale={locale} />}
       </div>

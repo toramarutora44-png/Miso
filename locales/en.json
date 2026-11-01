@@ -10,7 +10,10 @@
     "recipes": "[EN TODO] Recipes",
     "compare": "[EN TODO] Compare",
     "experience": "[EN TODO] Experience",
-    "contact": "[EN TODO] Contact"
+    "contact": "[EN TODO] Contact",
+    "productsShort": "Products",
+    "producerShort": "Our Story",
+    "recipesShort": "[EN TODO] Recipes"
   },
   "footer": {
     "copyright": "Miso Kobo no Sato",
@@ -51,8 +54,10 @@
     "producerBadge": "[EN TODO] 30+ years of miso-making",
     "producerCta": "[EN TODO] More about our story",
     "recipesTitle": "[EN TODO] What will you make with this miso?",
+    "recipesLead": "[EN TODO] All 15 recipes, grouped by the miso they use.",
     "compareTitle": "[EN TODO] Compare the three flavors",
     "recommendText": "[EN TODO] First time? We recommend our gently sweet Rice Miso.",
+  "viewAllLabel": "[EN TODO] View all",
     "purchaseTitle": "[EN TODO] Available right here",
     "purchaseText": "[EN TODO] Available exclusively at local roadside stations and our shop. Can be stored at room temperature; refrigerate after opening.",
     "priceNote": "[EN TODO] Prices shown are for reference. Please check with the shop for the latest in-store pricing.",
@@ -139,6 +144,7 @@
   "recipe": {
     "listTitle": "[EN TODO] Ways to Enjoy This Miso",
     "listLead": "[EN TODO] Serving suggestions, not recipes tested or endorsed by our shop.",
+    "indexJumpLabel": "[EN TODO] Browse by miso type",
     "disclaimer": "[EN TODO] Not tested or endorsed by our shop — just a serving suggestion for using this miso.",
     "noImageAlt": "[EN TODO] Photo coming soon",
     "ingredientsTitle": "[EN TODO] Ingredients",

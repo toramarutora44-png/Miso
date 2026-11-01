@@ -11,7 +11,11 @@ interface HeroProps {
 
 /**
  * ヒーロー。
- * 上部: 富士山麓の青大豆を仕込む実写真(process/aomame-soaking.jpg)を大きく表示する。
+ * 上部: 甲州みその商品写真(products/koshu-miso.jpg)を大きく表示する
+ *       (「商品が印象的に登場する」演出のため、工程写真ではなく商品本体を主役にする)。
+ *       写真は760x760の正方形で、左に焼き込み文字「天然醸造/甲州みそ/1Kg」、右に味噌本体。
+ *       4:5等の縦長比率でcoverすると文字が中途半端に欠けるため、コンテナを正方形に保ち
+ *       写真全体(文字ごと)を見せる方針にしている(焼き込み文字もブランドの一部として扱う)。
  * 下部: 生成りの帯に、見出し・サブコピー・認証バッジ・CTAを実HTMLとして表示する
  *       (画像の焼き込みに依存しない、アクセシブルな実要素)。
  */
@@ -20,26 +24,25 @@ export function Hero({ locale, dict }: HeroProps) {
 
   return (
     <div>
-      <div className="mx-auto w-full sm:max-w-md">
+      <div className="hero-media aspect-square w-full overflow-hidden sm:ml-auto sm:max-w-[560px]">
         <Image
-          src="/images/process/aomame-soaking.jpg"
+          src="/images/products/koshu-miso.jpg"
           alt={h.imageAlt}
-          width={900}
-          height={1125}
+          width={760}
+          height={760}
           priority
-          sizes="(min-width: 640px) 448px, 100vw"
-          className="h-auto w-full"
+          fetchPriority="high"
+          sizes="(min-width: 640px) 560px, 100vw"
+          className="h-full w-full object-cover object-center mix-blend-multiply"
         />
       </div>
 
-      <div className="bg-kinari px-4 py-12 text-center sm:px-6 sm:py-16">
+      <div className="bg-washi px-4 py-12 text-center sm:px-6 sm:py-16">
         <div className="mx-auto max-w-2xl">
-          <h1 className="font-heading text-[32px] leading-tight text-sumi sm:text-[40px]">
-            {h.headline}
-          </h1>
+          <h1 className="t-display anim-rise d-1 text-sumi">{h.headline}</h1>
           <svg
             viewBox="0 0 200 24"
-            className="mx-auto mt-2 h-5 w-40 text-fukamidori"
+            className="brush-path mx-auto mt-2 h-5 w-40 text-fukamidori"
             aria-hidden="true"
           >
             <path
@@ -48,13 +51,14 @@ export function Hero({ locale, dict }: HeroProps) {
               stroke="currentColor"
               strokeWidth="5"
               strokeLinecap="round"
+              pathLength="1"
             />
           </svg>
-          <p className="mt-5 text-lg text-sumi-soft">{h.subcopy}</p>
+          <p className="t-body anim-rise d-2 mt-5 text-sumi-soft">{h.subcopy}</p>
 
-          <CertBadges locale={locale} className="mt-6" />
+          <CertBadges locale={locale} className="anim-rise d-3 mt-6" />
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="anim-rise d-4 mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <LinkButton href={`/${locale}/products`}>{h.ctaProducts}</LinkButton>
             <LinkButton href={`/${locale}/producer`} variant="secondary">
               {h.ctaProducer}

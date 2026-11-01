@@ -31,10 +31,53 @@
 
   --font-heading: var(--font-shippori-mincho);
   --font-body: var(--font-noto-sans-jp);
+
+  --c-fukamidori-deep: #16271F;
+  --c-sumi-faint: #6E675E;
+  --c-rule: rgba(168,128,60,.26);
 }
 
-html {
-  scroll-behavior: smooth;
+@keyframes hero-settle { from { transform: scale(1.04); } to { transform: scale(1); } }
+@keyframes rise-in     { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes brush-draw  { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+@layer components {
+  .hero-media { animation: hero-settle 900ms cubic-bezier(.22,.61,.36,1) both;
+                will-change: transform; transform-origin: 62% 45%; }
+  .anim-rise  { animation: rise-in 460ms cubic-bezier(.22,.61,.36,1) both; }
+  .d-1 { animation-delay: 240ms } .d-2 { animation-delay: 380ms }
+  .d-3 { animation-delay: 500ms } .d-4 { animation-delay: 600ms }
+  .brush-path { stroke-dasharray: 1; animation: brush-draw 700ms ease-out 300ms both; }
+
+  .t-display { font-family: var(--font-heading); font-weight: 500; font-size: 30px; line-height: 1.34; letter-spacing: .02em; font-feature-settings: "palt" 1; }
+  .t-title   { font-family: var(--font-heading); font-weight: 500; font-size: 25px; line-height: 1.4; font-feature-settings: "palt" 1; }
+  .t-lead    { font-family: var(--font-heading); font-weight: 500; font-size: 18px; line-height: 1.78; font-feature-settings: "palt" 1; }
+  .t-quote   { font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1.95; letter-spacing: .04em; font-feature-settings: "palt" 1; }
+  .t-body    { font-family: var(--font-body); font-weight: 400; font-size: 15.5px; line-height: 1.95; }
+  .t-label   { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: .18em; color: var(--c-sumi-faint); }
+  .t-meta    { font-family: var(--font-body); font-weight: 400; font-size: 12px; color: var(--c-sumi-faint); }
+  .t-vertical { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: .12em; }
+}
+@media (min-width: 640px) {
+  .t-display { font-size: 44px; } .t-title { font-size: 34px; } .t-lead { font-size: 21px; } .t-quote { font-size: 30px; }
+}
+
+[data-reveal="pending"] { opacity: 0; transform: translateY(14px); }
+[data-reveal="pending"][data-reveal-fade-only] { transform: none; }
+[data-reveal="in"] { opacity: 1; transform: none;
+  transition: opacity .62s ease-out, transform .62s cubic-bezier(.22,.61,.36,1); }
+
+html { scroll-padding-top: 64px; }
+
+[data-focus="true"] { box-shadow: inset 3px 0 0 var(--focus-c, var(--c-fukamidori)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media, .anim-rise, .brush-path { animation: none !important; }
+  .brush-path { stroke-dashoffset: 0; }
+  html { scroll-behavior: auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {

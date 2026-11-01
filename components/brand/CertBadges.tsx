@@ -7,6 +7,7 @@ interface CertBadgesProps {
   /** 指定時はその商品に適用される認証のみ表示する(例: 金山寺みそは非表示)。未指定時は全認証を表示する。 */
   productId?: ProductId;
   className?: string;
+  align?: "center" | "left";
 }
 
 /**
@@ -14,16 +15,24 @@ interface CertBadgesProps {
  * 深緑地・白文字の小さめ単一バッジ+下部に小さい注記(対象商品・山梨県認証の内訳)。
  * 画像焼き込みへの依存をなくし、アクセシブルに表示する。
  */
-export function CertBadges({ locale, productId, className = "" }: CertBadgesProps) {
+export function CertBadges({
+  locale,
+  productId,
+  className = "",
+  align = "center",
+}: CertBadgesProps) {
   const certs = productId ? getCertificationsForProduct(productId) : getCertifications();
 
   if (certs.length === 0) {
     return null;
   }
 
+  const itemsClass = align === "left" ? "items-start" : "items-center";
+  const justifyClass = align === "left" ? "justify-start" : "justify-center";
+
   return (
-    <div className={`flex flex-col items-center gap-1.5 ${className}`}>
-      <ul className="flex flex-wrap items-center justify-center gap-2">
+    <div className={`flex flex-col ${itemsClass} gap-1.5 ${className}`}>
+      <ul className={`flex flex-wrap items-center ${justifyClass} gap-2`}>
         {certs.map((cert) => (
           <li
             key={cert.id}

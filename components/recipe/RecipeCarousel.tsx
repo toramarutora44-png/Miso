@@ -20,7 +20,7 @@ export function RecipeCarousel({ recipes, locale, dict }: RecipeCarouselProps) {
   return (
     <div className="grid grid-cols-2 gap-3 sm:gap-4">
       {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} locale={locale} dict={dict} compact />
+        <RecipeCard key={recipe.id} recipe={recipe} locale={locale} dict={dict} />
       ))}
     </div>
   );

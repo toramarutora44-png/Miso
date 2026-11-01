@@ -10,14 +10,14 @@ import type { Locale } from "@/types/i18n";
 
 const shipporiMincho = Shippori_Mincho({
   subsets: ["latin"],
-  weight: ["500", "700"],
+  weight: ["500"],
   variable: "--font-shippori-mincho",
   display: "swap",
 });
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500"],
   variable: "--font-noto-sans-jp",
   display: "swap",
 });
@@ -44,7 +44,7 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
       lang={locale}
       className={`${shipporiMincho.variable} ${notoSansJP.variable}`}
     >
-      <body className="flex min-h-screen flex-col pb-20 antialiased">
+      <body className="flex min-h-screen flex-col pb-[calc(56px+env(safe-area-inset-bottom))] antialiased">
         <Header locale={locale} dict={dict} />
         <main className="flex-1">{children}</main>
         <Footer dict={dict} />

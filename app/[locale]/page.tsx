@@ -1,16 +1,25 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 import { Hero } from "@/components/home/Hero";
-import { ProductCard } from "@/components/product/ProductCard";
-import { RecipeCard } from "@/components/recipe/RecipeCard";
+import { ProductStory } from "@/components/home/ProductStory";
+import { ProducerStory } from "@/components/home/ProducerStory";
+import { ProductFocus } from "@/components/home/ProductFocus";
+import { RecipeIndexList } from "@/components/recipe/RecipeIndexList";
 import { Section } from "@/components/ui/Section";
-import { LinkButton } from "@/components/ui/Button";
+import { Band } from "@/components/ui/Band";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
-import { getAllProducts, getProducer } from "@/lib/repositories/productRepository";
-import { getAllRecipes } from "@/lib/repositories/recipeRepository";
+import { getProductById, getProducer } from "@/lib/repositories/productRepository";
+import { getAllRecipes, getRecipesForProduct } from "@/lib/repositories/recipeRepository";
 import type { Locale } from "@/types/i18n";
+import type { ProductId } from "@/types/product";
+
+const FOCUS_COLOR: Record<ProductId, string> = {
+  "koshu-miso": "var(--c-koshu)",
+  "rice-miso": "var(--c-kome)",
+  "kinzanji-miso": "var(--c-kinzanji)",
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -27,67 +36,90 @@ export default async function HomePage({ params }: PageProps) {
   const dict = getDictionary(locale);
   const h = dict.home;
 
-  const products = getAllProducts();
   const producer = getProducer();
   const recipes = await getAllRecipes();
 
+  const koshuMiso = getProductById("koshu-miso");
+  const riceMiso = getProductById("rice-miso");
+  const kinzanjiMiso = getProductById("kinzanji-miso");
+  if (!koshuMiso || !riceMiso || !kinzanjiMiso) notFound();
+
+  const [koshuRecipes, riceRecipes] = await Promise.all([
+    getRecipesForProduct("koshu-miso"),
+    getRecipesForProduct("rice-miso"),
+  ]);
+
   return (
     <>
+      <ProductFocus />
       <Hero locale={locale} dict={dict} />
 
-      <Section tone="kinari" id="products" as="section">
-        <h2 className="text-center text-[28px] text-sumi sm:text-[32px]">
-          {h.productsTitle}
-        </h2>
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} locale={locale} dict={dict} />
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <LinkButton href={`/${locale}/compare`} variant="secondary">
+      <Band tone="fukamidori-deep" className="bg-fukamidori-dark py-3.5 text-washi">
+        <p className="px-4 text-center text-sm sm:text-base">
+          {h.recommendText}{" "}
+          <Link href={`/${locale}/compare`} className="underline">
             {dict.common.viewCompare}
-          </LinkButton>
-        </div>
-      </Section>
+          </Link>
+        </p>
+      </Band>
 
-      <Section tone="kinari-deep">
-        <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-          <Image
-            src={producer.image.src}
-            alt={producer.image.alt[locale]}
-            width={producer.image.width}
-            height={producer.image.height}
-            className="h-auto w-40 shrink-0 rounded-card border border-miso-light/30 object-cover shadow-paper"
+      <div
+        id="product-koshu-miso"
+        className="scroll-mt-16"
+        style={{ "--focus-c": FOCUS_COLOR["koshu-miso"] } as CSSProperties}
+      >
+        <ProductStory
+          product={koshuMiso}
+          locale={locale}
+          dict={dict}
+          variant="bleed-right"
+          recipes={koshuRecipes}
+        />
+      </div>
+
+      <div
+        id="product-rice-miso"
+        className="scroll-mt-16"
+        style={{ "--focus-c": FOCUS_COLOR["rice-miso"] } as CSSProperties}
+      >
+        <ProductStory
+          product={riceMiso}
+          locale={locale}
+          dict={dict}
+          variant="center-round"
+          recipes={riceRecipes}
+        />
+      </div>
+
+      <div
+        id="product-kinzanji-miso"
+        className="scroll-mt-16"
+        style={{ "--focus-c": FOCUS_COLOR["kinzanji-miso"] } as CSSProperties}
+      >
+        <ProductStory
+          product={kinzanjiMiso}
+          locale={locale}
+          dict={dict}
+          variant="inverse-panel"
+          recipes={[]}
+        />
+      </div>
+
+      <ProducerStory locale={locale} dict={dict} />
+
+      <Band tone="kinari-deep">
+        <div className="mx-auto max-w-[1100px] px-5 py-16 sm:py-20">
+          <h2 className="t-title text-sumi">{h.recipesTitle}</h2>
+          <p className="t-body mt-2 text-sumi-soft">{h.recipesLead}</p>
+          <RecipeIndexList
+            recipes={recipes}
+            locale={locale}
+            dict={dict}
+            groupByProduct
+            className="mt-8"
           />
-          <div className="text-center sm:text-left">
-            <span className="inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-sm font-medium text-fukamidori-dark">
-              {h.producerBadge}
-            </span>
-            <h2 className="mt-3 text-[28px]">{h.producerTitle}</h2>
-            <p className="mt-3 text-lg">「{h.producerQuote}」</p>
-            <LinkButton href={`/${locale}/producer`} variant="secondary" className="mt-5">
-              {h.producerCta}
-            </LinkButton>
-          </div>
         </div>
-      </Section>
-
-      <Section tone="kinari">
-        <h2 className="text-[28px]">{h.recipesTitle}</h2>
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {recipes.slice(0, 4).map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} locale={locale} dict={dict} />
-          ))}
-        </div>
-        <LinkButton href={`/${locale}/recipes`} className="mt-6">
-          {dict.common.viewRecipes}
-        </LinkButton>
-      </Section>
-
-      <Section tone="kinari" className="text-center">
-        <p className="text-lg text-sumi">{h.recommendText}</p>
-      </Section>
+      </Band>
 
       <Section tone="kinari-deep">
         <h2 className="text-[28px]">{h.purchaseTitle}</h2>

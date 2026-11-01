@@ -10,7 +10,10 @@
     "recipes": "レシピ",
     "compare": "味噌を比べる",
     "experience": "体験",
-    "contact": "お問い合わせ"
+    "contact": "お問い合わせ",
+    "productsShort": "商品",
+    "producerShort": "つくり手",
+    "recipesShort": "レシピ"
   },
   "footer": {
     "copyright": "みそ工房の郷",
@@ -51,8 +54,10 @@
     "producerBadge": "味噌づくり30年以上",
     "producerCta": "生産者の想いをもっと見る",
     "recipesTitle": "この味噌で、何を作る?",
+    "recipesLead": "全15品を、使う味噌ごとにまとめました。",
     "compareTitle": "3種の味わいを比べる",
     "recommendText": "はじめての方には、やさしい甘みの米みそがおすすめです。",
+  "viewAllLabel": "すべて見る",
     "purchaseTitle": "この場で買える安心",
     "purchaseText": "道の駅・店頭限定でお買い求めいただけます。常温保存可能ですが、開封後は冷蔵保存をおすすめします。",
     "priceNote": "価格は参考価格です。最新の店頭価格は店舗にてご確認ください。",
@@ -139,6 +144,7 @@
   "recipe": {
     "listTitle": "この味噌で、こんな食べ方",
     "listLead": "当店が試作・監修したものではなく、味噌の使い方のご提案(アレンジ提案)です。",
+    "indexJumpLabel": "味噌から探す",
     "disclaimer": "当店が試作・監修したものではなく、味噌の使い方のご提案です。",
     "noImageAlt": "写真準備中",
     "ingredientsTitle": "材料",
