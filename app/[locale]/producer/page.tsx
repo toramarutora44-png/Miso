@@ -35,7 +35,9 @@ export default function ProducerPage({ params }: PageProps) {
           className="mx-auto h-auto w-56 rounded-card border border-miso-light/30 object-cover shadow-paper"
           priority
         />
-        {/* experienceBadge(味噌づくり30年以上)は磯部様確認待ちのため表示を停止中。値は locales/ja.json に保持。 */}
+        <span className="mt-4 inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-sm font-medium text-fukamidori-dark">
+          {p.experienceBadge}
+        </span>
         <h1 className="mt-4 text-[32px] sm:text-[36px]">{dict.producer.title}</h1>
         <p className="mt-2 text-base text-sumi-soft">
           {dict.producer.nameLabel}: {producer.name[locale]}
@@ -56,7 +58,7 @@ export default function ProducerPage({ params }: PageProps) {
 
       <Section tone="kinari">
         <h2 className="text-[28px]">{dict.producer.sectionCraftTitle}</h2>
-        {/* bridgeLine(それでも、30年。)は磯部様確認待ちのため表示を停止中。値は locales/ja.json に保持。 */}
+        <p className="mt-2 font-heading text-xl text-fukamidori-dark">{p.bridgeLine}</p>
         <div className="mt-3 flex flex-col gap-3 border-l-2 border-miso pl-4">
           {producer.story.craft[locale].map((paragraph, i) => (
             <p key={i} className="font-heading text-base leading-relaxed">
@@ -155,7 +157,36 @@ export default function ProducerPage({ params }: PageProps) {
       </Section>
 
       <Section tone="kinari">
+        <h2 className="text-[28px]">{p.certSectionTitle}</h2>
+        <p className="mt-2 text-base text-sumi-soft">{p.certIntro}</p>
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Image
+            src="/images/certification/yfdc-muslim-friendly-appendix.jpg"
+            alt={p.certMuslimAlt}
+            width={1000}
+            height={1777}
+            className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
+          />
+          <Image
+            src="/images/certification/yfdc-vegan-friendly-appendix.jpg"
+            alt={p.certVeganAlt}
+            width={1000}
+            height={1777}
+            className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
+          />
+        </div>
+        <p className="mt-4 text-sm text-sumi-soft">{p.certNote}</p>
+      </Section>
+
+      <Section tone="kinari-deep">
         <h2 className="text-[28px]">{p.shopSectionTitle}</h2>
+        <Image
+          src="/images/shop/storefront.jpg"
+          alt={p.storefrontAlt}
+          width={858}
+          height={859}
+          className="mx-auto h-auto w-full max-w-xs rounded-card border border-miso-light/30 object-cover shadow-paper"
+        />
         <dl className="mt-4 flex flex-col gap-3 text-base">
           <div>
             <dt className="text-sumi-soft">{p.addressLabel}</dt>
@@ -164,10 +195,6 @@ export default function ProducerPage({ params }: PageProps) {
           <div>
             <dt className="text-sumi-soft">{p.phoneLabel}</dt>
             <dd className="mt-0.5">{producer.phone}</dd>
-          </div>
-          <div>
-            <dt className="text-sumi-soft">{dict.contact.closedDaysLabel}</dt>
-            <dd className="mt-0.5">{producer.closedDays[locale]}</dd>
           </div>
           <div>
             <dt className="text-sumi-soft">{p.shippingLabel}</dt>
@@ -182,7 +209,7 @@ export default function ProducerPage({ params }: PageProps) {
         </div>
       </Section>
 
-      <Section tone="kinari-deep">
+      <Section tone="kinari">
         <h2 className="text-[28px]">{dict.producer.videoSectionTitle}</h2>
         <div
           className="mx-auto mt-4 w-full max-w-xl overflow-hidden rounded-card border border-miso-light/30"

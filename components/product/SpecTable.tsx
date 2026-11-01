@@ -65,17 +65,7 @@ export function SpecTable({ product, locale, dict }: SpecTableProps) {
     });
   }
 
-  if (product.priceVariants.value !== null) {
-    rows.push({
-      label: d.price,
-      display: product.priceVariants.value
-        .map(
-          (v) =>
-            `${v.netWeightG}${d.grams} ${v.priceYen.toLocaleString(locale)}${d.yen}`,
-        )
-        .join(" / "),
-    });
-  }
+  // 価格は委託先店舗により異なるため、磯部様の意向(2026-11-01確認)によりサイトには掲載しない。
 
   return (
     <div className="overflow-x-auto">

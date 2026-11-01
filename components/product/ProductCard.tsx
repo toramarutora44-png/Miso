@@ -18,12 +18,6 @@ const bandClass: Record<ProductId, string> = {
 
 export function ProductCard({ product, locale, dict }: ProductCardProps) {
   const { hero } = product.images;
-  const d = dict.product;
-
-  const minPrice =
-    product.priceVariants.value !== null
-      ? Math.min(...product.priceVariants.value.map((v) => v.priceYen))
-      : null;
 
   return (
     <Link href={`/${locale}/products/${product.slug}`} className="block">
@@ -49,15 +43,6 @@ export function ProductCard({ product, locale, dict }: ProductCardProps) {
             </span>
           )}
           <p className="text-base text-sumi-soft">{product.catchCopy[locale]}</p>
-
-          {minPrice !== null && (
-            <div className="mt-4">
-              <span className="text-xl font-semibold text-sumi">
-                {`¥${minPrice.toLocaleString(locale)}〜`}
-              </span>
-              <p className="mt-0.5 text-xs text-sumi-soft">{d.referencePrice}</p>
-            </div>
-          )}
         </div>
       </div>
     </Link>

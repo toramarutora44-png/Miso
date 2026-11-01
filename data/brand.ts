@@ -8,6 +8,9 @@ import type { ProductId } from "@/types/product";
  * ハラール認証(JHF) 2027-08-25まで。
  * 期限到来前に再確認し、失効時は該当バッジを削除すること。
  * ハラール系バッジは甲州みそ・米みそのみに適用(金山寺みそには適用しない)。POP(2026-10-31確認)準拠。
+ * 2026-11-01、磯部様よりやまなしフードダイバーシティ認証(Muslim Friendly Star/Vegan Friendly)の
+ * 付属書(認定製品一覧)を受領。対象製品リストに甲州みそ・米みそが含まれ金山寺みそは含まれないことを
+ * 原本で確認済み(public/images/certification/配下)。ハラール認証も同一対象との回答あり。
  */
 export interface Certification {
   id: "yamanashi-halal";

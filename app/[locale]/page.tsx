@@ -61,7 +61,9 @@ export default async function HomePage({ params }: PageProps) {
             className="h-auto w-40 shrink-0 rounded-card border border-miso-light/30 object-cover shadow-paper"
           />
           <div className="text-center sm:text-left">
-            {/* producerBadge(味噌づくり30年以上)は磯部様確認待ちのため表示を停止中。値は locales/ja.json に保持。 */}
+            <span className="inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-sm font-medium text-fukamidori-dark">
+              {h.producerBadge}
+            </span>
             <h2 className="mt-3 text-[28px]">{h.producerTitle}</h2>
             <p className="mt-3 text-lg">「{h.producerQuote}」</p>
             <LinkButton href={`/${locale}/producer`} variant="secondary" className="mt-5">
@@ -90,7 +92,6 @@ export default async function HomePage({ params }: PageProps) {
       <Section tone="kinari-deep">
         <h2 className="text-[28px]">{h.purchaseTitle}</h2>
         <p className="mt-3 text-base text-sumi-soft">{h.purchaseText}</p>
-        <p className="mt-2 text-sm text-sumi-soft">{h.priceNote}</p>
         <p className="mt-4 text-base">
           <Link
             href={`tel:${producer.phone.replace(/-/g, "")}`}

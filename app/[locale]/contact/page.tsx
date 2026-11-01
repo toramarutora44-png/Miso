@@ -39,9 +39,6 @@ export default function ContactPage({ params }: PageProps) {
         </a>
       </div>
       <p className="mt-2 text-sm text-sumi-soft">{producer.phoneNote[locale]}</p>
-      <p className="mt-6 text-base">
-        <span className="text-sumi-soft">{d.closedDaysLabel}</span>: {producer.closedDays[locale]}
-      </p>
     </Section>
   );
 }

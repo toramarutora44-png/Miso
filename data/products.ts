@@ -3,23 +3,29 @@ import type { Product } from "@/types/product";
 /**
  * 商品の仮データ。
  *
- * catchCopy・味の説明・おすすめの食べ方・製法・価格・熟成期間(甲州みそのみ)は
- * 公式POP(みそ工房の郷_味噌POP_A5縦_300dpi.jpg、2026-10-31確認)に準拠した確定表現(confirmed)。
+ * catchCopy・味の説明・おすすめの食べ方・製法は公式POP(みそ工房の郷_味噌POP_A5縦_300dpi.jpg、
+ * 2026-10-31確認)に準拠した確定表現(confirmed)。
  * 甲州みそ・米みそ・金山寺みその原材料は、実在する公式サイト(QRコード遷移先)の
  * 一次情報で確認済みのため、いずれも confirmed。
  * 金山寺みそには甲州みそ・米みその製法記述(無添加/天然醸造/青大豆等)を流用しないこと
  * (適用根拠がないため)。
  *
+ * agingMonths(熟成期間)は磯部様に確認済み(2026-11-01): 甲州みそ・米みそ=10ヶ月、
+ * 金山寺みそ=1ヶ月。
+ * priceVariants(価格)は確認済みの値だが、委託先の店舗ごとに価格が異なるため
+ * 磯部様の意向(2026-11-01)によりサイト上には表示しない(SpecTable・ProductCard側で非表示化)。
+ * データ自体は将来の用途のため残す。
+ *
  * taste(甘み/塩味/コク/香りの数値バー)は根拠のない推測値のため、商品詳細・比較画面では
  * 使用しない(非表示)。TasteBarコンポーネント自体は削除せず、呼び出しのみ停止する。
- * vegan / halal は安全側に倒して null(未確認)固定とし、安易に true を入れないこと。
+ * vegan / halal は安全側に倒して null(未確認)固定とし、安易に true を入れないこと
+ * (バッジ表示は components/brand/CertBadges.tsx が別途、商品別に行う)。
  *
  * 製造工程写真(青大豆の浸漬・煮熟等、process/*.jpg)は特定の商品に紐づくものではなく、
  * 全商品に共通する工程であるため、個別商品の images.craftFigure としては設定しない。
  * これらは生産者ページ(/producer)の製法セクションに一本化して掲載する(2026-11-01)。
  *
- * TODO(data-verify): 要・磯部様確認 — taste(甘み/塩味/コク/香りの数値)・allergens・
- * dietary・米みその熟成期間は未確認のままです。
+ * TODO(data-verify): 要・磯部様確認 — taste(甘み/塩味/コク/香りの数値)・allergens・dietary。
  */
 export const products: Product[] = [
   {
@@ -71,11 +77,7 @@ export const products: Product[] = [
       value: { vegan: null, halal: null, glutenFree: null },
       confidence: "unverified",
     },
-    agingMonths: {
-      value: 12,
-      confidence: "confirmed",
-      note: "熟成期間は約1年近くとされています。",
-    },
+    agingMonths: { value: 10, confidence: "confirmed" },
     priceVariants: {
       value: [
         { netWeightG: 400, priceYen: 700 },
@@ -162,8 +164,7 @@ export const products: Product[] = [
       value: { vegan: null, halal: null, glutenFree: null },
       confidence: "unverified",
     },
-    // 熟成期間は未確認のため非表示(SpecTableはnullの行を出さない)。
-    agingMonths: { value: null, confidence: "unverified" },
+    agingMonths: { value: 10, confidence: "confirmed" },
     priceVariants: {
       value: [{ netWeightG: 1000, priceYen: 2060 }],
       confidence: "confirmed",
@@ -244,7 +245,7 @@ export const products: Product[] = [
       value: { vegan: null, halal: null, glutenFree: null },
       confidence: "unverified",
     },
-    agingMonths: { value: null, confidence: "unverified" },
+    agingMonths: { value: 1, confidence: "confirmed" },
     priceVariants: {
       value: [
         { netWeightG: 100, priceYen: 324 },
