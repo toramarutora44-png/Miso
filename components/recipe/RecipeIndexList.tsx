@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getProductById } from "@/lib/repositories/productRepository";
+import { DishIllust } from "@/components/illust/DishIllust";
+import { getRecipeIllust } from "@/lib/illust/mapping";
 import type { Recipe } from "@/types/recipe";
 import type { Locale } from "@/types/i18n";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -104,7 +106,7 @@ function RecipeRow({ recipe, index, locale, dict, barClass, showProductBadge }: 
     <li>
       <Link
         href={`/${locale}/recipes/${recipe.slug}`}
-        className="group relative grid min-h-[48px] grid-cols-[2.2em_1fr_auto] items-baseline border-b border-rule py-3.5 pl-3"
+        className="group relative grid min-h-[48px] grid-cols-[2.2em_24px_1fr_auto] items-baseline border-b border-rule py-3.5 pl-3"
       >
         <span
           className={`absolute inset-y-0 left-0 w-0 transition-[width] duration-200 ${
@@ -113,7 +115,8 @@ function RecipeRow({ recipe, index, locale, dict, barClass, showProductBadge }: 
           aria-hidden="true"
         />
         <span className="t-label tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-        <span className="font-heading text-[16.5px] text-sumi transition-colors group-hover:text-fukamidori-dark group-focus-visible:text-fukamidori-dark">
+        <DishIllust name={getRecipeIllust(recipe)} size={22} tone="dark" className="self-center" />
+        <span className="pl-2.5 font-heading text-[16.5px] text-sumi transition-colors group-hover:text-fukamidori-dark group-focus-visible:text-fukamidori-dark">
           {recipe.title[locale]}
         </span>
         <span className="flex flex-col items-end gap-0.5 text-right">

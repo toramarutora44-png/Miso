@@ -35,6 +35,12 @@
   --c-fukamidori-deep: #16271F;
   --c-sumi-faint: #6E675E;
   --c-rule: rgba(168,128,60,.26);
+
+  /* 手描き風イラスト用トークン */
+  --c-illust-ink: #4A3426;
+  --c-illust-cream: #F2E0BE;
+  --c-illust-leaf: #5F7A4E;
+  --c-illust-blush: #D1663F;
 }
 
 @keyframes hero-settle { from { transform: scale(1.04); } to { transform: scale(1); } }
@@ -57,6 +63,21 @@
   .t-label   { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: .18em; color: var(--c-sumi-faint); }
   .t-meta    { font-family: var(--font-body); font-weight: 400; font-size: 12px; color: var(--c-sumi-faint); }
   .t-vertical { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: .12em; }
+
+  .illust-dark {
+    --illust-ink: var(--c-illust-ink);
+    --illust-cream: var(--c-illust-cream);
+    --illust-leaf: var(--c-illust-leaf);
+    --illust-blush: var(--c-illust-blush);
+    --illust-warm: var(--c-miso-light);
+  }
+  .illust-light {
+    --illust-ink: var(--c-washi);
+    --illust-cream: rgba(255,253,248,.80);
+    --illust-leaf: rgba(255,253,248,.62);
+    --illust-blush: rgba(255,253,248,.62);
+    --illust-warm: rgba(255,253,248,.45);
+  }
 }
 @media (min-width: 640px) {
   .t-display { font-size: 44px; } .t-title { font-size: 34px; } .t-lead { font-size: 21px; } .t-quote { font-size: 30px; }

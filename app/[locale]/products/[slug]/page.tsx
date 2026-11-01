@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Section } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
+import { Band } from "@/components/ui/Band";
 import { ProductHero } from "@/components/product/ProductHero";
 import { SpecTable } from "@/components/product/SpecTable";
-import { CertBadges } from "@/components/brand/CertBadges";
+import { PairingGrid } from "@/components/product/PairingGrid";
 import { RecipeCarousel } from "@/components/recipe/RecipeCarousel";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
@@ -40,109 +39,79 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <Section tone="kinari">
-        <ProductHero product={product} locale={locale} />
-      </Section>
+      <ProductHero product={product} locale={locale} dict={dict} />
 
-      <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{dict.product.descriptionTitle}</h2>
-        <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start">
-          <div className="flex flex-col gap-3">
-            {product.body[locale].map((paragraph, i) => (
-              <p key={i} className="text-base text-sumi-soft">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-          {product.id === "koshu-miso" && (
-            <figure className="mx-auto w-32 shrink-0 sm:mx-0 sm:w-40">
-              <Image
-                src="/images/farm/aomame-bowl.jpg"
-                alt={dict.product.aomameCaption}
-                width={400}
-                height={400}
-                className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
-              />
-              <figcaption className="mt-2 text-center text-sm text-sumi-soft">
-                {dict.product.aomameCaption}
-              </figcaption>
-            </figure>
-          )}
-          {product.images.craftFigure && (
-            <figure className="mx-auto w-32 shrink-0 sm:mx-0 sm:w-40">
-              <Image
-                src={product.images.craftFigure.src}
-                alt={product.images.craftFigure.alt[locale]}
-                width={400}
-                height={400}
-                className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
-              />
-              <figcaption className="mt-2 text-center text-sm text-sumi-soft">
-                {product.images.craftFigure.alt[locale]}
-              </figcaption>
-            </figure>
-          )}
-        </div>
-        {/* 味の数値バー(甘み/塩味/コク/香り)は根拠のない推測値のため非表示。言葉の説明のみ表示する。 */}
-        {product.tasteNotes.value && (
-          <p className="mt-4 text-base text-sumi-soft">
-            {product.tasteNotes.value[locale]}
-          </p>
-        )}
-        <CertBadges locale={locale} productId={product.id} className="mt-6" />
-      </Section>
-
-      <Section tone="kinari">
-        <h2 className="text-[28px]">{dict.product.specTitle}</h2>
-        <div className="mt-4">
-          <SpecTable product={product} locale={locale} dict={dict} />
-        </div>
-        <p className="mt-4 text-sm text-sumi-soft">
-          <span>{dict.product.shippingLabel}: </span>
-          {producer.shipping[locale]}
-        </p>
-      </Section>
-
-      <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{dict.product.pairingsTitle}</h2>
-        <ul className="mt-4 flex flex-col gap-2">
-          {product.pairings.map((pairing, i) => (
-            <li key={i} className="text-base">
-              {pairing[locale]}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section tone="kinari">
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <Card className="flex-1">
-            <h3 className="text-[22px]">{dict.product.recipeLinkTitle}</h3>
-            <div className="mt-3">
-              <RecipeCarousel recipes={recipes} locale={locale} dict={dict} />
+      <Band tone="kinari">
+        <div className="mx-auto max-w-[1100px] px-5 py-16 sm:grid sm:grid-cols-12 sm:gap-10 sm:py-20">
+          <div className="sm:col-span-7">
+            <h2 className="t-title text-sumi">{dict.product.descriptionTitle}</h2>
+            <div className="mt-4 flex flex-col gap-4">
+              {product.id === "koshu-miso" && (
+                <Image
+                  src="/images/farm/aomame-bowl.jpg"
+                  alt={dict.product.aomameCaption}
+                  width={400}
+                  height={400}
+                  className="h-auto w-32 rounded-card border border-miso-light/30 object-cover shadow-paper sm:float-right sm:ml-5 sm:mb-3 sm:w-36"
+                />
+              )}
+              {product.images.craftFigure && (
+                <Image
+                  src={product.images.craftFigure.src}
+                  alt={product.images.craftFigure.alt[locale]}
+                  width={400}
+                  height={400}
+                  className="h-auto w-32 rounded-card border border-miso-light/30 object-cover shadow-paper sm:float-right sm:ml-5 sm:mb-3 sm:w-36"
+                />
+              )}
+              {product.body[locale].map((paragraph, i) => (
+                <p key={i} className="t-body text-sumi-soft">
+                  {paragraph}
+                </p>
+              ))}
             </div>
-          </Card>
-          <Card className="flex-1">
-            <h3 className="text-[22px]">{dict.product.producerLinkTitle}</h3>
-            <p className="mt-2 text-base">
-              <Link
-                href={`/${locale}/producer`}
-                className="tap-target inline-flex items-center text-miso underline hover:text-akamiso"
-              >
-                {dict.common.viewProducer}
-              </Link>
-            </p>
-          </Card>
+          </div>
+          <div className="mt-8 sm:col-span-5 sm:mt-0">
+            <div className="bg-washi p-5 shadow-paper sm:sticky sm:top-20">
+              <h2 className="t-title text-sumi">{dict.product.specTitle}</h2>
+              <div className="mt-4">
+                <SpecTable product={product} locale={locale} dict={dict} />
+              </div>
+              <p className="t-body mt-4 text-sumi-soft">
+                <span>{dict.product.shippingLabel}: </span>
+                {producer.shipping[locale]}
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="mt-6 text-base">
-          <Link
-            href={`/${locale}/products`}
-            className="tap-target inline-flex items-center text-fukamidori-dark underline"
-          >
-            {dict.common.backToProducts}
-          </Link>
-        </p>
-      </Section>
+      </Band>
+
+      <Band tone="kinari-deep">
+        <div className="mx-auto max-w-[1100px] px-5 py-16 sm:py-20">
+          <h2 className="t-title text-sumi">{dict.product.pairingsTitle}</h2>
+          <PairingGrid product={product} locale={locale} />
+
+          <hr className="my-12 border-t border-rule" />
+
+          <h2 className="t-title text-sumi">{dict.product.recipeLinkTitle}</h2>
+          <RecipeCarousel recipes={recipes} locale={locale} dict={dict} className="mt-6" />
+
+          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-rule pt-6">
+            <Link
+              href={`/${locale}/producer`}
+              className="tap-target inline-flex items-center text-fukamidori-dark underline"
+            >
+              {dict.common.viewProducer}
+            </Link>
+            <Link
+              href={`/${locale}/products`}
+              className="tap-target inline-flex items-center text-fukamidori-dark underline"
+            >
+              {dict.common.backToProducts}
+            </Link>
+          </div>
+        </div>
+      </Band>
     </>
   );
 }

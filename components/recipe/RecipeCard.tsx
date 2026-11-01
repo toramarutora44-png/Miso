@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { getProductById } from "@/lib/repositories/productRepository";
+import { DishIllust } from "@/components/illust/DishIllust";
+import { getRecipeIllust } from "@/lib/illust/mapping";
+import { TILE_BG, TILE_INK, TILE_TEXT } from "@/lib/illust/tileTheme";
 import type { Recipe } from "@/types/recipe";
 import type { Locale } from "@/types/i18n";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
-import type { ProductId } from "@/types/product";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -11,12 +13,6 @@ interface RecipeCardProps {
   dict: Dictionary;
   className?: string;
 }
-
-const TILE_BG: Record<ProductId, string> = {
-  "koshu-miso": "bg-koshu",
-  "rice-miso": "bg-kome",
-  "kinzanji-miso": "bg-kinzanji",
-};
 
 /**
  * 商品色ベタのラベルタイル。RecipeCarousel(商品詳細ページの関連レシピ)専用。
@@ -38,9 +34,14 @@ export function RecipeCard({ recipe, locale, dict, className = "" }: RecipeCardP
           {recipe.timeMinutes}
           {dict.recipe.minutesUnit}
         </span>
-        <div className="flex h-full flex-col items-center justify-center px-2 text-center">
+        <div className="flex h-full flex-col items-center justify-center gap-1.5 px-2 text-center">
+          <DishIllust
+            name={getRecipeIllust(recipe)}
+            size={44}
+            tone={usedProduct ? TILE_INK[usedProduct.id] : "dark"}
+          />
           <p
-            className="font-heading text-[16px] text-washi"
+            className={`font-heading text-[15px] ${usedProduct ? TILE_TEXT[usedProduct.id] : "text-washi"}`}
             style={{ fontFeatureSettings: '"palt" 1' }}
           >
             {recipe.title[locale]}
