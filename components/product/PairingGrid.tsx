@@ -23,10 +23,12 @@ export function PairingGrid({ product, locale }: PairingGridProps) {
 
   return (
     <Reveal>
-      <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
+      <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4">
         {pairings.map((pairing, i) => (
           <div key={i} className="flex flex-col items-center gap-3 text-center">
-            <DishIllust name={getPairingIllust(product.id, i)} size={56} tone="dark" />
+            <div className="flex h-28 w-28 items-center justify-center rounded-full bg-kinari-deep">
+              <DishIllust name={getPairingIllust(product.id, i)} size={88} tone="dark" />
+            </div>
             <p className="t-body text-sumi">{pairing[locale]}</p>
           </div>
         ))}
