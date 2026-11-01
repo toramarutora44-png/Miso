@@ -10,7 +10,7 @@ interface RecipeCarouselProps {
 }
 
 /**
- * CSS の scroll-snap による横スクロールカルーセル。JSは使用しない。
+ * 2列グリッド表示。横スクロールなしで全件が画面内に収まる。
  */
 export function RecipeCarousel({ recipes, locale, dict }: RecipeCarouselProps) {
   if (recipes.length === 0) {
@@ -18,18 +18,9 @@ export function RecipeCarousel({ recipes, locale, dict }: RecipeCarouselProps) {
   }
 
   return (
-    <div
-      className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory"
-      style={{ scrollSnapType: "x mandatory" }}
-    >
+    <div className="grid grid-cols-2 gap-3 sm:gap-4">
       {recipes.map((recipe) => (
-        <div
-          key={recipe.id}
-          className="w-64 shrink-0 snap-start"
-          style={{ scrollSnapAlign: "start" }}
-        >
-          <RecipeCard recipe={recipe} locale={locale} dict={dict} />
-        </div>
+        <RecipeCard key={recipe.id} recipe={recipe} locale={locale} dict={dict} compact />
       ))}
     </div>
   );

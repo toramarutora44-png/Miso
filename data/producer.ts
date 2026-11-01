@@ -6,7 +6,7 @@ import type { ImageRef } from "@/types/content";
  * 氏名・所在地・電話・メール・定休日・想いのメッセージ(story)は磯部様より確認済み。
  * 経歴の長さ(創業年数・代数等)は未確認かつ誇張しないため記載しない
  * (「30年以上」表記は locales/ja.json 側で値を残しつつ非表示運用、磯部様確認待ち)。
- * image は店舗外観(実写真)。人物写真は未確認のため配置しない。
+ * image は磯部様ご本人の実写真(2026-11-01、ユーザーより提供・本人と確認済み)。
  */
 export interface Producer {
   name: LocalizedText;
@@ -82,13 +82,13 @@ export const producer: Producer = {
     },
   },
   image: {
-    src: "/images/shop/storefront.jpg",
+    src: "/images/producer/isobe.jpg",
     alt: {
-      ja: "みそ工房の郷 店舗(山梨県笛吹市石和町)",
-      en: "[EN TODO] Miso Kobo no Sato storefront (Isawa-cho, Fuefuki City, Yamanashi)",
+      ja: "みそ工房の郷 店主 磯部裕子",
+      en: "[EN TODO] Yuko Isobe, owner of Miso Kobo no Sato",
     },
-    width: 858,
-    height: 859,
+    width: 800,
+    height: 1300,
     isPlaceholder: false,
   },
 };

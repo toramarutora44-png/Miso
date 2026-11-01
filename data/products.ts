@@ -14,6 +14,10 @@ import type { Product } from "@/types/product";
  * 使用しない(非表示)。TasteBarコンポーネント自体は削除せず、呼び出しのみ停止する。
  * vegan / halal は安全側に倒して null(未確認)固定とし、安易に true を入れないこと。
  *
+ * 製造工程写真(青大豆の浸漬・煮熟等、process/*.jpg)は特定の商品に紐づくものではなく、
+ * 全商品に共通する工程であるため、個別商品の images.craftFigure としては設定しない。
+ * これらは生産者ページ(/producer)の製法セクションに一本化して掲載する(2026-11-01)。
+ *
  * TODO(data-verify): 要・磯部様確認 — taste(甘み/塩味/コク/香りの数値)・allergens・
  * dietary・米みその熟成期間は未確認のままです。
  */
@@ -185,16 +189,6 @@ export const products: Product[] = [
         alt: { ja: "米みそのサムネイル", en: "[EN TODO] Rice Miso thumbnail" },
         width: 760,
         height: 760,
-        isPlaceholder: false,
-      },
-      craftFigure: {
-        src: "/images/process/boiling-01.jpg",
-        alt: {
-          ja: "大釜で青大豆を煮る、味噌づくりの工程",
-          en: "[EN TODO] Simmering blue soybeans in a large kettle during miso-making",
-        },
-        width: 1000,
-        height: 1000,
         isPlaceholder: false,
       },
     },
