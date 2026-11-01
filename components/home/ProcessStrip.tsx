@@ -18,17 +18,28 @@ interface StripItem {
  * 製法3枚(浸漬・煮熟・地釜)の横スクロール帯。
  * process/* はスナップ品質のため全幅バンドには使わず、ここで小さく使う。
  * sm以上は高さを不揃いにして均等3カラム感を崩す。
+ * 1(浸漬)→2(煮炊き)→3(地釜)の順を必ず保つこと(「1」が欠けるとユーザーに
+ * 番号が飛んで見える、という指摘が過去にあったため)。契約農家の写真は
+ * /{locale}/producer 側に既にあるためここには含めない(キャプション重複を避ける)。
  */
 export function ProcessStrip({ dict }: ProcessStripProps) {
   const p = dict.producer;
   const items: StripItem[] = [
+    {
+      src: "/images/process/aomame-soaking.jpg",
+      width: 900,
+      height: 1125,
+      alt: p.soakingAlt,
+      caption: p.stepSoaking,
+      heightClass: "sm:h-[300px]",
+    },
     {
       src: "/images/process/boiling-01.jpg",
       width: 1000,
       height: 1000,
       alt: p.boilingAlt,
       caption: p.stepBoiling,
-      heightClass: "sm:h-[300px]",
+      heightClass: "sm:h-[240px]",
     },
     {
       src: "/images/process/jigama.jpg",
@@ -36,14 +47,6 @@ export function ProcessStrip({ dict }: ProcessStripProps) {
       height: 600,
       alt: p.jigamaAlt,
       caption: p.stepJigama,
-      heightClass: "sm:h-[240px]",
-    },
-    {
-      src: "/images/farm/farmer-with-soybeans.jpg",
-      width: 1200,
-      height: 901,
-      alt: p.farmerCaption,
-      caption: p.farmerCaption,
       heightClass: "sm:h-[280px]",
     },
   ];

@@ -40,7 +40,7 @@ export function ProducerStory({ locale, dict }: ProducerStoryProps) {
       </Reveal>
 
       <div className="px-5 sm:mx-auto sm:max-w-[1100px]">
-        <Reveal className="-mt-16">
+        <Reveal className="-mt-10">
           <div className="flex items-end gap-4 sm:items-center">
             <Image
               src={producer.image.src}
