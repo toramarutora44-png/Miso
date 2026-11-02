@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Band } from "@/components/ui/Band";
 import { Reveal } from "@/components/ui/Reveal";
 import { BrushStat } from "@/components/ui/BrushStat";
+import { BrushRule } from "@/components/ui/BrushRule";
 import { CertBadges } from "@/components/brand/CertBadges";
 import type { Product } from "@/types/product";
 import type { Locale } from "@/types/i18n";
@@ -21,7 +22,15 @@ export function ProductHero({ product, locale, dict }: ProductHeroProps) {
         <div className="order-2 sm:order-1 sm:col-span-5">
           <p className="t-label">{String(product.order).padStart(2, "0")}</p>
           <h1 className="t-title mt-2">{product.name[locale]}</h1>
-          <p className="t-lead mt-4 text-sumi">{product.catchCopy[locale]}</p>
+          <div className="mt-4">
+            <p
+              className="t-quote text-fukamidori-dark"
+              style={{ transform: "rotate(-0.5deg)" }}
+            >
+              {product.catchCopy[locale]}
+            </p>
+            <BrushRule width={110} className="mt-1 text-miso" />
+          </div>
           {product.tasteNotes?.value && (
             <p className="t-body mt-4 text-sumi-soft">{product.tasteNotes.value[locale]}</p>
           )}

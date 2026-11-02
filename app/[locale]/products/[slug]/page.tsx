@@ -6,11 +6,32 @@ import { ProductHero } from "@/components/product/ProductHero";
 import { SpecTable } from "@/components/product/SpecTable";
 import { PairingGrid } from "@/components/product/PairingGrid";
 import { RecipeCarousel } from "@/components/recipe/RecipeCarousel";
+import { highlightKeywords } from "@/components/ui/BrushKeyword";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getAllProductSlugs, getProductBySlug } from "@/lib/repositories/productRepository";
 import { getRecipesForProduct } from "@/lib/repositories/recipeRepository";
 import type { Locale } from "@/types/i18n";
+import type { ProductId } from "@/types/product";
+
+/**
+ * 本文段落中の強調キーワード(確認済みデータ内の文言のみを指定。新規文言の追加はしない)。
+ * 配列の添字は product.body[locale] の段落インデックスに対応する。
+ */
+const BODY_KEYWORDS: Partial<Record<ProductId, string[][]>> = {
+  "koshu-miso": [
+    [],
+    ["麦麹・米糀合わせ味噌"],
+    ["無農薬の希少な青大豆", "甘みの強い味わい"],
+    ["天然醸造・無添加", "生きた味噌"],
+  ],
+  "rice-miso": [
+    [],
+    ["米麹のみ"],
+    ["天然醸造・無添加", "生きた味噌"],
+  ],
+  "kinzanji-miso": [["おかず味噌"], []],
+};
 
 export function generateStaticParams() {
   const slugs = getAllProductSlugs();
@@ -60,8 +81,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 />
               )}
               {product.body[locale].map((paragraph, i) => (
-                <p key={i} className="t-body text-sumi-soft">
-                  {paragraph}
+                <p
+                  key={i}
+                  className={i === 0 ? "t-lead text-sumi" : "t-body text-sumi-soft"}
+                >
+                  {highlightKeywords(paragraph, BODY_KEYWORDS[product.id]?.[i] ?? [])}
                 </p>
               ))}
             </div>
