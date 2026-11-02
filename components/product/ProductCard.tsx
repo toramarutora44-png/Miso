@@ -16,8 +16,20 @@ const bandClass: Record<ProductId, string> = {
   "kinzanji-miso": "bg-kinzanji",
 };
 
+/** 商品ごとの「選ぶ理由」バッジ。すべて確認済みの一次情報(POP・公式サイト)に基づく。 */
+const sellPointKey: Record<ProductId, keyof Dictionary["product"]> = {
+  "koshu-miso": "aomameBadge",
+  "rice-miso": "naturalBadge",
+  "kinzanji-miso": "popularBadge",
+};
+
 export function ProductCard({ product, locale, dict }: ProductCardProps) {
   const { hero } = product.images;
+  const d = dict.product;
+  const pairingsPreview = product.pairings
+    .slice(0, 2)
+    .map((p) => p[locale])
+    .join("・");
 
   return (
     <Link href={`/${locale}/products/${product.slug}`} className="block">
@@ -44,12 +56,15 @@ export function ProductCard({ product, locale, dict }: ProductCardProps) {
         <div className={`h-2 w-full ${bandClass[product.id]}`} aria-hidden="true" />
 
         <div className="px-4 pb-5 pt-7">
-          {product.id === "koshu-miso" && (
-            <span className="mb-2 inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-2.5 py-0.5 text-xs font-medium text-fukamidori-dark">
-              {dict.product.aomameBadge}
-            </span>
+          <span className="mb-2 inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-2.5 py-0.5 text-xs font-medium text-fukamidori-dark">
+            {d[sellPointKey[product.id]]}
+          </span>
+          <p className="mt-1 text-base text-sumi-soft">{product.catchCopy[locale]}</p>
+          {pairingsPreview && (
+            <p className="mt-2 text-xs text-sumi-faint">
+              {d.pairingsTitle}: {pairingsPreview}
+            </p>
           )}
-          <p className="text-base text-sumi-soft">{product.catchCopy[locale]}</p>
         </div>
       </div>
     </Link>
