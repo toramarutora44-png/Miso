@@ -45,7 +45,7 @@ export const products: Product[] = [
         "天然醸造・無添加で、発酵を止めていない「生きた味噌」。加熱処理や発酵止めのアルコール添加は行わず、地釜で炊き上げた煮汁(味噌のたまり)を加えて仕込んでいます。",
       ],
       en: [
-        "A fragrant blended miso made with both barley koji and rice koji. Its sweetness is light, with the toasty aroma of barley koji standing out.",
+        "A fragrant blended miso made with both barley koji and rice koji — koji being the mold-fermented grain starter used in traditional Japanese brewing. Its sweetness is light, with the toasty aroma of barley koji standing out.",
         "Koshu Miso is a blended miso made with both barley koji and rice koji. Its only ingredients are soybeans, koji (barley koji + rice koji), and salt.",
         "The soybeans are a rare blue soybean variety grown without pesticides, exclusively by contracted farmers in Fujiyoshida at the foot of Mt. Fuji — low in oil and high in natural sugars, giving the miso its pronounced sweetness.",
         "It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (miso tamari).",
@@ -134,7 +134,7 @@ export const products: Product[] = [
       ],
       en: [
         "A mellow, gently sweet miso with no strong edge, approachable for everyone.",
-        "Rice Miso is made using only soybeans, rice koji, and salt. The koji used is rice koji only — this is not a blended (awase) miso.",
+        "Rice Miso is made using only soybeans, rice koji (a mold-fermented rice starter), and salt. The koji used is rice koji only — this is not a blended (awase) miso.",
         "It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (miso tamari).",
       ],
     },

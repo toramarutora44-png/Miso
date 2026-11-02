@@ -24,7 +24,7 @@ export const recipes: Recipe[] = [
     id: "kabocha-kinoko-hoto",
     slug: "kabocha-kinoko-hoto",
     order: 1,
-    title: { ja: "かぼちゃときのこのほうとう", en: "Pumpkin and Mushroom Hoto" },
+    title: { ja: "かぼちゃときのこのほうとう", en: "Pumpkin and Mushroom Hoto (Udon Hot Pot)" },
     productIds: ["koshu-miso"],
     tags: ["main", "local"],
     timeMinutes: 40,
@@ -37,20 +37,20 @@ export const recipes: Recipe[] = [
       { name: { ja: "しめじ", en: "Shimeji mushrooms" }, amount: { ja: "50g", en: "50g" } },
       { name: { ja: "にんじん", en: "Carrot" }, amount: { ja: "40g", en: "40g" } },
       { name: { ja: "油揚げ", en: "Fried tofu pouch" }, amount: { ja: "1/2枚", en: "1/2 piece" } },
-      { name: { ja: "昆布だし", en: "Kombu dashi" }, amount: { ja: "800mL", en: "800mL" } },
+      { name: { ja: "昆布だし", en: "Kelp dashi broth" }, amount: { ja: "800mL", en: "800mL" } },
       { name: { ja: "甲州みそ", en: "Koshu miso" }, amount: { ja: "大さじ2〜2と1/2", en: "2-2.5 tbsp" } },
     ],
     steps: [
       {
         text: {
           ja: "かぼちゃを一口大に、白菜・にんじん・油揚げを適量に切り、しめじをほぐす。",
-          en: "Cut the kabocha into bite-size pieces, slice the napa cabbage, carrot, and fried tofu, and separate the shimeji.",
+          en: "Cut the pumpkin into bite-size pieces, slice the napa cabbage, carrot, and fried tofu, and separate the shimeji.",
         },
       },
       {
         text: {
           ja: "だしをにんじんと共に火にかけ、沸いたら麺とかぼちゃを入れ、続けて残りの具材を加える。",
-          en: "Heat the dashi with the carrot, and once boiling add the noodles and kabocha, then the remaining ingredients.",
+          en: "Heat the broth with the carrot, and once boiling add the noodles and pumpkin, then the remaining ingredients.",
         },
       },
       {
@@ -68,11 +68,11 @@ export const recipes: Recipe[] = [
     ],
     tip: {
       ja: "かぼちゃの一部を軽く崩して汁になじませます。甘みととろみを楽しむ、具だくさんの一杯です。",
-      en: "Lightly crush some of the kabocha so it blends into the broth. A hearty bowl to enjoy for its sweetness and thickness.",
+      en: "Lightly crush some of the pumpkin so it blends into the broth. A hearty bowl to enjoy for its sweetness and thickness.",
     },
     image: {
       src: "/images/recipes/kabocha-kinoko-hoto.jpg",
-      alt: { ja: "かぼちゃときのこのほうとう", en: "Pumpkin and Mushroom Hoto" },
+      alt: { ja: "かぼちゃときのこのほうとう", en: "Pumpkin and Mushroom Hoto (Udon Hot Pot)" },
       width: 1200,
       height: 900,
       isPlaceholder: false,
@@ -189,7 +189,7 @@ export const recipes: Recipe[] = [
       { name: { ja: "殻付きあさり(砂抜き済み)", en: "Shell-on clams (sand-removed)" }, amount: { ja: "250g", en: "250g" } },
       { name: { ja: "長ねぎ", en: "Green onion" }, amount: { ja: "1/2本", en: "1/2" } },
       { name: { ja: "水", en: "Water" }, amount: { ja: "450mL", en: "450mL" } },
-      { name: { ja: "だし用昆布", en: "Dashi kombu" }, amount: { ja: "5cm角1枚", en: "One 5cm square piece" } },
+      { name: { ja: "だし用昆布", en: "Kelp (for dashi)"}, amount: { ja: "5cm角1枚", en: "One 5cm square piece" } },
       { name: { ja: "甲州みそ", en: "Koshu miso" }, amount: { ja: "大さじ1〜1と1/2", en: "1-1.5 tbsp" } },
     ],
     steps: [
@@ -197,7 +197,7 @@ export const recipes: Recipe[] = [
       {
         text: {
           ja: "鍋に水と昆布を入れ20分置き、あさりを加えて沸騰直前まで加熱し昆布を取り出す。",
-          en: "Place water and kombu in a pot, let sit for 20 minutes, add the clams, heat to just before boiling, and remove the kombu.",
+          en: "Place water and kelp in a pot, let sit for 20 minutes, add the clams, heat to just before boiling, and remove the kelp.",
         },
       },
       {
@@ -347,11 +347,11 @@ export const recipes: Recipe[] = [
       { name: { ja: "黒こしょう", en: "Black pepper" }, amount: { ja: "少々", en: "A pinch" } },
     ],
     steps: [
-      { text: { ja: "かぼちゃの種を除き薄切りに、玉ねぎも薄切りにする。", en: "Remove the kabocha seeds and thinly slice it, and thinly slice the onion too." } },
+      { text: { ja: "かぼちゃの種を除き薄切りに、玉ねぎも薄切りにする。", en: "Remove the pumpkin seeds and thinly slice it, and thinly slice the onion too." } },
       {
         text: {
           ja: "鍋で油を温め玉ねぎを透き通るまで炒め、かぼちゃと水を加え蓋をして柔らかくなるまで煮る。",
-          en: "Warm the oil in a pot, sauté the onion until translucent, add the kabocha and water, cover, and simmer until soft.",
+          en: "Warm the oil in a pot, sauté the onion until translucent, add the pumpkin and water, cover, and simmer until soft.",
         },
       },
       { text: { ja: "火を止めてマッシャーで潰すかミキサーにかける。", en: "Turn off the heat and mash or blend until smooth." } },
@@ -390,12 +390,12 @@ export const recipes: Recipe[] = [
       { name: { ja: "卵", en: "Egg" }, amount: { ja: "1個", en: "1" } },
       { name: { ja: "乾燥わかめ", en: "Dried wakame" }, amount: { ja: "2g", en: "2g" } },
       { name: { ja: "青ねぎ", en: "Green onion" }, amount: { ja: "適量", en: "As needed" } },
-      { name: { ja: "昆布だし", en: "Kombu dashi" }, amount: { ja: "400mL", en: "400mL" } },
+      { name: { ja: "昆布だし", en: "Kelp dashi broth" }, amount: { ja: "400mL", en: "400mL" } },
       { name: { ja: "米みそ", en: "Rice miso" }, amount: { ja: "大さじ1〜1と1/2", en: "1-1.5 tbsp" } },
     ],
     steps: [
       { text: { ja: "豆腐を角切りにし、わかめを表示通り戻す。", en: "Cube the tofu and rehydrate the wakame per package instructions." } },
-      { text: { ja: "だしを温め豆腐とわかめを加える。", en: "Warm the dashi and add the tofu and wakame." } },
+      { text: { ja: "だしを温め豆腐とわかめを加える。", en: "Warm the broth and add the tofu and wakame." } },
       {
         text: {
           ja: "沸いたら溶き卵をゆっくり回し入れ、すぐにはかき混ぜない。",
