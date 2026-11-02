@@ -40,7 +40,7 @@ export function ProducerStory({ locale, dict }: ProducerStoryProps) {
       </Reveal>
 
       <div className="px-5 sm:mx-auto sm:max-w-[1100px]">
-        <Reveal className="-mt-10">
+        <Reveal className="-mt-10" fadeOnly>
           <div className="flex items-end gap-4 sm:items-center">
             <Image
               src={producer.image.src}
@@ -62,7 +62,7 @@ export function ProducerStory({ locale, dict }: ProducerStoryProps) {
 
         <div className="relative py-10">
           <span
-            className="absolute left-0 top-4 font-heading text-[40px] leading-none text-miso"
+            className="absolute left-0 top-4 font-brush text-[40px] leading-none text-miso"
             aria-hidden="true"
           >
             「

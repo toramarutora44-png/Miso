@@ -45,6 +45,7 @@ const config = {
       fontFamily: {
         heading: ["var(--font-heading)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
+        brush: ["var(--font-brush)", "serif"],
       },
       borderRadius: {
         DEFAULT: "4px",
