@@ -28,7 +28,7 @@ export function ProductCard({ product, locale, dict }: ProductCardProps) {
             alt={hero.alt[locale]}
             width={hero.width}
             height={hero.height}
-            className="aspect-[4/3] w-full object-cover"
+            className="aspect-square w-full object-cover"
           />
           <div className={`h-2 w-full ${bandClass[product.id]}`} aria-hidden="true" />
           <span className="absolute -bottom-3 left-4 inline-block rounded bg-washi px-3 py-1 font-heading text-lg text-sumi shadow-paper">

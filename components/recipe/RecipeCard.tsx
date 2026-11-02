@@ -28,7 +28,7 @@ export function RecipeCard({ recipe, locale, dict, className = "", sizes }: Reci
   if (recipe.image) {
     return (
       <Link href={`/${locale}/recipes/${recipe.slug}`} className={`block ${className}`}>
-        <div className="group relative aspect-[4/3] overflow-hidden bg-sumi-soft">
+        <div className="group relative aspect-[4/3] overflow-hidden rounded bg-sumi-soft">
           <Image
             src={recipe.image.src}
             alt={recipe.image.alt[locale]}
@@ -36,21 +36,17 @@ export function RecipeCard({ recipe, locale, dict, className = "", sizes }: Reci
             sizes={sizes ?? "(min-width: 640px) 33vw, 50vw"}
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-sumi/85 via-sumi/5 to-transparent"
-            aria-hidden="true"
-          />
-          <span className="absolute right-3 top-3 text-[10px] text-washi/80">
+          <span className="absolute right-2 top-2 rounded bg-sumi/60 px-1.5 py-0.5 text-[10px] text-washi">
             {recipe.timeMinutes}
             {dict.recipe.minutesUnit}
           </span>
-          <p
-            className="absolute inset-x-3 bottom-2.5 font-heading text-[14.5px] leading-snug text-washi"
-            style={{ fontFeatureSettings: '"palt" 1' }}
-          >
-            {recipe.title[locale]}
-          </p>
         </div>
+        <p
+          className="mt-2 font-heading text-[14.5px] leading-snug text-sumi"
+          style={{ fontFeatureSettings: '"palt" 1' }}
+        >
+          {recipe.title[locale]}
+        </p>
       </Link>
     );
   }

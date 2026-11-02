@@ -91,7 +91,7 @@
     "certIntro": "[EN TODO] Miso Kobo no Sato holds the Yamanashi Food Diversity Certification issued by Yamanashi Prefecture. The certified product appendix is shown below as-is.",
     "certMuslimAlt": "[EN TODO] Yamanashi Food Diversity Certification, Muslim Friendly Star appendix (certified product list)",
     "certVeganAlt": "[EN TODO] Yamanashi Food Diversity Certification, Vegan Friendly appendix (certified product list)",
-    "certNote": "[EN TODO] The Halal certification (Japan Halal Foundation) covers the same products as above: Koshu Miso and Rice Miso.",
+    "certNote": "[EN TODO] Muslim Friendly applies to the same products as above: Koshu Miso and Rice Miso.",
     "shopSectionTitle": "[EN TODO] Shop Information",
     "storefrontAlt": "[EN TODO] Miso Kobo no Sato storefront (Isawa-cho, Fuefuki City, Yamanashi)",
     "addressLabel": "[EN TODO] Address",
@@ -182,7 +182,7 @@
     "koujiChecking": "[EN TODO] Checking",
     "pairingsRow": "[EN TODO] Ways to enjoy",
     "certRow": "[EN TODO] Certification",
-    "certYes": "[EN TODO] Halal Certified / Yamanashi Prefecture Certified",
+    "certYes": "[EN TODO] Muslim Friendly / Vegan Friendly",
     "certNo": "[EN TODO] Not applicable"
   },
   "experience": {

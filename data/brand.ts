@@ -10,7 +10,11 @@ import type { ProductId } from "@/types/product";
  * ハラール系バッジは甲州みそ・米みそのみに適用(金山寺みそには適用しない)。POP(2026-10-31確認)準拠。
  * 2026-11-01、磯部様よりやまなしフードダイバーシティ認証(Muslim Friendly Star/Vegan Friendly)の
  * 付属書(認定製品一覧)を受領。対象製品リストに甲州みそ・米みそが含まれ金山寺みそは含まれないことを
- * 原本で確認済み(public/images/certification/配下)。ハラール認証も同一対象との回答あり。
+ * 原本で確認済み(public/images/certification/配下)。
+ *
+ * 【2026-11-03訂正】磯部様より「ハラール」「ビーガン」は『フレンドリー』と表記し、
+ * 『認証』という語を付けないこと、との明確な指示あり(POPの「ハラール認証」表記は不使用に変更)。
+ * 「認証」の語は、公式な制度名である「やまなしフードダイバーシティ認証」にのみ用いる。
  */
 export interface Certification {
   id: "yamanashi-halal";
@@ -26,16 +30,16 @@ export const certifications: Certification[] = [
   {
     id: "yamanashi-halal",
     label: {
-      ja: "ハラール認証・山梨県認証取得",
-      en: "[EN TODO] Halal Certified / Yamanashi Prefecture Certified",
+      ja: "ムスリムフレンドリー・ヴィーガンフレンドリー",
+      en: "[EN TODO] Muslim Friendly / Vegan Friendly",
     },
     note: {
-      ja: "※認証表示は甲州みそ・米みそが対象です。",
-      en: "[EN TODO] *This certification applies to Koshu Miso and Rice Miso only.",
+      ja: "※表示は甲州みそ・米みそが対象です。",
+      en: "[EN TODO] *This applies to Koshu Miso and Rice Miso only.",
     },
     subNote: {
-      ja: "山梨県認証:やまなしフードダイバーシティ認証 ／ Muslim Friendly Star",
-      en: "[EN TODO] Yamanashi certification: Yamanashi Food Diversity Certification / Muslim Friendly Star",
+      ja: "やまなしフードダイバーシティ認証取得(Muslim Friendly Star ／ Vegan Friendly)",
+      en: "[EN TODO] Yamanashi Food Diversity Certified (Muslim Friendly Star / Vegan Friendly)",
     },
     infoUrl: "https://www.pref.yamanashi.jp/kankou-sk/yfdc.html",
     appliesTo: ["koshu-miso", "rice-miso"],

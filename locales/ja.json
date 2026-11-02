@@ -91,7 +91,7 @@
     "certIntro": "みそ工房の郷は、山梨県による「やまなしフードダイバーシティ認証」を取得しています。認定製品一覧(付属書)をそのまま掲載します。",
     "certMuslimAlt": "やまなしフードダイバーシティ認証 Muslim Friendly Star 付属書(認定製品一覧)",
     "certVeganAlt": "やまなしフードダイバーシティ認証 Vegan Friendly 付属書(認定製品一覧)",
-    "certNote": "ハラール認証(Japan Halal Foundation)の対象製品も、上記と同じ甲州みそ・米みそです。",
+    "certNote": "ムスリムフレンドリーの対象製品も、上記と同じ甲州みそ・米みそです。",
     "shopSectionTitle": "店舗情報",
     "storefrontAlt": "みそ工房の郷 店舗(山梨県笛吹市石和町)",
     "addressLabel": "住所",
@@ -182,7 +182,7 @@
     "koujiChecking": "確認中",
     "pairingsRow": "食べ方",
     "certRow": "認証",
-    "certYes": "ハラール認証・山梨県認証取得",
+    "certYes": "ムスリムフレンドリー・ヴィーガンフレンドリー",
     "certNo": "対象外"
   },
   "experience": {
