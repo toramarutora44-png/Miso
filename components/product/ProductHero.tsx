@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Band } from "@/components/ui/Band";
 import { Reveal } from "@/components/ui/Reveal";
+import { BrushStat } from "@/components/ui/BrushStat";
 import { CertBadges } from "@/components/brand/CertBadges";
 import type { Product } from "@/types/product";
 import type { Locale } from "@/types/i18n";
@@ -25,10 +26,12 @@ export function ProductHero({ product, locale, dict }: ProductHeroProps) {
             <p className="t-body mt-4 text-sumi-soft">{product.tasteNotes.value[locale]}</p>
           )}
           {product.agingMonths?.value != null && (
-            <p className="t-meta mt-4">
-              {dict.product.agingMonths}: {product.agingMonths.value}
-              {dict.product.months}
-            </p>
+            <BrushStat
+              className="mt-5"
+              value={product.agingMonths.value}
+              unit={dict.product.months}
+              label={dict.product.agingMonths}
+            />
           )}
           <CertBadges locale={locale} productId={product.id} align="left" className="mt-6" />
         </div>

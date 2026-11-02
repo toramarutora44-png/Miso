@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getCertifications, getCertificationsForProduct } from "@/lib/repositories/brandRepository";
 import type { Locale } from "@/types/i18n";
 import type { ProductId } from "@/types/product";
@@ -33,6 +34,24 @@ export function CertBadges({
 
   return (
     <div className={`flex flex-col ${itemsClass} gap-1.5 ${className}`}>
+      {/* 実物の認証書(付属書)から切り出したロゴマーク。「やまなしフードダイバーシティ認証」の
+          Muslim Friendly Star / Vegan Friendly 両カテゴリーが対象製品に含まれる場合のみ表示する。 */}
+      <div className={`flex items-center ${justifyClass} gap-2`}>
+        <Image
+          src="/images/certification/logos/muslim-friendly-mark.png"
+          alt="Muslim Friendly - Yamanashi Food Diversity Certified"
+          width={64}
+          height={64}
+          className="h-14 w-14"
+        />
+        <Image
+          src="/images/certification/logos/vegan-friendly-mark.png"
+          alt="Vegan Friendly - Yamanashi Food Diversity Certified"
+          width={64}
+          height={64}
+          className="h-14 w-14"
+        />
+      </div>
       <ul className={`flex flex-wrap items-center ${justifyClass} gap-2`}>
         {certs.map((cert) => (
           <li
