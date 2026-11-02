@@ -13,6 +13,7 @@ export function BrushKeyword({ children, className = "" }: BrushKeywordProps) {
     <strong
       className={`font-heading font-bold text-fukamidori-dark ${className}`}
       style={{
+        fontSize: "1.1em",
         textDecoration: "underline",
         textDecorationStyle: "wavy",
         textDecorationColor: "var(--c-miso)",
