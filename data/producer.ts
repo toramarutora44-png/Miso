@@ -85,7 +85,7 @@ export const producer: Producer = {
     src: "/images/producer/isobe.jpg",
     alt: {
       ja: "みそ工房の郷 店主 磯部裕子",
-      en: "[EN TODO] Yuko Isobe, owner of Miso Kobo no Sato",
+      en: "Yuko Isobe, owner of Miso Kobo no Sato",
     },
     width: 800,
     height: 1300,

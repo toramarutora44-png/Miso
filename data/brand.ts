@@ -31,15 +31,15 @@ export const certifications: Certification[] = [
     id: "yamanashi-halal",
     label: {
       ja: "ムスリムフレンドリー・ヴィーガンフレンドリー",
-      en: "[EN TODO] Muslim Friendly / Vegan Friendly",
+      en: "Muslim Friendly / Vegan Friendly",
     },
     note: {
       ja: "※表示は甲州みそ・米みそが対象です。",
-      en: "[EN TODO] *This applies to Koshu Miso and Rice Miso only.",
+      en: "*This applies to Koshu Miso and Rice Miso only.",
     },
     subNote: {
       ja: "やまなしフードダイバーシティ認証取得(Muslim Friendly Star ／ Vegan Friendly)",
-      en: "[EN TODO] Yamanashi Food Diversity Certified (Muslim Friendly Star / Vegan Friendly)",
+      en: "Yamanashi Food Diversity Certified (Muslim Friendly Star / Vegan Friendly)",
     },
     infoUrl: "https://www.pref.yamanashi.jp/kankou-sk/yfdc.html",
     appliesTo: ["koshu-miso", "rice-miso"],

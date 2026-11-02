@@ -1,10 +1,9 @@
 import type { Locale } from "@/types/i18n";
 
 /**
- * 公開対象ロケール。/en は今回公開対象から外す(P0)。
- * 型 Locale 自体は "ja" | "en" のまま維持し、将来の英語版復活に備える。
+ * 公開対象ロケール。日本語・英語の2言語を公開する。
  */
-export const locales: Locale[] = ["ja"];
+export const locales: Locale[] = ["ja", "en"];
 
 export const defaultLocale: Locale = "ja";
 
