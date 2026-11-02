@@ -22,7 +22,7 @@ export function Header({ locale, dict }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 h-14 border-b border-rule bg-washi/88 backdrop-blur-[8px]">
       <div className="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-4 sm:px-6">
-        <Link href={`/${locale}`} className="flex items-center gap-2">
+        <Link href={`/${locale}`} className="flex shrink-0 items-center gap-2">
           <Image
             src="/images/brand/logo.avif"
             alt={dict.site.name}
@@ -31,11 +31,12 @@ export function Header({ locale, dict }: HeaderProps) {
             sizes="28px"
             className="h-7 w-7 object-contain"
           />
-          <span className="font-heading text-[16.5px] tracking-[.04em] text-fukamidori-dark">
+          <span className="hidden font-heading text-[16.5px] tracking-[.04em] text-fukamidori-dark sm:inline">
             {dict.site.name}
           </span>
         </Link>
-        <nav aria-label="Main navigation" className="flex items-center gap-0.5">
+        <nav aria-label="Main navigation" className="flex items-center">
+          <NavLink href={`/${locale}`} exact>{nav.topShort}</NavLink>
           <NavLink href={`/${locale}/products`}>{nav.productsShort}</NavLink>
           <NavLink href={`/${locale}/producer`}>{nav.producerShort}</NavLink>
           <NavLink href={`/${locale}/recipes`}>{nav.recipesShort}</NavLink>

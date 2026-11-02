@@ -43,6 +43,33 @@
   --c-illust-cream: #F2E0BE;
   --c-illust-leaf: #5F7A4E;
   --c-illust-blush: #D1663F;
+
+  /*
+   * 不透明度付きTailwindユーティリティ(例: text-washi/75)用のRGB三つ組。
+   * 重要: colors.X = "var(--c-X)" (16進数カラー)のままでは、Tailwindは
+   * `/NN`の不透明度指定に対応する有効なCSSを生成できず、該当クラスが
+   * 無言で無効になる(本文色へのフォールバックで黒文字化するバグの原因になった)。
+   * tailwind.config.ts側でこの -rgb 変数を rgb(var(..) / <alpha-value>) 形式で
+   * 参照することで、/NN指定を機能させる。上の16進数変数は他箇所(var(--c-X)の
+   * 直接参照)に影響しないよう変更せず、この -rgb 変数を追加するだけにとどめる。
+   */
+  --c-kinari-rgb: 245 240 228;
+  --c-kinari-deep-rgb: 242 233 216;
+  --c-washi-rgb: 255 253 248;
+  --c-sumi-rgb: 26 23 20;
+  --c-sumi-soft-rgb: 74 68 61;
+  --c-sumi-faint-rgb: 110 103 94;
+  --c-akamiso-rgb: 200 16 46;
+  --c-akamiso-dark-rgb: 165 13 38;
+  --c-miso-rgb: 168 128 60;
+  --c-miso-light-rgb: 217 194 150;
+  --c-fukamidori-rgb: 44 68 53;
+  --c-fukamidori-dark-rgb: 30 51 40;
+  --c-fukamidori-deep-rgb: 22 39 31;
+  --c-koshu-rgb: 107 74 47;
+  --c-kome-rgb: 217 147 35;
+  --c-kome-ink-rgb: 138 90 16;
+  --c-kinzanji-rgb: 155 44 44;
 }
 
 @keyframes rise-in     { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
