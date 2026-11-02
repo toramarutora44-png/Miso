@@ -61,13 +61,17 @@ export default async function RecipeDetailPage({ params }: PageProps) {
       <Band tone="kinari">
         <div className="mx-auto max-w-[1100px] px-5 py-12 sm:py-16">
           {recipe.image ? (
-            <Image
-              src={recipe.image.src}
-              alt={recipe.image.alt[locale]}
-              width={recipe.image.width}
-              height={recipe.image.height}
-              className="h-56 w-full rounded-card border border-miso-light/30 object-cover sm:h-72"
-            />
+            <>
+              <Image
+                src={recipe.image.src}
+                alt={recipe.image.alt[locale]}
+                width={recipe.image.width}
+                height={recipe.image.height}
+                priority
+                className="h-56 w-full rounded-card border border-miso-light/30 object-cover sm:h-72"
+              />
+              <p className="mt-2 text-xs text-sumi-faint">{d.photoDisclaimer}</p>
+            </>
           ) : (
             <div
               role="img"

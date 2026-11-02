@@ -115,6 +115,11 @@ h3,
 h4 {
   font-family: var(--font-heading), serif;
   color: var(--c-sumi);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {

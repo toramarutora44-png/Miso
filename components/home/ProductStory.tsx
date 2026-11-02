@@ -145,13 +145,14 @@ function CenterRound({
         <p className="t-lead mt-4 text-sumi">{product.catchCopy[locale]}</p>
 
         <Reveal className="mt-8">
-          <div className="mx-auto h-[220px] w-[220px] overflow-hidden rounded-full sm:h-[260px] sm:w-[260px]">
+          {/* 元画像(760x760)の解像度が高くないため、円窓の表示サイズを抑えて粗さを目立たせない */}
+          <div className="mx-auto h-[170px] w-[170px] overflow-hidden rounded-full sm:h-[200px] sm:w-[200px]">
             <Image
               src={product.images.hero.src}
               alt={product.images.hero.alt[locale]}
               width={product.images.hero.width}
               height={product.images.hero.height}
-              sizes="260px"
+              sizes="200px"
               className="h-[160%] w-[160%] max-w-none -ml-[70%] -mt-[35%] object-cover mix-blend-multiply"
             />
           </div>

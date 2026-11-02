@@ -42,6 +42,8 @@ export default async function RecipesPage({ params }: PageProps) {
       </p>
 
       <RecipeIndexList recipes={recipes} locale={locale} dict={dict} groupByProduct className="mt-8" />
+
+      <p className="mt-10 text-xs text-sumi-faint">{dict.recipe.photoDisclaimer}</p>
     </Section>
   );
 }

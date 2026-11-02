@@ -43,8 +43,9 @@
   "home": {
     "hero": {
       "imageAlt": "[EN TODO] Miso Kobo no Sato - Rice tastes even better. Miso-making at the foot of Mt. Fuji",
-      "headline": "[EN TODO] Rice, even more delicious.",
-      "subcopy": "[EN TODO] The blessings of Mt. Fuji, for your everyday table.",
+      "headline": "[EN TODO] A new way to enjoy miso at your everyday table.",
+      "subcopy": "[EN TODO] From 3 kinds of miso raised at the foot of Mt. Fuji, 15 delicious recipes unfold.",
+      "cta": "[EN TODO] See all 15 recipes",
       "ctaProducts": "[EN TODO] View our 3 miso",
       "ctaProducer": "[EN TODO] Meet the maker"
     },
@@ -52,14 +53,16 @@
     "producerTitle": "[EN TODO] Our Story",
     "producerQuote": "[EN TODO] Something I could feed my own family — that's where miso-making begins.",
     "producerBadge": "[EN TODO] 30+ years of miso-making",
-    "producerCta": "[EN TODO] More about our story",
+    "producerCta": "[EN TODO] Meet the producer",
     "recipesTitle": "[EN TODO] What will you make with this miso?",
     "recipesLead": "[EN TODO] All 15 recipes, grouped by the miso they use.",
+    "recipesCta": "[EN TODO] View all recipes",
     "compareTitle": "[EN TODO] Compare the three flavors",
     "recommendText": "[EN TODO] First time? We recommend our gently sweet Rice Miso.",
   "viewAllLabel": "[EN TODO] View all",
     "purchaseTitle": "[EN TODO] Available right here",
     "purchaseText": "[EN TODO] Available exclusively at local roadside stations and our shop. Can be stored at room temperature; refrigerate after opening.",
+    "purchaseInfoText": "[EN TODO] Available at local roadside stations and our shop.",
     "priceNote": "[EN TODO] Prices shown are for reference. Please check with the shop for the latest in-store pricing.",
     "phoneCta": "[EN TODO] Contact us by phone"
   },
@@ -146,6 +149,7 @@
     "listLead": "[EN TODO] Serving suggestions, not recipes tested or endorsed by our shop.",
     "indexJumpLabel": "[EN TODO] Browse by miso type",
     "disclaimer": "[EN TODO] Not tested or endorsed by our shop — just a serving suggestion for using this miso.",
+    "photoDisclaimer": "[EN TODO] *Photos are cooking images. Results may vary depending on ingredients and preparation.",
     "noImageAlt": "[EN TODO] Photo coming soon",
     "illustHeroAlt": "[EN TODO] Illustration representing the dish",
     "ingredientsTitle": "[EN TODO] Ingredients",

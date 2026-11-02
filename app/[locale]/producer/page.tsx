@@ -32,7 +32,7 @@ export default function ProducerPage({ params }: PageProps) {
           alt={producer.image.alt[locale]}
           width={producer.image.width}
           height={producer.image.height}
-          className="mx-auto h-auto w-56 rounded-card border border-miso-light/30 object-cover shadow-paper"
+          className="mx-auto h-auto w-56 rounded-2xl border border-miso-light/30 object-cover shadow-paper"
           priority
         />
         <span className="mt-4 inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-sm font-medium text-fukamidori-dark">
@@ -196,11 +196,8 @@ export default function ProducerPage({ params }: PageProps) {
             <dt className="text-sumi-soft">{p.phoneLabel}</dt>
             <dd className="mt-0.5">{producer.phone}</dd>
           </div>
-          <div>
-            <dt className="text-sumi-soft">{p.shippingLabel}</dt>
-            <dd className="mt-0.5">{producer.shipping[locale]}</dd>
-          </div>
         </dl>
+        <p className="mt-4 text-base text-sumi-soft">{dict.home.purchaseInfoText}</p>
         <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <LinkButton href={`/${locale}/products`}>{dict.common.viewProducts}</LinkButton>
           <LinkButton href={`/${locale}/experience`} variant="secondary">

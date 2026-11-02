@@ -8,11 +8,7 @@ import { PairingGrid } from "@/components/product/PairingGrid";
 import { RecipeCarousel } from "@/components/recipe/RecipeCarousel";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
-import {
-  getAllProductSlugs,
-  getProductBySlug,
-  getProducer,
-} from "@/lib/repositories/productRepository";
+import { getAllProductSlugs, getProductBySlug } from "@/lib/repositories/productRepository";
 import { getRecipesForProduct } from "@/lib/repositories/recipeRepository";
 import type { Locale } from "@/types/i18n";
 
@@ -34,7 +30,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
-  const producer = getProducer();
   const recipes = await getRecipesForProduct(product.id);
 
   return (
@@ -77,10 +72,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mt-4">
                 <SpecTable product={product} locale={locale} dict={dict} />
               </div>
-              <p className="t-body mt-4 text-sumi-soft">
-                <span>{dict.product.shippingLabel}: </span>
-                {producer.shipping[locale]}
-              </p>
+              <p className="t-body mt-4 text-sumi-soft">{dict.home.purchaseInfoText}</p>
             </div>
           </div>
         </div>
@@ -95,6 +87,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
           <h2 className="t-title text-sumi">{dict.product.recipeLinkTitle}</h2>
           <RecipeCarousel recipes={recipes} locale={locale} dict={dict} className="mt-6" />
+          {recipes.some((r) => r.image) && (
+            <p className="mt-4 text-xs text-sumi-faint">{dict.recipe.photoDisclaimer}</p>
+          )}
 
           <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-rule pt-6">
             <Link
@@ -108,6 +103,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
               className="tap-target inline-flex items-center text-fukamidori-dark underline"
             >
               {dict.common.backToProducts}
+            </Link>
+            <Link
+              href={`/${locale}`}
+              className="tap-target inline-flex items-center text-fukamidori-dark underline"
+            >
+              {dict.nav.home}
             </Link>
           </div>
         </div>

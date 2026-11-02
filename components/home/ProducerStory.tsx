@@ -48,7 +48,7 @@ export function ProducerStory({ locale, dict }: ProducerStoryProps) {
               width={producer.image.width}
               height={producer.image.height}
               sizes="168px"
-              className="w-[132px] shrink-0 rounded-[2px] object-cover shadow-stack ring-4 ring-washi sm:w-[168px]"
+              className="w-[132px] shrink-0 rounded-2xl object-cover shadow-stack ring-4 ring-washi sm:w-[168px]"
             />
             <div>
               <span className="inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-xs font-medium text-fukamidori-dark">

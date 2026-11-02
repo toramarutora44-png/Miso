@@ -16,8 +16,8 @@ import type { Recipe } from "@/types/recipe";
  * 補完した付帯情報であり、レシピ本体(材料・作り方・コツ・人数)の確定情報とは
  * 性質が異なる点に留意する。
  *
- * image: 出所不明(AI生成疑い)の料理写真は使用しないため、確認済みの実写真が揃うまで
- * 全レシピで image を省略する(カードは味噌色の無地タイル+料理名で統一表示)。
+ * image: 2026-11-02、ユーザー提供のAI生成料理写真(調理イメージ)を使用許可済み。
+ * 各レシピ詳細・カードに「※写真は調理イメージです。」の注記を併記する前提で運用。
  */
 export const recipes: Recipe[] = [
   {
@@ -70,6 +70,13 @@ export const recipes: Recipe[] = [
       ja: "かぼちゃの一部を軽く崩して汁になじませます。甘みととろみを楽しむ、具だくさんの一杯です。",
       en: "[EN TODO] Lightly crush some of the kabocha so it blends into the broth. A hearty bowl to enjoy for its sweetness and thickness.",
     },
+    image: {
+      src: "/images/recipes/kabocha-kinoko-hoto.jpg",
+      alt: { ja: "かぼちゃときのこのほうとう", en: "[EN TODO] Kabocha and Mushroom Hoto" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -117,6 +124,13 @@ export const recipes: Recipe[] = [
       ja: "仕上げにだけ少し火を強め、たれを具材にからめます。焦がさないように動かしながら仕上げてください。",
       en: "[EN TODO] Turn up the heat slightly only at the end to coat the ingredients with the sauce. Keep stirring to avoid burning it.",
     },
+    image: {
+      src: "/images/recipes/nasu-toriniku-shoga-miso.jpg",
+      alt: { ja: "なすと鶏ひき肉のしょうが味噌炒め", en: "[EN TODO] Eggplant and Ground Chicken Stir-fry with Ginger Miso" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -151,6 +165,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "最初にごはんだけを焼いてから味噌を塗ります。味噌を焦がさず、表面の香ばしさを楽しむ仕上げにします。",
       en: "[EN TODO] Grill the rice plain first before applying the miso. Finish without burning the miso, enjoying the toasty surface.",
+    },
+    image: {
+      src: "/images/recipes/ninniku-miso-yaki-onigiri.jpg",
+      alt: { ja: "にんにく味噌の香ばし焼きおにぎり", en: "[EN TODO] Garlic Miso Grilled Rice Balls" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -190,6 +211,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "あさりの塩気を確かめてから、味噌を少しずつ足します。貝のうまみを生かす、控えめな味付けが狙いです。",
       en: "[EN TODO] Taste the clams' saltiness first, then add the miso little by little. The aim is a restrained seasoning that lets the clams' umami shine.",
+    },
+    image: {
+      src: "/images/recipes/asari-negi-miso-soup.jpg",
+      alt: { ja: "あさりと長ねぎの味噌汁", en: "[EN TODO] Clam and Green Onion Miso Soup" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -242,6 +270,13 @@ export const recipes: Recipe[] = [
       ja: "焦げやすいたれをぬぐってから焼き、鶏肉の皮に焼き色を付けます。肉は中心温度75℃で1分以上を目安にし、温度計で確認してください。",
       en: "[EN TODO] Wipe off the easily-burnt sauce before grilling to brown the chicken skin. Use a thermometer to confirm the core temperature reaches 75°C for at least 1 minute.",
     },
+    image: {
+      src: "/images/recipes/tori-negi-miso-yaki.jpg",
+      alt: { ja: "鶏もも肉のねぎ味噌焼き", en: "[EN TODO] Grilled Chicken Thigh with Green Onion Miso" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -282,6 +317,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "蒸し汁も一緒に盛り付け、黒こしょうを少し振ります。ホイルを開く際は、熱い蒸気に注意してください。",
       en: "[EN TODO] Serve together with the steaming liquid and a little black pepper. Be careful of hot steam when opening the foil.",
+    },
+    image: {
+      src: "/images/recipes/sake-kinoko-miso-butter-foil.jpg",
+      alt: { ja: "鮭ときのこの味噌バターホイル蒸し", en: "[EN TODO] Foil-steamed Salmon and Mushrooms with Miso Butter" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -324,6 +366,13 @@ export const recipes: Recipe[] = [
       ja: "豆乳を加えた後は、煮立たせずに温めます。なめらかさを優先する場合は、つぶした後に裏ごししてください。",
       en: "[EN TODO] After adding the soy milk, warm it gently without boiling. For extra smoothness, strain it after mashing.",
     },
+    image: {
+      src: "/images/recipes/kabocha-tamanegi-tonyu-miso-potage.jpg",
+      alt: { ja: "かぼちゃと玉ねぎの豆乳味噌ポタージュ", en: "[EN TODO] Kabocha and Onion Soy Milk Miso Potage" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -358,6 +407,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "卵を入れた直後はかき混ぜず、固まってから軽くほぐします。仕上げに味噌を加える構成です。",
       en: "[EN TODO] Don't stir right after adding the egg — gently break it up once it has set. The miso is added at the very end.",
+    },
+    image: {
+      src: "/images/recipes/tofu-wakame-tamago-miso-soup.jpg",
+      alt: { ja: "豆腐・わかめ・ふんわり卵の味噌汁", en: "[EN TODO] Tofu, Wakame, and Fluffy Egg Miso Soup" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -402,6 +458,13 @@ export const recipes: Recipe[] = [
       ja: "たれは水を少しずつ加え、好みのとろみに整えます。鶏肉は中心温度75℃で1分以上を目安に、温度計で確認してください。",
       en: "[EN TODO] Add the water to the sauce little by little to reach your preferred thickness. Use a thermometer to confirm the chicken's core temperature reaches 75°C for at least 1 minute.",
     },
+    image: {
+      src: "/images/recipes/mushi-dori-gomamiso-dare.jpg",
+      alt: { ja: "蒸し鶏と温野菜のごま味噌だれ", en: "[EN TODO] Steamed Chicken and Warm Vegetables with Sesame Miso Sauce" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -442,6 +505,13 @@ export const recipes: Recipe[] = [
       ja: "きのこを入れたら、焼き色が少し付くまで動かしすぎないようにします。味噌を加えた後は、強く煮詰めない仕上げです。",
       en: "[EN TODO] Once the mushrooms are added, avoid stirring too much until they pick up some color. After adding the miso, finish without reducing it too hard.",
     },
+    image: {
+      src: "/images/recipes/kinoko-miso-cream-pasta.jpg",
+      alt: { ja: "きのこの味噌クリームパスタ", en: "[EN TODO] Mushroom Miso Cream Pasta" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -479,6 +549,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "味噌を均一に練り込まず、ところどころに具が残るように混ぜます。手や器具を清潔にし、作った後は早めに食べてください。",
       en: "[EN TODO] Don't mix the miso in uniformly — leave bits of it scattered through the rice. Keep hands and utensils clean, and eat soon after making.",
+    },
+    image: {
+      src: "/images/recipes/oba-goma-onigiri-kinzanji.jpg",
+      alt: { ja: "大葉とごまの具だくさんおにぎり", en: "[EN TODO] Shiso and Sesame Rice Balls" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -518,6 +595,13 @@ export const recipes: Recipe[] = [
       ja: "なすを十分やわらかくしてから味噌をのせます。金山寺みその具材をつぶさずに仕上げます。",
       en: "[EN TODO] Make sure the eggplant is fully softened before topping with the miso. Finish without crushing the kinzanji miso's chunky ingredients.",
     },
+    image: {
+      src: "/images/recipes/yaki-nasu-miso-cheese.jpg",
+      alt: { ja: "焼きなすの味噌チーズのせ", en: "[EN TODO] Grilled Eggplant with Miso Cheese" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
+    },
     confidence: "confirmed",
   },
   {
@@ -546,6 +630,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "醤油を足さず、まずは金山寺みそだけの塩気で食べます。豆腐・アボカド・味噌を一緒にすくう食べ方です。",
       en: "[EN TODO] Try it first with just the kinzanji miso's saltiness, without adding soy sauce. Scoop up the tofu, avocado, and miso together.",
+    },
+    image: {
+      src: "/images/recipes/avocado-hiya-yakko-kinzanji.jpg",
+      alt: { ja: "アボカド冷ややっこ", en: "[EN TODO] Chilled Tofu with Avocado and Kinzanji Miso" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -580,6 +671,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "じゃがいもは全部つぶさず、少し形を残します。金山寺みその具材感と合わせて楽しむサラダです。",
       en: "[EN TODO] Don't mash all the potatoes — leave some texture. A salad meant to be enjoyed alongside the kinzanji miso's chunky ingredients.",
+    },
+    image: {
+      src: "/images/recipes/shinjaga-misomayo-salad.jpg",
+      alt: { ja: "新じゃがの味噌マヨサラダ", en: "[EN TODO] New Potato Miso Mayo Salad" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },
@@ -622,6 +720,13 @@ export const recipes: Recipe[] = [
     tip: {
       ja: "具材とたれは別々に盛り付け、食べる直前に包みます。鶏肉は中心温度75℃で1分以上を目安に、温度計で確認してください。",
       en: "[EN TODO] Plate the filling and sauce separately, wrapping just before eating. Use a thermometer to confirm the chicken's core temperature reaches 75°C for at least 1 minute.",
+    },
+    image: {
+      src: "/images/recipes/mushidori-kyuri-lettuce-wrap.jpg",
+      alt: { ja: "蒸し鶏ときゅうりのレタス包み", en: "[EN TODO] Lettuce Wraps with Steamed Chicken and Cucumber" },
+      width: 880,
+      height: 572,
+      isPlaceholder: false,
     },
     confidence: "confirmed",
   },

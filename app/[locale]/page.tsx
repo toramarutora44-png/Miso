@@ -2,15 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { Hero } from "@/components/home/Hero";
+import { RecipeShowcase } from "@/components/home/RecipeShowcase";
 import { ProductStory } from "@/components/home/ProductStory";
 import { ProducerStory } from "@/components/home/ProducerStory";
 import { ProductFocus } from "@/components/home/ProductFocus";
-import { RecipeIndexList } from "@/components/recipe/RecipeIndexList";
 import { Section } from "@/components/ui/Section";
 import { Band } from "@/components/ui/Band";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
-import { getProductById, getProducer } from "@/lib/repositories/productRepository";
+import { getAllProducts, getProductById, getProducer } from "@/lib/repositories/productRepository";
 import { getAllRecipes, getRecipesForProduct } from "@/lib/repositories/recipeRepository";
 import type { Locale } from "@/types/i18n";
 import type { ProductId } from "@/types/product";
@@ -29,6 +29,12 @@ interface PageProps {
   params: { locale: string };
 }
 
+/**
+ * トップページ。
+ * QRコードから来た人は既に目の前の商品が何の味噌か知っているため、
+ * 「この味噌で何が作れるか」(料理・レシピ)を先に見せる構成に再編している。
+ * 構成: ①料理写真ファーストビュー → ②レシピ紹介(商品別) → ③3種の味噌 → ④生産者紹介 → ⑤購入案内。
+ */
 export default async function HomePage({ params }: PageProps) {
   const { locale: rawLocale } = params;
   if (!isLocale(rawLocale)) notFound();
@@ -38,21 +44,38 @@ export default async function HomePage({ params }: PageProps) {
 
   const producer = getProducer();
   const recipes = await getAllRecipes();
+  const products = getAllProducts();
 
   const koshuMiso = getProductById("koshu-miso");
   const riceMiso = getProductById("rice-miso");
   const kinzanjiMiso = getProductById("kinzanji-miso");
   if (!koshuMiso || !riceMiso || !kinzanjiMiso) notFound();
 
-  const [koshuRecipes, riceRecipes] = await Promise.all([
+  const [koshuRecipes, riceRecipes, kinzanjiRecipes] = await Promise.all([
     getRecipesForProduct("koshu-miso"),
     getRecipesForProduct("rice-miso"),
+    getRecipesForProduct("kinzanji-miso"),
   ]);
+  const recipesByProduct: Record<ProductId, typeof recipes> = {
+    "koshu-miso": koshuRecipes,
+    "rice-miso": riceRecipes,
+    "kinzanji-miso": kinzanjiRecipes,
+  };
 
   return (
     <>
       <ProductFocus />
-      <Hero locale={locale} dict={dict} />
+
+      {/* ① ファーストビュー: 完成料理の実写真を主役にする */}
+      <Hero locale={locale} dict={dict} recipes={recipes} />
+
+      {/* ② レシピ紹介: 商品カテゴリーごとに代表的な料理写真を見せる */}
+      <RecipeShowcase
+        products={products}
+        recipesByProduct={recipesByProduct}
+        locale={locale}
+        dict={dict}
+      />
 
       <Band tone="fukamidori-deep" className="bg-fukamidori-dark py-3.5 text-washi">
         <p className="px-4 text-center text-sm sm:text-base">
@@ -63,6 +86,7 @@ export default async function HomePage({ params }: PageProps) {
         </p>
       </Band>
 
+      {/* ③ 3種の味噌 */}
       <div
         id="product-koshu-miso"
         className="scroll-mt-16"
@@ -105,25 +129,13 @@ export default async function HomePage({ params }: PageProps) {
         />
       </div>
 
+      {/* ④ 生産者紹介 */}
       <ProducerStory locale={locale} dict={dict} />
 
-      <Band tone="kinari-deep">
-        <div className="mx-auto max-w-[1100px] px-5 py-16 sm:py-20">
-          <h2 className="t-title text-sumi">{h.recipesTitle}</h2>
-          <p className="t-body mt-2 text-sumi-soft">{h.recipesLead}</p>
-          <RecipeIndexList
-            recipes={recipes}
-            locale={locale}
-            dict={dict}
-            groupByProduct
-            className="mt-8"
-          />
-        </div>
-      </Band>
-
+      {/* ⑤ 購入案内: 配送・EC関連は一切含めない */}
       <Section tone="kinari-deep">
         <h2 className="text-[28px]">{h.purchaseTitle}</h2>
-        <p className="mt-3 text-base text-sumi-soft">{h.purchaseText}</p>
+        <p className="mt-3 text-base text-sumi-soft">{h.purchaseInfoText}</p>
         <p className="mt-4 text-base">
           <Link
             href={`tel:${producer.phone.replace(/-/g, "")}`}
