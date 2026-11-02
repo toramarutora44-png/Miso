@@ -3,10 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
+import { BrushRule } from "@/components/ui/BrushRule";
+import { highlightKeywords } from "@/components/ui/BrushKeyword";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getProducer } from "@/lib/repositories/productRepository";
 import type { Locale } from "@/types/i18n";
+
+/**
+ * 本文中で筆書き風に強調するキーワード(段落インデックス対応)。
+ * データ(producer.story.*)の文章自体は変更せず、表示側でのみ強調する。
+ */
+const START_KEYWORDS = [["感動、衝撃"], ["おいしさ+安心+安全"]];
+const CRAFT_KEYWORDS = [["ただの主婦が始めたみそ屋"], ["家族に食べさせれるもの、喜んでもらえるもの"]];
+const EXPERIENCE_KEYWORDS = [["責任を持って"]];
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -38,42 +48,43 @@ export default function ProducerPage({ params }: PageProps) {
         <span className="mt-4 inline-block rounded-full border border-fukamidori/40 bg-fukamidori/10 px-3 py-1 text-sm font-medium text-fukamidori-dark">
           {p.experienceBadge}
         </span>
-        <h1 className="mt-4 text-[32px] sm:text-[36px]">{dict.producer.title}</h1>
-        <p className="mt-2 text-base text-sumi-soft">
+        <h1 className="t-display mt-4 text-sumi">{dict.producer.title}</h1>
+        <BrushRule className="mx-auto mt-2" width={140} />
+        <p className="mt-4 text-base text-sumi-soft">
           {dict.producer.nameLabel}: {producer.name[locale]}
         </p>
-        <p className="mt-4 text-lg">{producer.summary[locale]}</p>
+        <p className="t-lead mt-4 text-sumi">{producer.summary[locale]}</p>
       </Section>
 
       <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{dict.producer.sectionStartTitle}</h2>
-        <div className="mt-3 flex flex-col gap-3 border-l-2 border-miso pl-4">
+        <h2 className="t-title text-sumi">{dict.producer.sectionStartTitle}</h2>
+        <div className="mt-4 flex flex-col gap-4 border-l-2 border-miso pl-4">
           {producer.story.start[locale].map((paragraph, i) => (
-            <p key={i} className="font-heading text-base leading-relaxed">
-              {paragraph}
+            <p key={i} className="font-heading text-base leading-relaxed text-sumi">
+              {highlightKeywords(paragraph, START_KEYWORDS[i] ?? [])}
             </p>
           ))}
         </div>
       </Section>
 
       <Section tone="kinari">
-        <h2 className="text-[28px]">{dict.producer.sectionCraftTitle}</h2>
-        <p className="mt-2 font-heading text-xl text-fukamidori-dark">{p.bridgeLine}</p>
-        <div className="mt-3 flex flex-col gap-3 border-l-2 border-miso pl-4">
+        <h2 className="t-title text-sumi">{dict.producer.sectionCraftTitle}</h2>
+        <p className="t-quote mt-3 text-fukamidori-dark">{p.bridgeLine}</p>
+        <div className="mt-4 flex flex-col gap-4 border-l-2 border-miso pl-4">
           {producer.story.craft[locale].map((paragraph, i) => (
-            <p key={i} className="font-heading text-base leading-relaxed">
-              {paragraph}
+            <p key={i} className="font-heading text-base leading-relaxed text-sumi">
+              {highlightKeywords(paragraph, CRAFT_KEYWORDS[i] ?? [])}
             </p>
           ))}
         </div>
       </Section>
 
       <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{dict.producer.sectionExperienceTitle}</h2>
-        <div className="mt-3 flex flex-col gap-3 border-l-2 border-miso pl-4">
+        <h2 className="t-title text-sumi">{dict.producer.sectionExperienceTitle}</h2>
+        <div className="mt-4 flex flex-col gap-4 border-l-2 border-miso pl-4">
           {producer.story.experience[locale].map((paragraph, i) => (
-            <p key={i} className="font-heading text-base leading-relaxed">
-              {paragraph}
+            <p key={i} className="font-heading text-base leading-relaxed text-sumi">
+              {highlightKeywords(paragraph, EXPERIENCE_KEYWORDS[i] ?? [])}
             </p>
           ))}
         </div>
@@ -84,7 +95,7 @@ export default function ProducerPage({ params }: PageProps) {
       </Section>
 
       <Section tone="kinari">
-        <h2 className="text-[28px]">{p.soybeanSectionTitle}</h2>
+        <h2 className="t-title text-sumi">{p.soybeanSectionTitle}</h2>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <figure className="sm:col-span-2">
             <Image
@@ -113,12 +124,16 @@ export default function ProducerPage({ params }: PageProps) {
             className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
           />
         </div>
-        <p className="mt-4 text-base text-sumi-soft">{p.soybeanBody1}</p>
-        <p className="mt-2 text-base text-sumi-soft">{p.soybeanBody2}</p>
+        <p className="mt-4 text-base text-sumi-soft">
+          {highlightKeywords(p.soybeanBody1, ["無農薬の青大豆"])}
+        </p>
+        <p className="mt-2 text-base text-sumi-soft">
+          {highlightKeywords(p.soybeanBody2, ["甘みの強い味わい"])}
+        </p>
       </Section>
 
       <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{p.craftSectionTitle}</h2>
+        <h2 className="t-title text-sumi">{p.craftSectionTitle}</h2>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <figure>
             <Image
@@ -153,11 +168,13 @@ export default function ProducerPage({ params }: PageProps) {
         </div>
         <p className="mt-4 text-base text-sumi-soft">{p.craftBody1}</p>
         <p className="mt-2 text-base text-sumi-soft">{p.craftBody2}</p>
-        <p className="mt-2 text-base text-sumi-soft">{p.craftBody3}</p>
+        <p className="mt-2 text-base text-sumi-soft">
+          {highlightKeywords(p.craftBody3, ["生きた味噌"])}
+        </p>
       </Section>
 
       <Section tone="kinari">
-        <h2 className="text-[28px]">{p.certSectionTitle}</h2>
+        <h2 className="t-title text-sumi">{p.certSectionTitle}</h2>
         <p className="mt-2 text-base text-sumi-soft">{p.certIntro}</p>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Image
@@ -179,7 +196,7 @@ export default function ProducerPage({ params }: PageProps) {
       </Section>
 
       <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{p.shopSectionTitle}</h2>
+        <h2 className="t-title text-sumi">{p.shopSectionTitle}</h2>
         <Image
           src="/images/shop/storefront.jpg"
           alt={p.storefrontAlt}
@@ -207,7 +224,7 @@ export default function ProducerPage({ params }: PageProps) {
       </Section>
 
       <Section tone="kinari">
-        <h2 className="text-[28px]">{dict.producer.videoSectionTitle}</h2>
+        <h2 className="t-title text-sumi">{dict.producer.videoSectionTitle}</h2>
         <div
           className="mx-auto mt-4 w-full max-w-xl overflow-hidden rounded-card border border-miso-light/30"
           style={{ aspectRatio: "16 / 9" }}
