@@ -160,12 +160,14 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               ))}
             </ol>
             {recipe.tip && (
-              <div className="mt-6 rounded-card border border-miso-light/30 bg-kinari-deep p-4">
-                <h3 className="text-[20px]">{d.tipTitle}</h3>
-                <p className="mt-2 flex items-start gap-2 text-base text-sumi-soft">
-                  <DishIllust name="misoSpoon" size={32} tone="dark" className="inline-flex shrink-0" />
-                  <span>{recipe.tip[locale]}</span>
-                </p>
+              <div className="mt-8 rounded-card border border-miso-light/40 border-l-4 border-l-miso bg-washi p-5 shadow-paper">
+                <div className="flex items-center gap-2.5">
+                  <DishIllust name="misoSpoon" size={44} tone="dark" className="shrink-0" />
+                  <h3 className="font-heading text-[21px] font-bold text-fukamidori-dark sm:text-[23px]">
+                    {d.tipHeadline}
+                  </h3>
+                </div>
+                <p className="t-body mt-3 text-sumi">{recipe.tip[locale]}</p>
               </div>
             )}
           </div>

@@ -9,15 +9,19 @@ import { getDictionary } from "@/lib/i18n/getDictionary";
 import type { Locale } from "@/types/i18n";
 
 const shipporiMincho = Shippori_Mincho({
+  // 注: このフォントファミリーはnext/font/google(現行バージョン)では
+  // subsetsに "latin" | "latin-ext" のみが有効で、"japanese" という選択肢自体が存在しない。
+  // Shippori Mincho/Noto Sans JPはCJK専用フォントのため、日本語グリフは
+  // subsets指定に関わらず常に含まれる(subsetsは追加の非日本語レンジの制御用)。
   subsets: ["latin"],
-  weight: ["500"],
+  weight: ["500", "700"],
   variable: "--font-shippori-mincho",
   display: "swap",
 });
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
   variable: "--font-noto-sans-jp",
   display: "swap",
 });

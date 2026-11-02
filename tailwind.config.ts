@@ -24,6 +24,7 @@ const config: Config = {
         "sumi-soft": "var(--c-sumi-soft)",
         koshu: "var(--c-koshu)",
         kome: "var(--c-kome)",
+        "kome-ink": "var(--c-kome-ink)",
         kinzanji: "var(--c-kinzanji)",
       },
       fontFamily: {

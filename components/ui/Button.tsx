@@ -1,13 +1,15 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import Link from "next/link";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "inverse";
 
 const variantClass: Record<Variant, string> = {
   primary:
     "bg-miso text-washi border border-miso hover:bg-akamiso transition-colors",
   secondary:
     "bg-transparent text-fukamidori-dark border border-miso-light hover:bg-kinari-deep transition-colors",
+  inverse:
+    "bg-washi text-fukamidori-deep border border-washi hover:bg-kinari transition-colors",
 };
 
 const base =

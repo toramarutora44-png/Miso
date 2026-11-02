@@ -94,10 +94,11 @@ export default async function HomePage({ params }: PageProps) {
       >
         <ProductStory
           product={koshuMiso}
+          index={1}
+          tone="washi"
+          recipes={koshuRecipes}
           locale={locale}
           dict={dict}
-          variant="bleed-right"
-          recipes={koshuRecipes}
         />
       </div>
 
@@ -108,10 +109,11 @@ export default async function HomePage({ params }: PageProps) {
       >
         <ProductStory
           product={riceMiso}
+          index={2}
+          tone="kinari"
+          recipes={riceRecipes}
           locale={locale}
           dict={dict}
-          variant="center-round"
-          recipes={riceRecipes}
         />
       </div>
 
@@ -122,10 +124,12 @@ export default async function HomePage({ params }: PageProps) {
       >
         <ProductStory
           product={kinzanjiMiso}
+          index={3}
+          tone="fukamidori-deep"
+          invert
+          recipes={kinzanjiRecipes}
           locale={locale}
           dict={dict}
-          variant="inverse-panel"
-          recipes={[]}
         />
       </div>
 

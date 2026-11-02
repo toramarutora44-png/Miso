@@ -16,7 +16,7 @@ interface RecipeShowcaseProps {
 
 const CATEGORY_ACCENT: Record<ProductId, string> = {
   "koshu-miso": "text-koshu",
-  "rice-miso": "text-kome",
+  "rice-miso": "text-kome-ink",
   "kinzanji-miso": "text-kinzanji",
 };
 
