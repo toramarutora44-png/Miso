@@ -23,12 +23,7 @@ export function ProductHero({ product, locale, dict }: ProductHeroProps) {
           <p className="t-label">{String(product.order).padStart(2, "0")}</p>
           <h1 className="t-title mt-2">{product.name[locale]}</h1>
           <div className="mt-4">
-            <p
-              className="t-quote text-fukamidori-dark"
-              style={{ transform: "rotate(-0.5deg)" }}
-            >
-              {product.catchCopy[locale]}
-            </p>
+            <p className="t-quote text-fukamidori-dark">{product.catchCopy[locale]}</p>
             <BrushRule width={110} className="mt-1 text-miso" />
           </div>
           {product.tasteNotes?.value && (
