@@ -1,4 +1,8 @@
 import { sql } from "@/lib/db";
+import { LineChart } from "@/components/admin/LineChart";
+import { BarChart } from "@/components/admin/BarChart";
+import { HorizontalBarChart } from "@/components/admin/HorizontalBarChart";
+import { PeriodFilter, RANGE_OPTIONS, type RangeKey } from "@/components/admin/PeriodFilter";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +13,7 @@ type QrRow = {
   total: string;
   last7: string;
   last30: string;
+  range_total: string;
 };
 
 type DailyRow = {
@@ -22,7 +27,70 @@ type ItemRow = {
   total: string;
 };
 
-async function getQrRows(): Promise<QrRow[]> {
+type MonthlyRow = {
+  month: string;
+  total: string;
+};
+
+function formatDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function resolveRange(searchParams: Record<string, string | string[] | undefined>): {
+  range: RangeKey;
+  from: string;
+  to: string;
+} {
+  const rawRange = searchParams.range;
+  const validKeys = RANGE_OPTIONS.map((o) => o.value);
+  const range: RangeKey = validKeys.includes(rawRange as RangeKey)
+    ? (rawRange as RangeKey)
+    : "30d";
+
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  let from = today;
+  let to = today;
+
+  if (range === "today") {
+    from = today;
+    to = today;
+  } else if (range === "7d") {
+    from = new Date(today);
+    from.setDate(from.getDate() - 6);
+    to = today;
+  } else if (range === "30d") {
+    from = new Date(today);
+    from.setDate(from.getDate() - 29);
+    to = today;
+  } else if (range === "thisMonth") {
+    from = new Date(today.getFullYear(), today.getMonth(), 1);
+    to = today;
+  } else if (range === "lastMonth") {
+    from = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    to = new Date(today.getFullYear(), today.getMonth(), 0);
+  } else if (range === "custom") {
+    const rawFrom = typeof searchParams.from === "string" ? searchParams.from : undefined;
+    const rawTo = typeof searchParams.to === "string" ? searchParams.to : undefined;
+    const parsedFrom = rawFrom && !Number.isNaN(Date.parse(rawFrom)) ? new Date(rawFrom) : null;
+    const parsedTo = rawTo && !Number.isNaN(Date.parse(rawTo)) ? new Date(rawTo) : null;
+    from = parsedFrom ?? today;
+    to = parsedTo ?? today;
+    if (from.getTime() > to.getTime()) {
+      const tmp = from;
+      from = to;
+      to = tmp;
+    }
+  }
+
+  return { range, from: formatDate(from), to: formatDate(to) };
+}
+
+async function getQrRows(from: string, to: string): Promise<QrRow[]> {
   return (await sql`
     select
       q.code,
@@ -30,7 +98,8 @@ async function getQrRows(): Promise<QrRow[]> {
       p.name as place_name,
       count(s.id)::text as total,
       count(s.id) filter (where s.day >= (current_date - interval '6 days'))::text as last7,
-      count(s.id) filter (where s.day >= (current_date - interval '29 days'))::text as last30
+      count(s.id) filter (where s.day >= (current_date - interval '29 days'))::text as last30,
+      count(s.id) filter (where s.day >= ${from}::date and s.day <= ${to}::date)::text as range_total
     from qr_codes q
     left join places p on p.id = q.place_id
     left join scans s on s.code = q.code
@@ -39,17 +108,17 @@ async function getQrRows(): Promise<QrRow[]> {
   `) as unknown as QrRow[];
 }
 
-async function getDailyRows(): Promise<DailyRow[]> {
+async function getDailyRows(from: string, to: string): Promise<DailyRow[]> {
   return (await sql`
     select day::text as day, count(*)::text as total
     from scans
-    where day >= (current_date - interval '29 days')
+    where day >= ${from}::date and day <= ${to}::date
     group by day
-    order by day desc
+    order by day asc
   `) as unknown as DailyRow[];
 }
 
-async function getItemRows(): Promise<ItemRow[]> {
+async function getItemRows(from: string, to: string): Promise<ItemRow[]> {
   return (await sql`
     select
       i.slug,
@@ -57,18 +126,56 @@ async function getItemRows(): Promise<ItemRow[]> {
       count(s.id)::text as total
     from items i
     left join qr_codes q on q.item_id = i.id
-    left join scans s on s.code = q.code
+    left join scans s on s.code = q.code and s.day >= ${from}::date and s.day <= ${to}::date
     group by i.slug, i.name
     order by i.slug
   `) as unknown as ItemRow[];
 }
 
-export default async function AdminQrPage() {
-  const [qrRows, dailyRows, itemRows] = await Promise.all([
-    getQrRows(),
-    getDailyRows(),
-    getItemRows(),
+async function getMonthlyRows(): Promise<MonthlyRow[]> {
+  return (await sql`
+    select
+      to_char(gs, 'YYYY-MM') as month,
+      count(s.id)::text as total
+    from generate_series(
+      date_trunc('month', current_date) - interval '11 months',
+      date_trunc('month', current_date),
+      interval '1 month'
+    ) as gs
+    left join scans s on s.month = to_char(gs, 'YYYY-MM')
+    group by gs
+    order by gs asc
+  `) as unknown as MonthlyRow[];
+}
+
+export default async function AdminQrPage({
+  searchParams,
+}: {
+  searchParams: Record<string, string | string[] | undefined>;
+}) {
+  const { range, from, to } = resolveRange(searchParams);
+  const rangeLabel = RANGE_OPTIONS.find((o) => o.value === range)?.label ?? "";
+
+  const [qrRows, dailyRows, itemRows, monthlyRows] = await Promise.all([
+    getQrRows(from, to),
+    getDailyRows(from, to),
+    getItemRows(from, to),
+    getMonthlyRows(),
   ]);
+
+  const dailyRowsDesc = [...dailyRows].reverse();
+  const dailyChartData = dailyRows.map((row) => ({
+    label: row.day.slice(5),
+    value: Number(row.total),
+  }));
+  const itemChartData = itemRows.map((row) => ({
+    label: row.name,
+    value: Number(row.total),
+  }));
+  const monthlyChartData = monthlyRows.map((row) => ({
+    label: row.month,
+    value: Number(row.total),
+  }));
 
   return (
     <main className="mx-auto max-w-4xl p-6">
@@ -84,6 +191,11 @@ export default async function AdminQrPage() {
         </form>
       </div>
 
+      <PeriodFilter range={range} from={from} to={to} />
+      <p className="mb-6 text-xs text-zinc-500">
+        表示期間: {from} 〜 {to} ({rangeLabel})
+      </p>
+
       <section className="mb-8">
         <h2 className="mb-2 text-base font-medium">QRコード別</h2>
         <div className="overflow-x-auto rounded border border-zinc-300 bg-white">
@@ -96,6 +208,7 @@ export default async function AdminQrPage() {
                 <th className="px-3 py-2">累計</th>
                 <th className="px-3 py-2">直近7日</th>
                 <th className="px-3 py-2">直近30日</th>
+                <th className="px-3 py-2">選択期間内</th>
               </tr>
             </thead>
             <tbody>
@@ -107,11 +220,12 @@ export default async function AdminQrPage() {
                   <td className="px-3 py-2">{row.total}</td>
                   <td className="px-3 py-2">{row.last7}</td>
                   <td className="px-3 py-2">{row.last30}</td>
+                  <td className="px-3 py-2">{row.range_total}</td>
                 </tr>
               ))}
               {qrRows.length === 0 && (
                 <tr>
-                  <td className="px-3 py-2 text-zinc-500" colSpan={6}>
+                  <td className="px-3 py-2 text-zinc-500" colSpan={7}>
                     データがありません
                   </td>
                 </tr>
@@ -122,7 +236,10 @@ export default async function AdminQrPage() {
       </section>
 
       <section className="mb-8">
-        <h2 className="mb-2 text-base font-medium">日別アクセス数(直近30日)</h2>
+        <h2 className="mb-2 text-base font-medium">日別アクセス推移(選択期間)</h2>
+        <div className="mb-4 rounded border border-zinc-300 bg-white p-4">
+          <LineChart data={dailyChartData} ariaLabel="日別アクセス推移" />
+        </div>
         <div className="overflow-x-auto rounded border border-zinc-300 bg-white">
           <table className="w-full text-sm">
             <thead className="bg-zinc-100 text-left">
@@ -132,13 +249,13 @@ export default async function AdminQrPage() {
               </tr>
             </thead>
             <tbody>
-              {dailyRows.map((row) => (
+              {dailyRowsDesc.map((row) => (
                 <tr key={row.day} className="border-t border-zinc-200">
                   <td className="px-3 py-2">{row.day}</td>
                   <td className="px-3 py-2">{row.total}</td>
                 </tr>
               ))}
-              {dailyRows.length === 0 && (
+              {dailyRowsDesc.length === 0 && (
                 <tr>
                   <td className="px-3 py-2 text-zinc-500" colSpan={2}>
                     データがありません
@@ -150,14 +267,17 @@ export default async function AdminQrPage() {
         </div>
       </section>
 
-      <section>
-        <h2 className="mb-2 text-base font-medium">商品別累計</h2>
+      <section className="mb-8">
+        <h2 className="mb-2 text-base font-medium">商品別アクセス数(選択期間)</h2>
+        <div className="mb-4 rounded border border-zinc-300 bg-white p-4">
+          <HorizontalBarChart data={itemChartData} ariaLabel="商品別アクセス数" />
+        </div>
         <div className="overflow-x-auto rounded border border-zinc-300 bg-white">
           <table className="w-full text-sm">
             <thead className="bg-zinc-100 text-left">
               <tr>
                 <th className="px-3 py-2">商品</th>
-                <th className="px-3 py-2">累計アクセス数</th>
+                <th className="px-3 py-2">選択期間内アクセス数</th>
               </tr>
             </thead>
             <tbody>
@@ -176,6 +296,13 @@ export default async function AdminQrPage() {
               )}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="mb-2 text-base font-medium">月別アクセス推移(直近12ヶ月)</h2>
+        <div className="rounded border border-zinc-300 bg-white p-4">
+          <BarChart data={monthlyChartData} ariaLabel="月別アクセス推移" />
         </div>
       </section>
     </main>

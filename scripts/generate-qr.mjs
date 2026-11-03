@@ -46,8 +46,9 @@ function buildCompositeSvg({ qrSvg, label }) {
   const innerTextWidth = labelBoxSize - LABEL_BOX_PADDING * 2;
   const charCount = Math.max(label.length, 1);
   // 内側幅を文字数で割って自動調整し、枠からはみ出さないようにする
-  const fontSizeByWidth = innerTextWidth / charCount;
-  const fontSize = Math.min(fontSizeByWidth * 1.5, labelBoxSize * 0.3);
+  // (CJKの実測字幅は概ね1emよりやや狭いため0.95倍で安全マージンを確保)
+  const fontSizeByWidth = (innerTextWidth / charCount) * 0.95;
+  const fontSize = Math.min(fontSizeByWidth, labelBoxSize * 0.22);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${CANVAS_SIZE}" height="${CANVAS_SIZE}" viewBox="0 0 ${CANVAS_SIZE} ${CANVAS_SIZE}">
   <rect x="0" y="0" width="${CANVAS_SIZE}" height="${CANVAS_SIZE}" rx="${OUTER_RADIUS}" fill="#ffffff" />
