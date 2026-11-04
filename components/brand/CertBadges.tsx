@@ -40,16 +40,16 @@ export function CertBadges({
         <Image
           src="/images/certification/logos/muslim-friendly-mark.png"
           alt="Muslim Friendly - Yamanashi Food Diversity Certified"
-          width={64}
-          height={64}
-          className="h-14 w-14"
+          width={80}
+          height={80}
+          className="h-20 w-20"
         />
         <Image
           src="/images/certification/logos/vegan-friendly-mark.png"
           alt="Vegan Friendly - Yamanashi Food Diversity Certified"
-          width={64}
-          height={64}
-          className="h-14 w-14"
+          width={80}
+          height={80}
+          className="h-20 w-20"
         />
       </div>
       <ul className={`flex flex-wrap items-center ${justifyClass} gap-2`}>
