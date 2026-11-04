@@ -32,6 +32,29 @@ type MonthlyRow = {
   total: string;
 };
 
+type SectionRow = {
+  section: string;
+  total: string;
+};
+
+type ProductCompareRow = {
+  slug: string;
+  name: string;
+  qr_total: string;
+  pageview_total: string;
+};
+
+const SECTION_LABELS: Record<string, string> = {
+  top: "TOP",
+  products: "商品一覧",
+  product_detail: "商品詳細",
+  recipes: "レシピ一覧",
+  recipe_detail: "レシピ詳細",
+  producer: "生産者",
+  other: "その他",
+};
+
+
 function formatDate(d: Date): string {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -148,6 +171,58 @@ async function getMonthlyRows(): Promise<MonthlyRow[]> {
   `) as unknown as MonthlyRow[];
 }
 
+/**
+ * セクション別アクセス数(通常閲覧、pageviewsテーブル)。
+ * 全セクションを固定順で表示するため、VALUES句で左外部結合する
+ * (データが0件のセクションも0として表示するため)。
+ */
+async function getPageviewSectionRows(from: string, to: string): Promise<SectionRow[]> {
+  return (await sql`
+    select
+      v.section,
+      count(p.id)::text as total
+    from (
+      values ('top'), ('products'), ('product_detail'),
+             ('recipes'), ('recipe_detail'), ('producer'), ('other')
+    ) as v(section)
+    left join pageviews p
+      on p.section = v.section
+      and p.day >= ${from}::date and p.day <= ${to}::date
+    group by v.section
+    order by array_position(
+      array['top','products','product_detail','recipes','recipe_detail','producer','other'],
+      v.section
+    )
+  `) as unknown as SectionRow[];
+}
+
+/**
+ * 商品詳細ページへのアクセスを QR経由(scans) / 通常アクセス(pageviews)で
+ * 商品ごとに並べて比較する。
+ * pageviews.path は "/{locale}/products/{slug}" 形式のため、split_partで
+ * 4番目のセグメント(slug)を取り出して items.slug に突き合わせる。
+ * count(distinct ...) を使うことで、scans側とpageviews側それぞれの
+ * 1対多JOINが掛け合わさっても正しい件数になる。
+ */
+async function getProductCompareRows(from: string, to: string): Promise<ProductCompareRow[]> {
+  return (await sql`
+    select
+      i.slug,
+      i.name,
+      count(distinct s.id)::text as qr_total,
+      count(distinct pv.id)::text as pageview_total
+    from items i
+    left join qr_codes q on q.item_id = i.id
+    left join scans s on s.code = q.code
+      and s.day >= ${from}::date and s.day <= ${to}::date
+    left join pageviews pv on pv.section = 'product_detail'
+      and split_part(pv.path, '/', 4) = i.slug
+      and pv.day >= ${from}::date and pv.day <= ${to}::date
+    group by i.slug, i.name
+    order by i.slug
+  `) as unknown as ProductCompareRow[];
+}
+
 export default async function AdminQrPage({
   searchParams,
 }: {
@@ -156,12 +231,15 @@ export default async function AdminQrPage({
   const { range, from, to } = resolveRange(searchParams);
   const rangeLabel = RANGE_OPTIONS.find((o) => o.value === range)?.label ?? "";
 
-  const [qrRows, dailyRows, itemRows, monthlyRows] = await Promise.all([
-    getQrRows(from, to),
-    getDailyRows(from, to),
-    getItemRows(from, to),
-    getMonthlyRows(),
-  ]);
+  const [qrRows, dailyRows, itemRows, monthlyRows, pageviewSectionRows, productCompareRows] =
+    await Promise.all([
+      getQrRows(from, to),
+      getDailyRows(from, to),
+      getItemRows(from, to),
+      getMonthlyRows(),
+      getPageviewSectionRows(from, to),
+      getProductCompareRows(from, to),
+    ]);
 
   const dailyRowsDesc = [...dailyRows].reverse();
   const dailyChartData = dailyRows.map((row) => ({
@@ -299,10 +377,75 @@ export default async function AdminQrPage({
         </div>
       </section>
 
-      <section>
+      <section className="mb-8">
         <h2 className="mb-2 text-base font-medium">月別アクセス推移(直近12ヶ月)</h2>
         <div className="rounded border border-zinc-300 bg-white p-4">
           <BarChart data={monthlyChartData} ariaLabel="月別アクセス推移" />
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="mb-2 text-base font-medium">ページ別アクセス(通常閲覧)</h2>
+        <p className="mb-2 text-xs text-zinc-500">
+          QRコード経由に限らない、サイトの通常閲覧(オーガニック/直接アクセス)をページ単位で集計したもの。
+        </p>
+        <div className="overflow-x-auto rounded border border-zinc-300 bg-white">
+          <table className="w-full text-sm">
+            <thead className="bg-zinc-100 text-left">
+              <tr>
+                <th className="px-3 py-2">セクション</th>
+                <th className="px-3 py-2">選択期間内アクセス数</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pageviewSectionRows.map((row) => (
+                <tr key={row.section} className="border-t border-zinc-200">
+                  <td className="px-3 py-2">{SECTION_LABELS[row.section] ?? row.section}</td>
+                  <td className="px-3 py-2">{row.total}</td>
+                </tr>
+              ))}
+              {pageviewSectionRows.length === 0 && (
+                <tr>
+                  <td className="px-3 py-2 text-zinc-500" colSpan={2}>
+                    データがありません
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="mb-2 text-base font-medium">
+          商品詳細ページ: QR経由 vs 通常アクセス比較(選択期間)
+        </h2>
+        <div className="overflow-x-auto rounded border border-zinc-300 bg-white">
+          <table className="w-full text-sm">
+            <thead className="bg-zinc-100 text-left">
+              <tr>
+                <th className="px-3 py-2">商品</th>
+                <th className="px-3 py-2">QR経由</th>
+                <th className="px-3 py-2">通常アクセス</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productCompareRows.map((row) => (
+                <tr key={row.slug} className="border-t border-zinc-200">
+                  <td className="px-3 py-2">{row.name}</td>
+                  <td className="px-3 py-2">{row.qr_total}</td>
+                  <td className="px-3 py-2">{row.pageview_total}</td>
+                </tr>
+              ))}
+              {productCompareRows.length === 0 && (
+                <tr>
+                  <td className="px-3 py-2 text-zinc-500" colSpan={3}>
+                    データがありません
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </section>
     </main>

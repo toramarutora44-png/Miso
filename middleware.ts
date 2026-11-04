@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import type { NextFetchEvent, NextRequest } from "next/server";
 import { defaultLocale, isLocale } from "@/lib/i18n/config";
 import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@/lib/admin/session";
+import {
+  classifyUserAgent,
+  getClientIp,
+  getJstDayAndMonth,
+  hashVisitor,
+  isBotUserAgent,
+} from "@/lib/tracking/visitor";
 
 /**
  * ロケール無しパスを /ja へ 308 リダイレクトする。
@@ -13,7 +20,82 @@ import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@/lib/admin/session";
  * /q 配下はトラッキングリダイレクト専用のRoute Handlerのため、
  * ロケール判定の対象から除外する。
  */
-export async function middleware(request: NextRequest) {
+
+/**
+ * pathname からアクセス計測用のセクションを判定する。
+ * `/{locale}` 配下のパスのみを対象とする想定(呼び出し元でisLocale確認済み)。
+ */
+function resolveSection(pathname: string): string {
+  // 例: "/ja/products/koshu-miso" -> ["ja", "products", "koshu-miso"]
+  const segments = pathname.split("/").filter(Boolean).slice(1);
+  const sub = segments[0];
+
+  if (!sub) return "top";
+  if (sub === "products") return segments[1] ? "product_detail" : "products";
+  if (sub === "recipes") return segments[1] ? "recipe_detail" : "recipes";
+  if (sub === "producer") return "producer";
+  return "other";
+}
+
+/**
+ * 通常閲覧(QR経由に限らないページ単位)のアクセスを記録する。
+ * レスポンスには一切影響させない(失敗してもページ表示は必ず成功させる)。
+ *
+ * なぜここだけ pg でなく fetch(PostgREST) なのか:
+ * middleware.ts は Next.js の仕様上 Edge Runtime に固定され、`runtime`
+ * オプションでNode.js Runtimeに切り替えることができない。Edge Runtimeでは
+ * `pg`(raw TCPソケットを使うPostgresクライアント)が動作しないため、
+ * Supabaseの REST API(PostgREST)へ fetch() でINSERTする方式を取る。
+ * (/q/[code]/route.ts は Route Handler なので runtime="nodejs" を指定でき、
+ * そちらは引き続き `pg` 経由で scans テーブルに書き込んでいる。)
+ */
+async function recordPageview(
+  request: NextRequest,
+  locale: string,
+  section: string,
+): Promise<void> {
+  try {
+    if (process.env.VERCEL_ENV !== "production") return;
+
+    const ua = request.headers.get("user-agent") ?? "";
+    if (isBotUserAgent(ua)) return;
+
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SECRET_KEY;
+    if (!supabaseUrl || !supabaseKey) return;
+
+    const ip = getClientIp(request.headers);
+    const country = request.headers.get("x-vercel-ip-country") ?? null;
+    const { day, month } = getJstDayAndMonth();
+    const salt = process.env.ADMIN_SESSION_SECRET ?? "";
+    const visitorHash = await hashVisitor(ip, ua, day, salt);
+    const uaClass = classifyUserAgent(ua);
+
+    await fetch(`${supabaseUrl}/rest/v1/pageviews`, {
+      method: "POST",
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({
+        path: request.nextUrl.pathname,
+        section,
+        locale,
+        day,
+        month,
+        visitor_hash: visitorHash,
+        ua_class: uaClass,
+        country,
+      }),
+    });
+  } catch {
+    // 計測失敗はページ表示に影響させない
+  }
+}
+
+export async function middleware(request: NextRequest, event: NextFetchEvent) {
   const { pathname } = request.nextUrl;
 
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
@@ -39,6 +121,10 @@ export async function middleware(request: NextRequest) {
   const firstSegment = segments[1] ?? "";
 
   if (isLocale(firstSegment)) {
+    // レスポンスを待たずに計測を完了させる(fire-and-forget)。
+    // middlewareはレスポンス返却後に実行コンテキストが終了する可能性があるため、
+    // event.waitUntil() で計測Promiseの完了をランタイムに保証させる。
+    event.waitUntil(recordPageview(request, firstSegment, resolveSection(pathname)));
     return NextResponse.next();
   }
 
