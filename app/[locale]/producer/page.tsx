@@ -125,7 +125,7 @@ export default function ProducerPage({ params }: PageProps) {
           />
         </div>
         <p className="mt-4 text-base text-sumi-soft">
-          {highlightKeywords(p.soybeanBody1, ["無農薬の青大豆"])}
+          {highlightKeywords(p.soybeanBody1, ["青大豆"])}
         </p>
         <p className="mt-2 text-base text-sumi-soft">
           {highlightKeywords(p.soybeanBody2, ["甘みの強い味わい"])}
@@ -180,15 +180,15 @@ export default function ProducerPage({ params }: PageProps) {
           <Image
             src="/images/certification/yfdc-muslim-friendly-appendix.jpg"
             alt={p.certMuslimAlt}
-            width={1000}
-            height={1777}
+            width={1016}
+            height={1339}
             className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
           />
           <Image
             src="/images/certification/yfdc-vegan-friendly-appendix.jpg"
             alt={p.certVeganAlt}
-            width={1000}
-            height={1777}
+            width={1016}
+            height={1339}
             className="h-auto w-full rounded-card border border-miso-light/30 object-cover shadow-paper"
           />
         </div>
@@ -214,7 +214,6 @@ export default function ProducerPage({ params }: PageProps) {
             <dd className="mt-0.5">{producer.phone}</dd>
           </div>
         </dl>
-        <p className="mt-4 text-base text-sumi-soft">{dict.home.purchaseInfoText}</p>
         <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <LinkButton href={`/${locale}/products`}>{dict.common.viewProducts}</LinkButton>
           <LinkButton href={`/${locale}/experience`} variant="secondary">

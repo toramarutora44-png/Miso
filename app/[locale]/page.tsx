@@ -139,7 +139,6 @@ export default async function HomePage({ params }: PageProps) {
       {/* ⑤ 購入案内: 配送・EC関連は一切含めない */}
       <Section tone="kinari-deep">
         <h2 className="text-[28px]">{h.purchaseTitle}</h2>
-        <p className="mt-3 text-base text-sumi-soft">{h.purchaseInfoText}</p>
         <p className="mt-4 text-base">
           <Link
             href={`tel:${producer.phone.replace(/-/g, "")}`}

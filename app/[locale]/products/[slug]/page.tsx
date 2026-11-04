@@ -22,7 +22,7 @@ const BODY_KEYWORDS: Partial<Record<ProductId, string[][]>> = {
   "koshu-miso": [
     [],
     ["麦麹・米糀合わせ味噌"],
-    ["無農薬の希少な青大豆", "甘みの強い味わい"],
+    ["希少な青大豆", "甘みの強い味わい"],
     ["天然醸造・無添加", "生きた味噌"],
   ],
   "rice-miso": [
@@ -96,7 +96,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mt-4">
                 <SpecTable product={product} locale={locale} dict={dict} />
               </div>
-              <p className="t-body mt-4 text-sumi-soft">{dict.home.purchaseInfoText}</p>
             </div>
           </div>
         </div>

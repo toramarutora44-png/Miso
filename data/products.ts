@@ -41,14 +41,14 @@ export const products: Product[] = [
       ja: [
         "麦麹と米麹を合わせた、香り高い合わせ味噌です。甘みは軽く、麦麹の香ばしさが立ちます。",
         "甲州味噌は、麦麹と米糀を合わせた「麦麹・米糀合わせ味噌」です。原材料は大豆・麹(麦麹+米糀)・塩のみ。",
-        "大豆には、山梨県富士吉田市(富士山麓)の契約農家専用栽培による無農薬の希少な青大豆を使用。油分が少なく糖度が高いため、甘みの強い味わいが特徴です。",
-        "天然醸造・無添加で、発酵を止めていない「生きた味噌」。加熱処理や発酵止めのアルコール添加は行わず、地釜で炊き上げた煮汁(味噌のたまり)を加えて仕込んでいます。",
+        "大豆には、山梨県富士吉田市(富士山麓)の契約農家専用栽培による希少な青大豆を使用。油分が少なく糖度が高いため、甘みの強い味わいが特徴です。",
+        "天然醸造・無添加で、発酵を止めていない「生きた味噌」。加熱処理や発酵止めのアルコール添加は行わず、地釜で炊き上げた煮汁(あめ)を加えて仕込んでいます。",
       ],
       en: [
         "A fragrant blended miso made with both barley koji and rice koji — koji being the mold-fermented grain starter used in traditional Japanese brewing. Its sweetness is light, with the toasty aroma of barley koji standing out.",
         "Koshu Miso is a blended miso made with both barley koji and rice koji. Its only ingredients are soybeans, koji (barley koji + rice koji), and salt.",
-        "The soybeans are a rare blue soybean variety grown without pesticides, exclusively by contracted farmers in Fujiyoshida at the foot of Mt. Fuji — low in oil and high in natural sugars, giving the miso its pronounced sweetness.",
-        "It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (miso tamari).",
+        "The soybeans are a rare blue soybean variety grown exclusively by contracted farmers in Fujiyoshida at the foot of Mt. Fuji — low in oil and high in natural sugars, giving the miso its pronounced sweetness.",
+        "It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (ame).",
       ],
     },
     // taste数値バーは根拠のない推測値のため、商品詳細・比較画面では非表示とする(TasteBar呼び出し停止)。
@@ -130,12 +130,12 @@ export const products: Product[] = [
       ja: [
         "クセがなく、どなたにも親しみやすいまろやかな甘みの味噌です。",
         "米味噌は、大豆・米麹・食塩のみを原材料とする味噌です。麹は米麹のみで、合わせ味噌ではありません。",
-        "天然醸造・無添加で、発酵を止めていない「生きた味噌」。加熱処理や発酵止めのアルコール添加は行わず、地釜で炊き上げた煮汁(味噌のたまり)を加えて仕込んでいます。",
+        "天然醸造・無添加で、発酵を止めていない「生きた味噌」。加熱処理や発酵止めのアルコール添加は行わず、地釜で炊き上げた煮汁(あめ)を加えて仕込んでいます。",
       ],
       en: [
         "A mellow, gently sweet miso with no strong edge, approachable for everyone.",
         "Rice Miso is made using only soybeans, rice koji (a mold-fermented rice starter), and salt. The koji used is rice koji only — this is not a blended (awase) miso.",
-        "It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (miso tamari).",
+        "It is naturally brewed with no additives, a 'living miso' whose fermentation is never halted. It is made without heat treatment or alcohol to stop fermentation, cooked in a traditional earthen kettle (jigama) and finished by adding back its own simmered liquid (ame).",
       ],
     },
     // taste数値バーは根拠のない推測値のため、商品詳細・比較画面では非表示とする(TasteBar呼び出し停止)。
