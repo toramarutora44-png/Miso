@@ -53,7 +53,7 @@ export default function ProducerPage({ params }: PageProps) {
         <p className="mt-4 text-base text-sumi-soft">
           {dict.producer.nameLabel}: {producer.name[locale]}
         </p>
-        <p className="t-lead mt-4 text-sumi">{producer.summary[locale]}</p>
+        <p className="t-lead mt-4 whitespace-pre-line text-sumi">{producer.summary[locale]}</p>
       </Section>
 
       <Section tone="kinari-deep">

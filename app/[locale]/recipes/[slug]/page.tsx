@@ -68,7 +68,9 @@ export default async function RecipeDetailPage({ params }: PageProps) {
                 width={recipe.image.width}
                 height={recipe.image.height}
                 priority
-                className="h-56 w-full rounded-card border border-miso-light/30 object-cover sm:h-72"
+                sizes={`(min-width: ${recipe.image.width}px) ${recipe.image.width}px, 100vw`}
+                style={{ maxWidth: recipe.image.width }}
+                className="mx-auto h-56 w-full rounded-card border border-miso-light/30 object-cover sm:h-72"
               />
               <p className="mt-2 text-xs text-sumi-faint">{d.photoDisclaimer}</p>
             </>

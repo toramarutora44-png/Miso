@@ -30,7 +30,7 @@ export const producer: Producer = {
   name: { ja: "磯部 裕子", en: "Yuko Isobe" },
   role: { ja: "店主", en: "Shop Owner" },
   summary: {
-    ja: "山梨県笛吹市の「みそ工房の郷」で味噌づくりを続ける、店主・磯部裕子。",
+    ja: "山梨県笛吹市の「みそ工房の郷」で味噌づくりを続ける、\n店主・磯部裕子。",
     en: "Yuko Isobe, owner of Miso Kobo no Sato in Fuefuki City, Yamanashi, continuing her craft of miso-making.",
   },
   address: {
