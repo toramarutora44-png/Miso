@@ -18,3 +18,17 @@ body {
 table {
   border-collapse: collapse;
 }
+
+/* A4印刷用レポート(/admin/qr/report)のレイアウト */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
