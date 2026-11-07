@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
@@ -220,31 +219,6 @@ export default function ProducerPage({ params }: PageProps) {
             {dict.nav.experience}
           </LinkButton>
         </div>
-      </Section>
-
-      <Section tone="kinari">
-        <h2 className="t-title text-sumi">{dict.producer.videoSectionTitle}</h2>
-        <div
-          className="mx-auto mt-4 w-full max-w-xl overflow-hidden rounded-card border border-miso-light/30"
-          style={{ aspectRatio: "16 / 9" }}
-        >
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/zg0FtgXugeA"
-            title={dict.producer.videoTitle}
-            className="h-full w-full"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        </div>
-        <p className="mt-6 text-base">
-          <Link
-            href={`/${locale}/contact`}
-            className="tap-target inline-flex items-center text-fukamidori-dark underline"
-          >
-            {dict.common.contactLinkLabel}
-          </Link>
-        </p>
       </Section>
     </>
   );
