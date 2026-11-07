@@ -6,11 +6,10 @@ import { RecipeShowcase } from "@/components/home/RecipeShowcase";
 import { ProductStory } from "@/components/home/ProductStory";
 import { ProducerStory } from "@/components/home/ProducerStory";
 import { ProductFocus } from "@/components/home/ProductFocus";
-import { Section } from "@/components/ui/Section";
 import { Band } from "@/components/ui/Band";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, locales } from "@/lib/i18n/config";
-import { getAllProducts, getProductById, getProducer } from "@/lib/repositories/productRepository";
+import { getAllProducts, getProductById } from "@/lib/repositories/productRepository";
 import { getAllRecipes, getRecipesForProduct } from "@/lib/repositories/recipeRepository";
 import type { Locale } from "@/types/i18n";
 import type { ProductId } from "@/types/product";
@@ -33,7 +32,7 @@ interface PageProps {
  * トップページ。
  * QRコードから来た人は既に目の前の商品が何の味噌か知っているため、
  * 「この味噌で何が作れるか」(料理・レシピ)を先に見せる構成に再編している。
- * 構成: ①料理写真ファーストビュー → ②レシピ紹介(商品別) → ③3種の味噌 → ④生産者紹介 → ⑤購入案内。
+ * 構成: ①料理写真ファーストビュー → ②レシピ紹介(商品別) → ③3種の味噌 → ④生産者紹介。
  */
 export default async function HomePage({ params }: PageProps) {
   const { locale: rawLocale } = params;
@@ -42,7 +41,6 @@ export default async function HomePage({ params }: PageProps) {
   const dict = getDictionary(locale);
   const h = dict.home;
 
-  const producer = getProducer();
   const recipes = await getAllRecipes();
   const products = getAllProducts();
 
@@ -135,19 +133,6 @@ export default async function HomePage({ params }: PageProps) {
 
       {/* ④ 生産者紹介 */}
       <ProducerStory locale={locale} dict={dict} />
-
-      {/* ⑤ 購入案内: 配送・EC関連は一切含めない */}
-      <Section tone="kinari-deep">
-        <h2 className="text-[28px]">{h.purchaseTitle}</h2>
-        <p className="mt-4 text-base">
-          <Link
-            href={`tel:${producer.phone.replace(/-/g, "")}`}
-            className="tap-target inline-flex items-center text-akamiso underline"
-          >
-            {h.phoneCta}: {producer.phone}
-          </Link>
-        </p>
-      </Section>
     </>
   );
 }
