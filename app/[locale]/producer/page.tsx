@@ -32,6 +32,7 @@ export default function ProducerPage({ params }: PageProps) {
   const dict = getDictionary(locale);
   const producer = getProducer();
   const p = dict.producer;
+  const e = dict.experience;
 
   return (
     <>
@@ -215,10 +216,61 @@ export default function ProducerPage({ params }: PageProps) {
         </dl>
         <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <LinkButton href={`/${locale}/products`}>{dict.common.viewProducts}</LinkButton>
-          <LinkButton href={`/${locale}/experience`} variant="secondary">
-            {dict.nav.experience}
-          </LinkButton>
         </div>
+      </Section>
+
+      <Section tone="kinari">
+        <h2 className="t-title text-sumi">{dict.nav.experience}</h2>
+        <p className="t-lead mt-3 text-sumi-soft">{e.lead}</p>
+
+        <dl className="mt-8 grid grid-cols-1 gap-5 border-t border-rule pt-6 text-base sm:grid-cols-3">
+          <div>
+            <dt className="t-label text-sumi-faint">{e.durationLabel}</dt>
+            <dd className="mt-1.5 font-heading text-lg text-sumi">{e.duration}</dd>
+          </div>
+          <div>
+            <dt className="t-label text-sumi-faint">{e.venueLabel}</dt>
+            <dd className="mt-1.5 font-heading text-lg text-sumi">
+              {e.venueName}({producer.address[locale]})
+            </dd>
+          </div>
+          <div>
+            <dt className="t-label text-sumi-faint">{e.periodLabel}</dt>
+            <dd className="mt-1.5 font-heading text-lg text-sumi">{e.period}</dd>
+          </div>
+        </dl>
+
+        <div className="mt-10">
+          <h3 className="t-title text-sumi">{e.featuresTitle}</h3>
+          <ul className="mt-4 flex flex-col gap-3 text-base">
+            {[e.feature1, e.feature2, e.feature3].map((feature, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span
+                  className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-fukamidori"
+                  aria-hidden="true"
+                />
+                <span className="text-sumi">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-10 rounded-card border border-akamiso/40 bg-washi p-5">
+          <h3 className="t-title text-akamiso">{e.applyTitle}</h3>
+          <p className="mt-2 text-sm text-akamiso">
+            {e.applyNotePrefix}
+            {producer.email}
+            {e.applyNoteMid}
+            {producer.phone}
+            {e.applyNoteSuffix}
+          </p>
+        </div>
+
+        <LinkButton href={`/${locale}/contact`} className="mt-8">
+          {e.ctaContact}
+        </LinkButton>
+
+        <p className="mt-6 text-sm text-sumi-soft">{e.latestInfoNote}</p>
       </Section>
     </>
   );
